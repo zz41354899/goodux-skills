@@ -1,6 +1,6 @@
 {
   "name": "goodux-ux-skills",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "專業的 UX 設計技能包 — 符合 Agent Skills 標準的可安裝技能庫。包含使用者訪談、人物誌、資訊架構、線框圖、UI 視覺設計、可用性測試、無障礙設計、設計系統、原型製作等 9 個實戰技能。支援 CLI 安裝、單一技能選裝、JSON 輸出與 dry-run 模擬。",
   "main": "install.js",
   "bin": {

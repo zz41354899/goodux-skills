@@ -1,167 +1,159 @@
 # Good UX Skills
 
-> 專業的 UX 設計技能包 - 符合 [Agent Skills](https://agentskills.io/) 標準的可安裝技能庫
+> 專業的 UX 設計技能包 — 符合 [Agent Skills](https://agentskills.io/) 標準的可安裝技能庫
 
+[![npm version](https://img.shields.io/npm/v/goodux-ux-skills.svg)](https://www.npmjs.com/package/goodux-ux-skills)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Agent Skills](https://img.shields.io/badge/Agent-Skills-blue.svg)](https://agentskills.io/)
 
 ## 📚 簡介
 
-Good UX Skills 是一套完整的 UX 設計技能庫,涵蓋從使用者研究到設計系統的各個面向。每個技能都包含:
+Good UX Skills 是一套完整的 UX 設計技能庫，涵蓋從使用者研究到設計系統的各個面向。**9 個實戰技能**，整合 **101 種專業設計風格**，一行指令安裝到 AI 工具中使用。
 
-- ✅ 詳細的執行步驟
-- ✅ 最佳實踐指南
-- ✅ 實際範例
-- ✅ 常見問題解答
-- ✅ 相關工具推薦
+### ✨ 特色
 
-所有技能都符合 [Agent Skills 標準](https://agentskills.io/specification),可在支援 Agent Skills 的工具中使用。
+- 🎯 **9 個專業技能** - 使用者訪談、人物誌、資訊架構、線框圖、UI 視覺設計、可用性測試、無障礙設計、設計系統、原型製作
+- 🤖 **Agent Skills 標準** - 直接整合到 Windsurf、Claude Code、Cursor 等 AI 工具
+- 🎨 **101 種設計風格** - 內建專業設計風格參考庫（UI 視覺設計技能）
+- ⚡ **強大 CLI** - 支援單一技能選裝、JSON 輸出、dry-run 模擬
+- 📦 **精簡規格** - 每個技能壓縮至 300 行內，專注可執行性
+- 🌐 **正體中文** - 完整繁體中文內容
+
+所有技能都符合 [Agent Skills 標準](https://agentskills.io/specification)，可在支援 Agent Skills 的工具中使用。
 
 ## 🎯 包含的技能
 
-### 使用者研究
-- **使用者訪談** (`user-interview`) - 透過深度訪談了解使用者需求和痛點
-- **使用者人物誌** (`persona-creation`) - 創建代表性的使用者角色
+1. **使用者訪談** (`user-interview`) - 質性研究與需求探索
+2. **使用者人物誌** (`persona-creation`) - 角色模型建立
+3. **資訊架構** (`information-architecture`) - 內容結構與導航設計
+4. **線框圖** (`wireframing`) - 低保真介面設計
+5. **UI 視覺設計** (`ui-visual-design`) - 視覺風格與 101 種設計參考
+6. **可用性測試** (`usability-testing`) - 使用者測試方法
+7. **無障礙設計** (`accessibility-design`) - WCAG 標準與實踐
+8. **設計系統** (`design-system`) - Design Tokens 與元件規範
+9. **原型製作** (`prototyping`) - 高保真互動原型
 
-### 介面設計
-- **資訊架構設計** (`information-architecture`) - 組織和結構化資訊內容
-- **線框圖設計** (`wireframing`) - 快速繪製低保真度介面草圖
+## 🚀 快速開始
 
-### 測試與驗證
-- **可用性測試** (`usability-testing`) - 觀察使用者互動,發現可用性問題
-
-### 無障礙與系統
-- **無障礙設計** (`accessibility-design`) - 確保產品符合 WCAG 標準
-- **設計系統建立** (`design-system`) - 創建可重複使用的元件庫
-
-### 原型製作
-- **互動原型製作** (`prototyping`) - 創建可互動的高保真原型
-
-## 🚀 安裝方式
-
-### 方法 1: 使用 npx (推薦)
+### 安裝所有技能
 
 ```bash
 npx goodux-ux-skills
 ```
 
-### 方法 2: 全域安裝
+### CLI 進階用法
 
 ```bash
-npm install -g goodux-ux-skills
-goodux-skills
+# 只安裝指定技能
+npx goodux-ux-skills -s wireframing -s user-interview
+
+# 強制覆蓋更新
+npx goodux-ux-skills -f
+
+# 列出所有可用技能
+npx goodux-ux-skills --list
+
+# JSON 格式輸出（適合 CI/CD）
+npx goodux-ux-skills --json
+
+# 模擬安裝（不實際寫入）
+npx goodux-ux-skills --dry-run
+
+# 指定安裝目錄
+npx goodux-ux-skills -t ~/my-project/.agents/skills
+
+# 顯示版本號
+npx goodux-ux-skills --version
+
+# 顯示說明
+npx goodux-ux-skills --help
 ```
 
-### 方法 3: 專案內安裝
-
-```bash
-npm install goodux-ux-skills
-```
-
-安裝後,技能會自動複製到 `.agents/skills` 目錄。
+安裝後，技能會自動複製到 `.agents/skills` 目錄。
 
 ## 📖 使用方式
 
-### 在 Windsurf / Claude Code 中使用
+### 在 Windsurf / Claude Code / Cursor 中使用
 
-安裝後,技能會自動被偵測到。你可以:
+安裝後，技能會自動被偵測到。你可以：
 
-1. **隱式調用**: 當你的任務匹配技能描述時,AI 會自動選擇合適的技能
-2. **顯式調用**: 直接提及技能名稱或使用工具提供的技能選單
-
+**隱式調用**（推薦）
 ```
-範例:
-"請幫我規劃一個使用者訪談" → AI 會自動使用 user-interview 技能
-"使用 wireframing 技能幫我設計購物車頁面的線框圖"
-"在 Windsurf 中可以使用 /skills 選單或 $skill-name 語法"
+"請幫我規劃一個使用者訪談"
+→ AI 會自動使用 user-interview 技能
 ```
 
-### 在其他支援 Agent Skills 的工具中使用
+**顯式調用**
+```
+"$wireframing 幫我設計購物車頁面的線框圖"
+"使用 ui-visual-design 技能，參考 Minimalist 風格設計一個登入頁"
+```
 
-只要工具支援 Agent Skills 標準,就會自動掃描 `.agents/skills` 目錄並載入技能。
+### 支援的 AI 工具
 
-## 📁 目錄結構
+- ✅ [Windsurf](https://codeium.com/windsurf) - Codeium 推出的 AI IDE
+- ✅ [Claude Code](https://claude.ai/code) - Anthropic 官方開發工具
+- ✅ [Cursor](https://cursor.sh/) - AI-first 程式碼編輯器
+- ✅ [Continue](https://continue.dev/) - 開源 AI 編碼助手
+
+只要工具支援 Agent Skills 標準，就會自動掃描 `.agents/skills` 目錄並載入技能。
+
+## � 使用範例
+
+### 範例 1: UI 視覺設計（含 101 種風格參考）
+
+```
+提示: "幫我設計一個 SaaS 產品的登入頁，風格要專業簡潔"
+
+AI 會使用 ui-visual-design 技能，提供：
+- 從 101 種設計風格中推薦適合的方向
+- 色彩系統建議
+- 字體排版規範
+- 間距與佈局原則
+- 元件視覺風格
+```
+
+### 範例 2: 完整 UX 流程
+
+```
+1. "$user-interview 規劃電商使用者訪談"
+2. "$persona-creation 根據訪談建立使用者人物誌"
+3. "$wireframing 設計購物車頁面線框圖"
+4. "$ui-visual-design 選擇 Modern E-commerce 風格"
+5. "$prototyping 建立可測試的互動原型"
+6. "$usability-testing 驗證結帳流程"
+```
+
+## �📁 安裝後的目錄結構
 
 ```
 .agents/skills/
-├── user-interview/
-│   └── SKILL.md
-├── persona-creation/
-│   └── SKILL.md
-├── information-architecture/
-│   └── SKILL.md
-├── wireframing/
-│   └── SKILL.md
-├── usability-testing/
-│   └── SKILL.md
-├── accessibility-design/
-│   └── SKILL.md
-├── design-system/
-│   └── SKILL.md
-└── prototyping/
-    └── SKILL.md
+├── user-interview/SKILL.md
+├── persona-creation/SKILL.md
+├── information-architecture/SKILL.md
+├── wireframing/SKILL.md
+├── ui-visual-design/SKILL.md          ← 含 101 種設計風格
+├── usability-testing/SKILL.md
+├── accessibility-design/SKILL.md
+├── design-system/SKILL.md
+└── prototyping/SKILL.md
 ```
 
-## 💡 使用範例
+## �️ 技能結構
 
-### 範例 1: 規劃使用者訪談
+每個技能都包含：
 
-```
-提示: "我需要了解電商使用者的購物習慣,請幫我規劃使用者訪談"
-
-AI 會使用 $user-interview 技能,提供:
-- 訪談目標設定
-- 受訪者招募建議
-- 訪談大綱範本
-- 執行步驟
-- 分析方法
-```
-
-### 範例 2: 建立設計系統
-
-```
-提示: "$design-system 幫我建立一個設計系統的基礎架構"
-
-AI 會提供:
-- Design Tokens 定義
-- 顏色系統
-- 字體系統
-- 間距系統
-- 元件優先順序
-```
-
-### 範例 3: 進行可用性測試
-
-```
-提示: "我想測試新的結帳流程,請幫我設計可用性測試"
-
-AI 會使用 $usability-testing 技能,協助:
-- 定義測試目標
-- 設計測試任務
-- 招募參與者
-- 執行測試
-- 分析結果
-```
-
-## 🛠️ 技能詳細說明
-
-每個技能都包含以下章節:
-
-- **概述**: 技能的定義和重要性
-- **何時使用**: 適用的情境和時機
-- **執行步驟**: 詳細的操作指南
-- **最佳實踐**: 專業設計師的經驗分享
-- **範例輸出**: 實際的應用範例
-- **常見問題**: 常見問題解答
-- **相關技能**: 相關聯的其他技能
-
-## 🌟 特色
-
-- ✅ **正體中文**: 完整的繁體中文內容
-- ✅ **實戰導向**: 可直接應用於實際專案
-- ✅ **標準相容**: 符合 Agent Skills 規範
-- ✅ **持續更新**: 定期更新最佳實踐
-- ✅ **開源免費**: MIT 授權,自由使用
+- **任務定義** - 技能的核心目標
+- **必要輸入** - 執行技能需要的資訊
+- **預期輸出** - 技能會產出的結果
+- **完成條件** - 判斷技能執行成功的標準
+- **不適用情境** - 不應使用此技能的場景
+- **觸發條件** - AI 自動觸發此技能的關鍵字
+- **必要澄清** - 執行前需要確認的問題
+- **可搭配技能** - 相關聯的其他技能
+- **執行步驟** - 具體操作流程
+- **執行檢查** - 品質檢查清單
+- **精簡範例輸出** - 實際應用範例
 
 ## 🤝 貢獻
 
