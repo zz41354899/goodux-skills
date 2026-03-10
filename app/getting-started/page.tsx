@@ -55,7 +55,7 @@ export default function GettingStartedPage() {
                   </div>
                 </div>
                 <p className="text-sm text-gray-500 leading-relaxed">
-                  這個指令會自動將 9 個 UX 技能下載並安裝到你電腦上的 <code className="bg-gray-50 px-1 rounded">.agents/skills</code> 目錄下。支援單一技能選裝、JSON 輸出與 dry-run 模擬。
+                  這個指令會自動將 9 個 UX 技能（含 20 個內建 UI 風格）下載並安裝到你電腦上的 <code className="bg-gray-50 px-1 rounded">.agents/skills</code> 目錄下。支援單一技能選裝、JSON 輸出與 dry-run 模擬。
                 </p>
               </div>
             </section>

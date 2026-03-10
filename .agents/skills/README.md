@@ -8,13 +8,13 @@
 
 ## 📚 簡介
 
-Good UX Skills 是一套完整的 UX 設計技能庫，涵蓋從使用者研究到設計系統的各個面向。**9 個實戰技能**，整合 **101 種專業設計風格**，一行指令安裝到 AI 工具中使用。
+Good UX Skills 是一套完整的 UX 設計技能庫，涵蓋從使用者研究到設計系統的各個面向。**9 個實戰技能 + 內建 20 個 UI 風格**，一行指令安裝到 AI 工具中使用。
 
 ### ✨ 特色
 
 - 🎯 **9 個專業技能** - 使用者訪談、人物誌、資訊架構、線框圖、UI 視覺設計、可用性測試、無障礙設計、設計系統、原型製作
 - 🤖 **Agent Skills 標準** - 直接整合到 Windsurf、Claude Code、Cursor 等 AI 工具
-- 🎨 **101 種設計風格** - 內建專業設計風格參考庫（UI 視覺設計技能）
+- 🎨 **20 個 UI 風格** - 內建精選視覺風格資料庫（UI 視覺設計技能）
 - ⚡ **強大 CLI** - 支援單一技能選裝、JSON 輸出、dry-run 模擬
 - 📦 **精簡規格** - 每個技能壓縮至 300 行內，專注可執行性
 - 🌐 **正體中文** - 完整繁體中文內容
@@ -27,7 +27,7 @@ Good UX Skills 是一套完整的 UX 設計技能庫，涵蓋從使用者研究�
 2. **使用者人物誌** (`persona-creation`) - 角色模型建立
 3. **資訊架構** (`information-architecture`) - 內容結構與導航設計
 4. **線框圖** (`wireframing`) - 低保真介面設計
-5. **UI 視覺設計** (`ui-visual-design`) - 視覺風格與 101 種設計參考
+5. **UI 視覺設計** (`ui-visual-design`) - 視覺風格與 20 個 UI 風格
 6. **可用性測試** (`usability-testing`) - 使用者測試方法
 7. **無障礙設計** (`accessibility-design`) - WCAG 標準與實踐
 8. **設計系統** (`design-system`) - Design Tokens 與元件規範
@@ -100,13 +100,13 @@ npx goodux-ux-skills --help
 
 ## � 使用範例
 
-### 範例 1: UI 視覺設計（含 101 種風格參考）
+### 範例 1: UI 視覺設計（含 20 個 UI 風格）
 
 ```
 提示: "幫我設計一個 SaaS 產品的登入頁，風格要專業簡潔"
 
 AI 會使用 ui-visual-design 技能，提供：
-- 從 101 種設計風格中推薦適合的方向
+- 從 20 個 UI 風格中推薦適合的方向
 - 色彩系統建議
 - 字體排版規範
 - 間距與佈局原則
@@ -132,7 +132,7 @@ AI 會使用 ui-visual-design 技能，提供：
 ├── persona-creation/SKILL.md
 ├── information-architecture/SKILL.md
 ├── wireframing/SKILL.md
-├── ui-visual-design/SKILL.md          ← 含 101 種設計風格
+├── ui-visual-design/SKILL.md          ← 含 20 個 UI 風格
 ├── usability-testing/SKILL.md
 ├── accessibility-design/SKILL.md
 ├── design-system/SKILL.md

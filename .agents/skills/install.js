@@ -160,6 +160,22 @@ function copySkill(skillName, targetDir, options) {
 
   if (!options.dryRun) {
     fs.copyFileSync(sourceFile, destFile);
+    
+    // 如果是 ui-visual-design，也複製 styleprompts.yaml 和 TEMPLATE.md
+    if (skillName === 'ui-visual-design') {
+      const stylepromptsSource = path.join(sourceDir, 'styleprompts.yaml');
+      const stylepromptsDest = path.join(destDir, 'styleprompts.yaml');
+      const templateSource = path.join(sourceDir, 'TEMPLATE.md');
+      const templateDest = path.join(destDir, 'TEMPLATE.md');
+      
+      if (fs.existsSync(stylepromptsSource)) {
+        fs.copyFileSync(stylepromptsSource, stylepromptsDest);
+      }
+      
+      if (fs.existsSync(templateSource)) {
+        fs.copyFileSync(templateSource, templateDest);
+      }
+    }
   }
 
   return { status: alreadyExists ? 'updated' : 'installed', skillName };
@@ -270,20 +286,23 @@ function install(rawOptions = {}) {
   skillsToInstall.forEach((skillName) => {
     const result = copySkill(skillName, targetDir, options);
     const label = getLabel(skillName);
+    
+    // 如果是 ui-visual-design，加上風格數量提示
+    const extraInfo = skillName === 'ui-visual-design' ? ' - 含 20 個 UI 風格' : '';
 
     results.push({ id: skillName, name: label, status: result.status });
 
     switch (result.status) {
       case 'installed':
-        log(`${options.dryRun ? '•' : '✓'} ${label}`);
+        log(`${options.dryRun ? '•' : '✓'} ${label}${extraInfo}`);
         summary.installed += 1;
         break;
       case 'updated':
-        log(`${options.dryRun ? '•' : '↺'} ${label} (${options.dryRun ? '將覆蓋' : '已覆蓋'})`);
+        log(`${options.dryRun ? '•' : '↺'} ${label}${extraInfo} (${options.dryRun ? '將覆蓋' : '已覆蓋'})`);
         summary.updated += 1;
         break;
       case 'skipped':
-        log(`⊘ ${label} (已存在，跳過)`);
+        log(`⊘ ${label}${extraInfo} (已存在，跳過)`);
         summary.skipped += 1;
         break;
       default:

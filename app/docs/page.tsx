@@ -30,9 +30,9 @@ export default function DocsPage() {
               </p>
             </div>
             <div className="border border-gray-200 rounded-lg p-6">
-              <h3 className="font-semibold text-gray-900 mb-3">整合 101 種設計風格</h3>
+              <h3 className="font-semibold text-gray-900 mb-3">內建 20 個 UI 風格</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                整合 StylePrompts 設計風格庫,提供 101 種專業設計風格參考,快速提升介面設計品質。
+                內建 20 個精選 UI 風格資料庫,涵蓋科技極簡、賽博龐克、日式和風等多種風格,快速提升介面設計品質。
               </p>
             </div>
             <div className="border border-gray-200 rounded-lg p-6">
@@ -284,7 +284,7 @@ export default function DocsPage() {
               { name: "使用者人物誌", id: "persona-creation", desc: "創建代表性使用者角色" },
               { name: "資訊架構設計", id: "information-architecture", desc: "組織內容與導航結構" },
               { name: "線框圖設計", id: "wireframing", desc: "快速繪製介面草圖" },
-              { name: "UI 視覺設計", id: "ui-visual-design", desc: "選擇視覺風格,整合 101 種設計參考" },
+              { name: "UI 視覺設計", id: "ui-visual-design", desc: "選擇視覺風格,內建 20 個 UI 風格" },
               { name: "可用性測試", id: "usability-testing", desc: "發現可用性問題" },
               { name: "無障礙設計", id: "accessibility-design", desc: "確保產品符合 WCAG 標準" },
               { name: "設計系統建立", id: "design-system", desc: "創建可重複使用的元件庫" },

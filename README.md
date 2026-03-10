@@ -1,12 +1,12 @@
 # Good UX Skills
 
-專業的 UX 設計技能包，符合 Agent Skills 標準。9 個實戰技能，整合 101 種設計風格，一行指令安裝到 AI 工具中使用。
+專業的 UX 設計技能包，符合 Agent Skills 標準。9 個實戰技能 + 內建 20 個 UI 風格，一行指令安裝到 AI 工具中使用。
 
 ## 功能特色
 
 - 📚 **9 個專業技能** - 使用者訪談、人物誌、資訊架構、線框圖、UI 視覺設計、可用性測試、無障礙設計、設計系統、原型製作
 - 🤖 **Agent Skills 標準** - 直接整合到 Windsurf、Claude Code、Cursor 等 AI 工具
-- � **101 種設計風格** - 內建專業設計風格參考庫
+- 🎨 **20 個 UI 風格** - 內建精選視覺風格資料庫，涵蓋科技極簡、賽博龐克、日式和風等多種風格
 - ⚡ **CLI 安裝器** - 支援單一技能選裝、JSON 輸出、dry-run 模擬
 - � **現代化網站** - Next.js 14 + TypeScript + Tailwind CSS
 - 📱 **響應式設計** - 完美支援桌面和行動裝置
@@ -82,7 +82,7 @@ goodux-skills/
 2. **使用者人物誌** (`persona-creation`) - 角色模型建立
 3. **資訊架構** (`information-architecture`) - 內容結構與導航設計
 4. **線框圖** (`wireframing`) - 低保真介面設計
-5. **UI 視覺設計** (`ui-visual-design`) - 視覺風格與 101 種設計參考
+5. **UI 視覺設計** (`ui-visual-design`) - 視覺風格與 20 個 UI 風格
 6. **可用性測試** (`usability-testing`) - 使用者測試方法
 7. **無障礙設計** (`accessibility-design`) - WCAG 標準與實踐
 8. **設計系統** (`design-system`) - Design Tokens 與元件規範

@@ -1,0 +1,423 @@
+# StylePrompts 資料庫
+# 供 ui-visual-design skill 調度使用
+
+styles:
+  - id: s01
+    code: S01
+    name: 科技極簡
+    slug: tech-minimal
+    summary: 乾淨俐落的 SaaS 科技風格，強調留白、理性層級與可信任感
+    category: saas
+    tags: [科技, 極簡, 可信任, 專業, SaaS, B2B]
+    use_case: [landing-page, product-site, dashboard]
+    industry: [saas, software, b2b]
+    visual_hints:
+      palette: 中性灰階 + 單一品牌主色
+      typography: 幾何無襯線（Inter, SF Pro）
+      composition: 大量留白、卡片式分區、清楚層級
+      components: 細邊框、輕陰影、小圓角
+      mood: 理性、專業、可信任
+    prompt:
+      short: 設計科技極簡風格的 SaaS 落地頁，使用中性色與單一品牌主色，強調留白、清楚層級、可信任感與高轉換 CTA。
+    ai_match:
+      triggers: [科技極簡, tech minimal, SaaS 風格, 極簡科技, B2B 專業]
+      keywords: [科技, 極簡, 乾淨, 專業, 理性, SaaS, B2B]
+
+  - id: s02
+    code: S02
+    name: 極簡黑白
+    slug: minimal-bw
+    summary: 極簡黑白編輯風格，強調排版與對比
+    category: editorial
+    tags: [極簡, 黑白, 編輯, 排版]
+    use_case: [editorial, portfolio, blog]
+    industry: [media, publishing, creative]
+    visual_hints:
+      palette: 純黑白、高對比
+      typography: 襯線或無襯線，強調層級
+      composition: 大量留白、雜誌式版面、強調內容區塊
+      components: 極少裝飾、線性分隔、扁平按鈕
+      mood: 極簡、編輯、內容為主
+    prompt:
+      short: 設計極簡黑白編輯風格，強調排版層級與黑白對比，適合內容為主的頁面。
+    ai_match:
+      triggers: [極簡黑白, 黑白編輯, editorial, 極簡排版]
+      keywords: [極簡, 黑白, 編輯, 排版, 對比, 內容]
+
+  - id: s03
+    code: S03
+    name: 蒙德里安
+    slug: mondrian
+    summary: 幾何色塊與直線構圖
+    category: experimental
+    tags: [幾何, 色塊, 藝術, 構成主義]
+    use_case: [portfolio, exhibition, creative]
+    industry: [art, design, creative]
+    visual_hints:
+      palette: 三原色 + 黑白灰
+      typography: 無襯線，幾何感明確
+      composition: 直線切割、幾何分區、強烈構圖
+      components: 色塊卡片、硬邊界線、低圓角或無圓角
+      mood: 藝術、構成、幾何
+    prompt:
+      short: 使用蒙德里安風格的幾何色塊與直線構圖，三原色搭配黑白灰。
+    ai_match:
+      triggers: [蒙德里安, mondrian, 幾何色塊, 構成主義]
+      keywords: [幾何, 色塊, 藝術, 三原色, 構成]
+
+  - id: s04
+    code: S04
+    name: 瑞士通訊
+    slug: swiss-style
+    summary: 瑞士國際主義字體風格，強調理性格柵
+    category: editorial
+    tags: [瑞士, 理性, 格柵, 字體]
+    use_case: [editorial, corporate, documentation]
+    industry: [design, corporate, publishing]
+    visual_hints:
+      palette: 中性色為主，少量品牌色點綴
+      typography: 無襯線，Helvetica 取向
+      composition: 強格柵、左對齊、資訊層級嚴謹
+      components: 簡潔區塊、低裝飾、細線分隔
+      mood: 理性、格柵、資訊清晰
+    prompt:
+      short: 採用瑞士國際主義風格，理性格柵系統，無襯線字體，強調資訊清晰度。
+    ai_match:
+      triggers: [瑞士風格, swiss style, 國際主義, 格柵系統]
+      keywords: [瑞士, 理性, 格柵, 字體, 清晰]
+
+  - id: s05
+    code: S05
+    name: 粗獷主義
+    slug: brutalism
+    summary: 原生、大膽、不加修飾的設計語言
+    category: experimental
+    tags: [粗獷, 原生, 大膽, 反設計]
+    use_case: [portfolio, experimental, creative]
+    industry: [art, creative, tech]
+    visual_hints:
+      palette: 原生系統色、高對比
+      typography: 等寬字體或原生樣式字體
+      composition: 不對稱、刻意直接、區塊衝突感
+      components: 原生按鈕感、硬邊框、低修飾
+      mood: 粗獷、原生、反設計
+    prompt:
+      short: 粗獷主義風格，原生 HTML 美學，大膽排版，不加修飾的設計語言。
+    ai_match:
+      triggers: [粗獷主義, brutalism, 原生風格, 反設計]
+      keywords: [粗獷, 原生, 大膽, HTML, 反設計]
+
+  - id: s06
+    code: S06
+    name: 賽博龐克
+    slug: cyberpunk
+    summary: 霓虹美學與未來主義科技感
+    category: futuristic
+    tags: [賽博, 霓虹, 未來, 科技]
+    use_case: [gaming, tech, entertainment]
+    industry: [gaming, entertainment, tech]
+    visual_hints:
+      palette: 深色背景 + 霓虹色（粉紅、藍、紫）
+      typography: 未來感字體
+      composition: 疊層面板、發光焦點、強烈視覺中心
+      components: 玻璃感面板、光暈邊框、亮色 CTA
+      mood: 賽博、霓虹、未來科技
+    prompt:
+      short: 賽博龐克風格，霓虹色彩，未來主義科技感，深色背景搭配高亮霓虹。
+    ai_match:
+      triggers: [賽博龐克, cyberpunk, 霓虹風格, 未來科技]
+      keywords: [賽博, 霓虹, 未來, 科技, 遊戲]
+
+  - id: s07
+    code: S07
+    name: 復古 80s
+    slug: retro-80s
+    summary: Synthwave 風格，漸層霓虹與網線紋理
+    category: retro
+    tags: [復古, 80s, Synthwave, 霓虹]
+    use_case: [entertainment, creative, portfolio]
+    industry: [music, entertainment, creative]
+    visual_hints:
+      palette: 漸層霓虹（粉紫藍）
+      typography: 80s 字體
+      composition: 地平線透視、海報式主視覺、中央聚焦
+      components: 發光按鈕、漸層框線、裝飾網格
+      mood: 復古未來、Synthwave
+    prompt:
+      short: 80 年代 Synthwave 風格，漸層霓虹色彩，網線紋理，復古未來感。
+    ai_match:
+      triggers: [復古 80s, synthwave, 80年代, 霓虹漸層]
+      keywords: [復古, 80s, synthwave, 霓虹, 漸層]
+
+  - id: s08
+    code: S08
+    name: 復古印紙
+    slug: vintage-print
+    summary: 60-70年代印刷美學，質感雜點與古董配色
+    category: retro
+    tags: [復古, 印刷, 質感, 雜點]
+    use_case: [editorial, branding, portfolio]
+    industry: [publishing, creative, retail]
+    visual_hints:
+      palette: 古董配色、褪色感
+      typography: 復古襯線
+      composition: 編輯式版面、海報感留白、圖文拼貼
+      components: 紙感卡片、細框、印刷紋理區塊
+      mood: 懷舊、印刷、質感
+    prompt:
+      short: 60-70 年代復古印刷風格，紙質雜點紋理，古董配色，懷舊美學。
+    ai_match:
+      triggers: [復古印刷, vintage print, 60s 70s, 懷舊風格]
+      keywords: [復古, 印刷, 質感, 雜點, 懷舊]
+
+  - id: s09
+    code: S09
+    name: 孟菲斯
+    slug: memphis
+    summary: 孟菲斯設計，幾何形狀與高飽和配色
+    category: experimental
+    tags: [孟菲斯, 幾何, 高飽和, 80s]
+    use_case: [creative, branding, portfolio]
+    industry: [creative, retail, entertainment]
+    visual_hints:
+      palette: 高飽和、多色
+      typography: 幾何字體
+      composition: 不規則圖形散佈、活潑跳躍、強節奏
+      components: 幾何裝飾、撞色卡片、活潑按鈕
+      mood: 活潑、幾何、80s
+    prompt:
+      short: 孟菲斯設計風格，幾何形狀，高飽和配色，活潑圖案，80 年代設計語言。
+    ai_match:
+      triggers: [孟菲斯, memphis, 幾何圖案, 高飽和]
+      keywords: [孟菲斯, 幾何, 高飽和, 80s, 活潑]
+
+  - id: s10
+    code: S10
+    name: 奢華編輯
+    slug: luxury-editorial
+    summary: 優雅襯線字體與精緻排版
+    category: editorial
+    tags: [奢華, 編輯, 襯線, 精緻]
+    use_case: [editorial, luxury, portfolio]
+    industry: [fashion, luxury, publishing]
+    visual_hints:
+      palette: 黑白金、低飽和
+      typography: 優雅襯線
+      composition: 大量留白、編輯式大圖、節制的層級
+      components: 細金屬感邊框、高級按鈕、低調卡片
+      mood: 奢華、精緻、高級
+    prompt:
+      short: 奢華編輯風格，優雅襯線字體，精緻排版，大量留白，高級質感。
+    ai_match:
+      triggers: [奢華編輯, luxury editorial, 高級時尚, 精緻排版]
+      keywords: [奢華, 編輯, 襯線, 精緻, 時尚]
+
+  - id: s11
+    code: S11
+    name: 日式和風
+    slug: japanese-zen
+    summary: 日式極簡，留白藝術與禪意美學
+    category: minimal
+    tags: [日式, 和風, 禪意, 留白]
+    use_case: [portfolio, editorial, wellness]
+    industry: [wellness, hospitality, creative]
+    visual_hints:
+      palette: 自然色調、低飽和
+      typography: 和風字體或低調無襯線
+      composition: 留白充足、單欄節奏、安靜層次
+      components: 細線分隔、低陰影、自然材質感
+      mood: 禪意、留白、寧靜
+    prompt:
+      short: 日式和風極簡風格，留白藝術，禪意美學，自然色調，寧靜氛圍。
+    ai_match:
+      triggers: [日式和風, japanese zen, 禪意風格, 和風極簡]
+      keywords: [日式, 和風, 禪意, 留白, 寧靜]
+
+  - id: s12
+    code: S12
+    name: 自然有機
+    slug: organic-natural
+    summary: 自然有機風格，柔和曲線與大地色調
+    category: organic
+    tags: [自然, 有機, 曲線, 大地色]
+    use_case: [wellness, eco, lifestyle]
+    industry: [wellness, eco, hospitality]
+    visual_hints:
+      palette: 大地色調
+      typography: 柔和字體
+      composition: 柔和曲線分區、寬鬆留白、溫暖節奏
+      components: 圓角卡片、自然色按鈕、低對比邊界
+      mood: 自然、有機、溫暖
+    prompt:
+      short: 自然有機風格，柔和曲線，大地色調，溫暖質感，環保永續氛圍。
+    ai_match:
+      triggers: [自然有機, organic, 大地色調, 環保風格]
+      keywords: [自然, 有機, 曲線, 大地色, 環保]
+
+  - id: s13
+    code: S13
+    name: 材質模擬
+    slug: material-design
+    summary: Material Design 陰影層次與色彩系統
+    category: modern
+    tags: [Material, 陰影, 層次, Google]
+    use_case: [app, dashboard, product]
+    industry: [tech, software, mobile]
+    visual_hints:
+      palette: 鮮豔色彩系統
+      typography: Roboto
+      composition: 卡片式資訊階層、模組化版面、清楚區塊
+      components: 浮起卡片、標準 FAB/按鈕感、系統化元件
+      mood: 現代、層次、卡片
+    prompt:
+      short: Material Design 風格，陰影層次，色彩系統，卡片設計，現代扁平美學。
+    ai_match:
+      triggers: [Material Design, material, Google 風格, 卡片設計]
+      keywords: [material, 陰影, 層次, 卡片, Google]
+
+  - id: s14
+    code: S14
+    name: 玻璃擬態
+    slug: glassmorphism
+    summary: 磨砂玻璃效果與半透明層疊
+    category: modern
+    tags: [玻璃, 半透明, 模糊, 現代]
+    use_case: [app, dashboard, landing-page]
+    industry: [tech, software, creative]
+    visual_hints:
+      palette: 半透明、柔和漸層背景
+      typography: 現代無襯線
+      composition: 浮層堆疊、景深感、透明面板分區
+      components: 磨砂卡片、半透明按鈕、柔和邊框
+      mood: 玻璃、模糊、透明
+    prompt:
+      short: 玻璃擬態風格，磨砂玻璃效果，半透明層疊，柔和背景模糊。
+    ai_match:
+      triggers: [玻璃擬態, glassmorphism, 磨砂玻璃, 半透明]
+      keywords: [玻璃, 半透明, 模糊, 現代, 柔和]
+
+  - id: s15
+    code: S15
+    name: 新擬態
+    slug: neumorphism
+    summary: Neumorphism 軟陰影與浮雕視覺
+    category: modern
+    tags: [新擬態, 軟陰影, 浮雕, 柔和]
+    use_case: [app, dashboard, product]
+    industry: [tech, software, mobile]
+    visual_hints:
+      palette: 柔和單色
+      typography: 圓潤字體
+      composition: 大面積留白、集中式互動區、平滑分佈
+      components: 軟陰影按鈕、浮雕卡片、擬真表面
+      mood: 軟陰影、浮雕、擬真
+    prompt:
+      short: 新擬態風格，軟陰影，浮雕視覺，柔和色調，擬真觸感。
+    ai_match:
+      triggers: [新擬態, neumorphism, 軟陰影, 浮雕設計]
+      keywords: [新擬態, 軟陰影, 浮雕, 柔和, 擬真]
+
+  - id: s16
+    code: S16
+    name: 終端駭客
+    slug: terminal-hacker
+    summary: 終端介面，綠色文字與黑客美學
+    category: tech
+    tags: [終端, 駭客, 綠色, 命令列]
+    use_case: [tech, developer, gaming]
+    industry: [tech, gaming, security]
+    visual_hints:
+      palette: 黑底綠字
+      typography: 等寬字體
+      composition: 終端視窗層次、單欄資訊流、命令列聚焦
+      components: 終端面板、方角按鈕、閃爍游標感
+      mood: 終端、駭客、命令列
+    prompt:
+      short: 終端駭客風格，綠色文字，黑色背景，命令列介面，駭客美學。
+    ai_match:
+      triggers: [終端駭客, terminal, hacker, 命令列風格]
+      keywords: [終端, 駭客, 綠色, 命令列, 黑客]
+
+  - id: s17
+    code: S17
+    name: 包浩斯
+    slug: bauhaus
+    summary: 包浩斯主義，幾何形式與功能性設計
+    category: minimal
+    tags: [包浩斯, 幾何, 功能, 理性]
+    use_case: [editorial, corporate, portfolio]
+    industry: [design, architecture, corporate]
+    visual_hints:
+      palette: 三原色 + 黑白
+      typography: 幾何無襯線
+      composition: 幾何分區、功能導向、清楚重心
+      components: 色塊區塊、硬邊按鈕、低裝飾卡片
+      mood: 理性、功能、幾何
+    prompt:
+      short: 包浩斯風格，幾何形式，功能性設計，三原色，理性主義美學。
+    ai_match:
+      triggers: [包浩斯, bauhaus, 幾何功能, 理性主義]
+      keywords: [包浩斯, 幾何, 功能, 理性, 三原色]
+
+  - id: s18
+    code: S18
+    name: 復古像素
+    slug: pixel-art
+    summary: 8-bit 像素美學，懷舊遊戲質感
+    category: retro
+    tags: [像素, 8-bit, 遊戲, 懷舊]
+    use_case: [gaming, creative, portfolio]
+    industry: [gaming, entertainment, creative]
+    visual_hints:
+      palette: 鮮豔、像素化色塊
+      typography: 像素字體
+      composition: 模組化格狀版面、遊戲 HUD 感、低曲線
+      components: 像素按鈕、方角卡片、8-bit 圖示
+      mood: 復古遊戲、8-bit
+    prompt:
+      short: 8-bit 復古像素風格，懷舊遊戲美學，像素藝術，鮮豔色彩。
+    ai_match:
+      triggers: [復古像素, pixel art, 8-bit, 像素遊戲]
+      keywords: [像素, 8-bit, 遊戲, 懷舊, 復古]
+
+  - id: s19
+    code: S19
+    name: 美學平衡
+    slug: aesthetic-balance
+    summary: 強調易用性與優雅漸層的微妙平衡
+    category: modern
+    tags: [平衡, 漸層, 優雅, 易用]
+    use_case: [app, product, landing-page]
+    industry: [tech, software, saas]
+    visual_hints:
+      palette: 柔和漸層
+      typography: 現代無襯線
+      composition: 乾淨分區、柔和層次、均衡節奏
+      components: 輕盈卡片、柔和按鈕、低壓迫介面
+      mood: 平衡、優雅、易用
+    prompt:
+      short: 美學平衡風格，易用性與優雅漸層的微妙平衡，現代柔和美學。
+    ai_match:
+      triggers: [美學平衡, aesthetic balance, 優雅漸層, 平衡設計]
+      keywords: [平衡, 漸層, 優雅, 易用, 現代]
+
+  - id: s20
+    code: S20
+    name: 極光之境
+    slug: aurora
+    summary: 北極光幻彩漸層與虛擬光暈效果
+    category: futuristic
+    tags: [極光, 漸層, 幻彩, 光暈]
+    use_case: [creative, app, landing-page]
+    industry: [tech, creative, entertainment]
+    visual_hints:
+      palette: 幻彩漸層（綠紫藍）
+      typography: 未來感字體
+      composition: 光暈主視覺、流動層次、沉浸式聚焦
+      components: 發光面板、柔光按鈕、漸層卡片
+      mood: 極光、夢幻、光暈
+    prompt:
+      short: 極光風格，北極光幻彩漸層，虛擬光暈效果，夢幻色彩。
+    ai_match:
+      triggers: [極光, aurora, 幻彩漸層, 光暈效果]
+      keywords: [極光, 漸層, 幻彩, 光暈, 夢幻]
