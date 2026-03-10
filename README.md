@@ -98,6 +98,12 @@ goodux-skills/
 4. 推送到分支 (`git push origin feature/AmazingSkill`)
 5. 開啟 Pull Request
 
+## 贊助支持
+
+如果這個專案對你有幫助，歡迎請我喝杯咖啡 ☕
+
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-支持專案-orange?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/zz41354899y)
+
 ## 授權
 
 MIT License

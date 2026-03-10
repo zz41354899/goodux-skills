@@ -208,6 +208,7 @@ MIT License - 詳見 [LICENSE](LICENSE) 文件
 
 - GitHub Issues: [提出問題](https://github.com/zz41354899/goodux-skills/issues)
 - Email: usefulvibecode@gmail.com
+- Buy Me a Coffee: [贊助咖啡 ☕](https://buymeacoffee.com/zz41354899y)
 
 ## 🙏 致謝
 

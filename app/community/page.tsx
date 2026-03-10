@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Github, Mail, MessageCircle, Users2, MessageSquare } from "lucide-react";
+import { Github, Mail, MessageCircle, Users2, MessageSquare, Coffee } from "lucide-react";
 
 export default function CommunityPage() {
   return (
@@ -103,6 +103,27 @@ export default function CommunityPage() {
                 className="text-sm font-semibold text-gray-900 hover:text-gray-600 transition-colors underline underline-offset-4"
               >
                 發送郵件 →
+              </a>
+            </div>
+
+            {/* Buy Me a Coffee */}
+            <div className="border border-gray-200 rounded-lg p-8 hover:border-gray-300 transition-colors bg-gradient-to-br from-yellow-50 to-orange-50">
+              <div className="mb-4">
+                <Coffee className="h-8 w-8 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                贊助咖啡
+              </h3>
+              <p className="text-sm text-gray-600 mb-6 leading-relaxed">
+                如果這個專案對你有幫助，歡迎請我喝杯咖啡 ☕
+              </p>
+              <a
+                href="https://buymeacoffee.com/zz41354899y"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-semibold text-orange-600 hover:text-orange-700 transition-colors underline underline-offset-4"
+              >
+                Buy Me a Coffee →
               </a>
             </div>
 
