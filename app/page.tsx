@@ -124,23 +124,31 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-gray-50 py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              立即開始你的 UX 學習之旅
+      {/* CTA 區塊 - 極簡風格 */}
+      <section className="py-32 border-t border-gray-100">
+        <div className="mx-auto max-w-5xl px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-8 leading-tight">
+              立即開始你的<br />UX 學習之旅
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-              從基礎概念到進階技巧,我們提供完整的學習路徑
+            <p className="text-lg text-gray-600 mb-10 leading-relaxed">
+              從基礎概念到進階技巧,8 個實戰技能陪伴你成長
             </p>
-            <div className="mt-10">
+            <div className="flex items-center gap-6">
               <Link
                 href="/skills"
-                className="rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary/90 transition-colors inline-flex items-center gap-2"
+                className="text-sm font-semibold text-gray-900 hover:text-gray-600 transition-colors underline underline-offset-4"
               >
-                查看所有技能
-                <ArrowRight className="h-4 w-4" />
+                查看所有技能 →
               </Link>
+              <a
+                href="https://www.npmjs.com/package/goodux-ux-skills"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-semibold text-gray-500 hover:text-gray-900 transition-colors"
+              >
+                NPM 套件
+              </a>
             </div>
           </div>
         </div>

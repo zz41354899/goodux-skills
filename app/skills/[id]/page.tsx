@@ -1,166 +1,153 @@
+import { getSkillById, skillCategories } from "@/lib/skills";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getSkillById, skills, skillCategories } from "@/lib/skills";
-import { ArrowLeft, CheckCircle2, Lightbulb, Rocket } from "lucide-react";
+import { ArrowLeft, CheckCircle2, ChevronRight, TerminalSquare } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 
-export async function generateStaticParams() {
-  return skills.map((skill) => ({
-    id: skill.id,
-  }));
-}
-
-export default function SkillDetailPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default function SkillDetailPage({ params }: { params: { id: string } }) {
   const skill = getSkillById(params.id);
 
   if (!skill) {
     notFound();
   }
 
-  const category = skillCategories.find((cat) => cat.id === skill.category);
+  const category = skillCategories.find((c) => c.id === skill.category);
 
   return (
-    <main className="min-h-screen bg-gray-50">
-      <div className="bg-white border-b border-gray-200">
-        <div className="mx-auto max-w-4xl px-6 py-8 lg:px-8">
-          <Link
-            href="/skills"
-            className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-primary transition-colors mb-6"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            返回技能庫
-          </Link>
-          <div className="mb-4">
-            {category && (
-              <span
-                className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${category.color}`}
-              >
-                {category.name}
-              </span>
-            )}
+    <main className="min-h-screen bg-white">
+      {/* Header */}
+      <section className="border-b border-gray-100 py-16 sm:py-24">
+        <div className="mx-auto max-w-5xl px-6 lg:px-8">
+          <div className="mb-10">
+            <Link
+              href="/skills"
+              className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              返回技能庫
+            </Link>
           </div>
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 mb-4">
+          
+          <div className="flex items-center gap-3 mb-8">
+            <span className="px-3 py-1 rounded-full text-xs font-medium border border-gray-200 text-gray-700">
+              {category?.name}
+            </span>
+            <span className="text-sm font-mono text-gray-400">
+              {skill.id}
+            </span>
+          </div>
+
+          <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-gray-900 mb-8 leading-tight">
             {skill.name}
           </h1>
-          <p className="text-xl text-gray-600">{skill.description}</p>
+          <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl">
+            {skill.description}
+          </p>
         </div>
-      </div>
+      </section>
 
-      <div className="mx-auto max-w-4xl px-6 py-12 lg:px-8">
-        <section className="mb-12">
-          <div className="bg-white rounded-lg border border-gray-200 p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">概述</h2>
-            <p className="text-gray-700 leading-relaxed">
-              {skill.content.overview}
-            </p>
-          </div>
-        </section>
-
-        <section className="mb-12">
-          <div className="bg-white rounded-lg border border-gray-200 p-8">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="rounded-lg bg-blue-100 p-2">
-                <Lightbulb className="h-6 w-6 text-blue-600" />
+      <div className="mx-auto max-w-5xl px-6 lg:px-8 py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-12">
+          
+          {/* Main Content */}
+          <div className="lg:col-span-2 space-y-24">
+            
+            {/* Overview */}
+            <section>
+              <h2 className="text-2xl font-bold text-gray-900 mb-8 border-b border-gray-100 pb-4">技能摘要</h2>
+              <div className="prose prose-gray max-w-none text-gray-600 leading-relaxed">
+                <ReactMarkdown>{skill.content.overview}</ReactMarkdown>
               </div>
-              <h2 className="text-2xl font-bold text-gray-900">何時使用</h2>
-            </div>
-            <ul className="space-y-3">
-              {skill.content.whenToUse.map((item, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-700">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
+            </section>
 
-        <section className="mb-12">
-          <div className="bg-white rounded-lg border border-gray-200 p-8">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="rounded-lg bg-purple-100 p-2">
-                <Rocket className="h-6 w-6 text-purple-600" />
-              </div>
-              <h2 className="text-2xl font-bold text-gray-900">如何使用</h2>
-            </div>
-            <ol className="space-y-4">
-              {skill.content.howToUse.map((item, index) => (
-                <li key={index} className="flex gap-4">
-                  <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white font-semibold text-sm">
-                    {index + 1}
-                  </span>
-                  <div className="flex-1 pt-1">
-                    <p className="text-gray-700">{item}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        <section className="mb-12">
-          <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg border border-green-200 p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              最佳實踐
-            </h2>
-            <ul className="space-y-3">
-              {skill.content.bestPractices.map((item, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <div className="flex-shrink-0 w-2 h-2 rounded-full bg-green-600 mt-2" />
-                  <span className="text-gray-700">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        {skill.content.examples && skill.content.examples.length > 0 && (
-          <section className="mb-12">
-            <div className="bg-white rounded-lg border border-gray-200 p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                實際範例
-              </h2>
-              <ul className="space-y-3">
-                {skill.content.examples.map((example, index) => (
-                  <li
-                    key={index}
-                    className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg"
-                  >
-                    <span className="text-primary font-semibold">
-                      {index + 1}.
-                    </span>
-                    <span className="text-gray-700">{example}</span>
+            {/* When to use */}
+            <section>
+              <h2 className="text-2xl font-bold text-gray-900 mb-8 border-b border-gray-100 pb-4">適用情境</h2>
+              <ul className="space-y-6">
+                {skill.content.whenToUse.map((item, index) => (
+                  <li key={index} className="flex gap-4 text-gray-600">
+                    <ChevronRight className="h-5 w-5 text-gray-400 flex-shrink-0 mt-0.5" />
+                    <span className="leading-relaxed">{item}</span>
                   </li>
                 ))}
               </ul>
-            </div>
-          </section>
-        )}
+            </section>
 
-        <div className="bg-blue-50 rounded-lg border border-blue-200 p-8 text-center">
-          <h3 className="text-xl font-bold text-gray-900 mb-3">
-            準備好應用這個技能了嗎?
-          </h3>
-          <p className="text-gray-600 mb-6">
-            探索更多相關技能,或加入社群與其他 UX 設計師交流經驗
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/skills"
-              className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-primary border border-primary hover:bg-primary hover:text-white transition-colors"
-            >
-              探索更多技能
-            </Link>
-            <Link
-              href="/community"
-              className="rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white hover:bg-primary/90 transition-colors"
-            >
-              加入社群
-            </Link>
+            {/* How to use */}
+            <section>
+              <h2 className="text-2xl font-bold text-gray-900 mb-8 border-b border-gray-100 pb-4">工作流程</h2>
+              <div className="space-y-10">
+                {skill.content.howToUse.map((step, index) => {
+                  const [title, ...descParts] = step.split(":");
+                  const description = descParts.join(":");
+                  return (
+                    <div key={index} className="flex gap-6">
+                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-sm font-bold text-gray-900 mt-1">
+                        {index + 1}
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                          {title.replace(/\*\*/g, "")}
+                        </h3>
+                        <p className="text-gray-600 leading-relaxed">
+                          {description}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+
+            {/* Examples */}
+            {skill.content.examples && (
+              <section>
+                <h2 className="text-2xl font-bold text-gray-900 mb-8 border-b border-gray-100 pb-4">應用範例</h2>
+                <div className="bg-gray-50 rounded-lg p-8 space-y-6">
+                  {skill.content.examples.map((example, index) => (
+                    <div key={index} className="flex items-start gap-4">
+                      <div className="h-1.5 w-1.5 rounded-full bg-gray-400 mt-2.5 flex-shrink-0" />
+                      <p className="text-gray-700 leading-relaxed">{example}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
           </div>
+
+          {/* Sidebar */}
+          <div className="lg:col-span-1">
+            <div className="sticky top-32 space-y-10">
+              
+              {/* AI Command */}
+              <div className="bg-gray-900 rounded-xl p-8 text-white">
+                <h3 className="flex items-center gap-2 text-sm font-semibold text-gray-300 mb-6">
+                  <TerminalSquare className="h-4 w-4" />
+                  在 AI 工具中使用
+                </h3>
+                <code className="block text-sm text-green-400 font-mono mb-6 bg-black/50 p-4 rounded-lg">
+                  ${skill.id}
+                </code>
+                <p className="text-sm text-gray-400 leading-relaxed">
+                  複製上方指令並貼到 Windsurf、Claude Code 等支援 Agent Skills 的工具中即可觸發此技能。
+                </p>
+              </div>
+
+              {/* Best Practices */}
+              <div className="border border-gray-200 rounded-xl p-8 bg-white">
+                <h3 className="font-bold text-gray-900 mb-6 pb-4 border-b border-gray-100">最佳實踐</h3>
+                <ul className="space-y-5">
+                  {skill.content.bestPractices.map((practice, index) => (
+                    <li key={index} className="flex gap-3 text-sm text-gray-600">
+                      <CheckCircle2 className="h-5 w-5 text-gray-400 flex-shrink-0" />
+                      <span className="leading-relaxed">{practice}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+          
         </div>
       </div>
     </main>

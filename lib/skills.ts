@@ -14,12 +14,12 @@ export interface Skill {
 }
 
 export const skillCategories = [
-  { id: "research", name: "使用者研究", color: "bg-blue-100 text-blue-800" },
-  { id: "design", name: "介面設計", color: "bg-purple-100 text-purple-800" },
-  { id: "prototyping", name: "原型製作", color: "bg-green-100 text-green-800" },
-  { id: "testing", name: "可用性測試", color: "bg-orange-100 text-orange-800" },
-  { id: "accessibility", name: "無障礙設計", color: "bg-pink-100 text-pink-800" },
-  { id: "systems", name: "設計系統", color: "bg-indigo-100 text-indigo-800" },
+  { id: "research", name: "使用者研究", color: "bg-white text-gray-900 border border-gray-200" },
+  { id: "design", name: "介面設計", color: "bg-white text-gray-900 border border-gray-200" },
+  { id: "prototyping", name: "原型製作", color: "bg-white text-gray-900 border border-gray-200" },
+  { id: "testing", name: "可用性測試", color: "bg-white text-gray-900 border border-gray-200" },
+  { id: "accessibility", name: "無障礙設計", color: "bg-white text-gray-900 border border-gray-200" },
+  { id: "systems", name: "設計系統", color: "bg-white text-gray-900 border border-gray-200" },
 ];
 
 export const skills: Skill[] = [

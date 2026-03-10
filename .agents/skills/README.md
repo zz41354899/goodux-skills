@@ -67,12 +67,13 @@ npm install @goodux/skills
 安裝後,技能會自動被偵測到。你可以:
 
 1. **隱式調用**: 當你的任務匹配技能描述時,AI 會自動選擇合適的技能
-2. **顯式調用**: 使用 `$` 符號直接調用技能
+2. **顯式調用**: 直接提及技能名稱或使用工具提供的技能選單
 
 ```
 範例:
-"請幫我規劃一個使用者訪談" → AI 會使用 $user-interview 技能
-"$wireframing 幫我設計購物車頁面的線框圖"
+"請幫我規劃一個使用者訪談" → AI 會自動使用 user-interview 技能
+"使用 wireframing 技能幫我設計購物車頁面的線框圖"
+"在 Windsurf 中可以使用 /skills 選單或 $skill-name 語法"
 ```
 
 ### 在其他支援 Agent Skills 的工具中使用

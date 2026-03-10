@@ -1,212 +1,184 @@
 import Link from "next/link";
-import { BookOpen, Users, Zap, ArrowRight } from "lucide-react";
+import { Terminal, Lightbulb, Zap, ArrowRight } from "lucide-react";
 
 export default function GettingStartedPage() {
   return (
-    <main className="min-h-screen bg-gray-50">
-      <div className="bg-white border-b border-gray-200">
-        <div className="mx-auto max-w-4xl px-6 py-16 lg:px-8">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-6">
-            開始學習
-          </h1>
-          <p className="text-xl text-gray-600">
-            歡迎來到 Good UX Skills!這裡將引導你如何使用技能庫,提升你的 UX 設計能力
-          </p>
-        </div>
-      </div>
-
-      <div className="mx-auto max-w-4xl px-6 py-12 lg:px-8">
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">
-            什麼是 UX Skills?
-          </h2>
-          <div className="bg-white rounded-lg border border-gray-200 p-8">
-            <p className="text-gray-700 leading-relaxed mb-4">
-              UX Skills 是一套結構化的設計技能知識庫,每個技能都包含:
+    <main className="min-h-screen bg-white">
+      {/* Header */}
+      <section className="border-b border-gray-100 py-16 sm:py-24">
+        <div className="mx-auto max-w-5xl px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-gray-900 mb-6 leading-tight">
+              Getting Started
+            </h1>
+            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
+              只需要簡單幾個步驟,就能將專業的 UX 設計技能整合到你的開發流程中。
             </p>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-2 h-2 rounded-full bg-primary mt-2" />
-                <span className="text-gray-700">
-                  <strong>清晰的說明</strong>:了解技能的定義和重要性
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-2 h-2 rounded-full bg-primary mt-2" />
-                <span className="text-gray-700">
-                  <strong>使用時機</strong>:知道何時應該應用這個技能
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-2 h-2 rounded-full bg-primary mt-2" />
-                <span className="text-gray-700">
-                  <strong>執行步驟</strong>:跟隨具體的操作指南
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-2 h-2 rounded-full bg-primary mt-2" />
-                <span className="text-gray-700">
-                  <strong>最佳實踐</strong>:學習專業設計師的經驗
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-2 h-2 rounded-full bg-primary mt-2" />
-                <span className="text-gray-700">
-                  <strong>實際範例</strong>:參考真實的應用情境
-                </span>
-              </li>
-            </ul>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">
-            如何使用技能庫
-          </h2>
-          <div className="space-y-6">
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white font-bold">
+      <div className="mx-auto max-w-5xl px-6 lg:px-8 py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-12">
+          
+          {/* Main Content */}
+          <div className="lg:col-span-2 space-y-24">
+            
+            {/* Step 1 */}
+            <section>
+              <div className="flex items-center gap-4 mb-8">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center font-bold text-gray-900">
                   1
                 </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    瀏覽技能分類
-                  </h3>
-                  <p className="text-gray-600">
-                    技能庫按照使用者研究、介面設計、原型製作、可用性測試、無障礙設計和設計系統等類別組織,你可以根據需求選擇相關分類
-                  </p>
-                </div>
+                <h2 className="text-2xl font-bold text-gray-900">安裝套件</h2>
               </div>
-            </div>
+              
+              <div className="prose prose-gray max-w-none text-gray-600 space-y-6">
+                <p className="leading-relaxed">
+                  首先,你需要將 Good UX Skills 安裝到你的開發環境中。請開啟終端機並執行以下指令:
+                </p>
+                <div className="bg-gray-900 rounded-lg p-6">
+                  <div className="flex items-center gap-2 mb-3 text-gray-400 text-sm">
+                    <Terminal className="h-4 w-4" />
+                    Terminal
+                  </div>
+                  <code className="text-green-400 font-mono text-sm">npx goodux-ux-skills</code>
+                </div>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  這個指令會自動將所有 UX 技能下載並安裝到你電腦上的 <code className="bg-gray-50 px-1 rounded">.agents/skills</code> 目錄下。
+                </p>
+              </div>
+            </section>
 
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white font-bold">
+            {/* Step 2 */}
+            <section>
+              <div className="flex items-center gap-4 mb-8">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center font-bold text-gray-900">
                   2
                 </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    選擇感興趣的技能
-                  </h3>
-                  <p className="text-gray-600">
-                    點擊技能卡片進入詳細頁面,閱讀完整的說明、步驟和最佳實踐
-                  </p>
+                <h2 className="text-2xl font-bold text-gray-900">準備 AI 工具</h2>
+              </div>
+              
+              <div className="prose prose-gray max-w-none text-gray-600 space-y-6">
+                <p className="leading-relaxed">
+                  要使用這些技能,你需要一個支援 Agent Skills 標準的 AI 工具。我們推薦以下幾款:
+                </p>
+                
+                <div className="grid gap-4 sm:grid-cols-2 mt-8">
+                  <div className="border border-gray-200 rounded-lg p-6 hover:border-gray-900 transition-colors">
+                    <h3 className="font-semibold text-gray-900 mb-2">Windsurf</h3>
+                    <p className="text-sm text-gray-500 leading-relaxed">內建強大的 AI 代理功能,能完美整合技能庫。</p>
+                  </div>
+                  <div className="border border-gray-200 rounded-lg p-6 hover:border-gray-900 transition-colors">
+                    <h3 className="font-semibold text-gray-900 mb-2">Claude Code</h3>
+                    <p className="text-sm text-gray-500 leading-relaxed">Anthropic 推出的官方開發工具,原生支援 Agent Skills。</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </section>
 
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white font-bold">
+            {/* Step 3 */}
+            <section>
+              <div className="flex items-center gap-4 mb-8">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center font-bold text-gray-900">
                   3
                 </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    在專案中實踐
-                  </h3>
-                  <p className="text-gray-600">
-                    將學到的技能應用到實際專案中,透過實作加深理解和掌握
-                  </p>
+                <h2 className="text-2xl font-bold text-gray-900">開始呼叫技能</h2>
+              </div>
+              
+              <div className="prose prose-gray max-w-none text-gray-600 space-y-6">
+                <p className="leading-relaxed">
+                  有兩種方式可以觸發這些 UX 技能:
+                </p>
+
+                <div className="space-y-8 mt-8">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                      <Zap className="h-5 w-5 text-gray-400" />
+                      顯式呼叫 (Explicit)
+                    </h3>
+                    <p className="mb-4 leading-relaxed">直接在對話中輸入技能名稱:</p>
+                    <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
+                      <p className="text-gray-900 font-medium">
+                        「<span className="text-gray-600 font-mono">$wireframing</span> 幫我設計一個電商結帳頁面」
+                      </p>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                      <Lightbulb className="h-5 w-5 text-gray-400" />
+                      隱式觸發 (Implicit)
+                    </h3>
+                    <p className="mb-4 leading-relaxed">用自然語言描述需求,AI 會自動配對適合的技能:</p>
+                    <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
+                      <p className="text-gray-900 font-medium">
+                        「我們需要了解使用者為什麼在購物車放棄結帳,請幫我規劃一下該怎麼做。」
+                      </p>
+                      <p className="text-sm text-gray-500 mt-4 pt-4 border-t border-gray-200">
+                        → AI 會自動載入 <span className="font-mono text-gray-700">user-interview</span> 技能
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </section>
 
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white font-bold">
-                  4
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    分享與交流
-                  </h3>
-                  <p className="text-gray-600">
-                    加入社群,與其他設計師分享你的經驗和心得,持續學習成長
-                  </p>
+          </div>
+
+          {/* Sidebar */}
+          <div className="lg:col-span-1">
+            <div className="sticky top-32 space-y-8">
+              <div className="bg-gray-50 rounded-xl p-8 border border-gray-100">
+                <h3 className="text-lg font-bold text-gray-900 mb-6 pb-4 border-b border-gray-200">
+                  學習路徑建議
+                </h3>
+                <ul className="space-y-6">
+                  <li>
+                    <h4 className="font-semibold text-gray-900 mb-2">1. 探索階段</h4>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      先了解所有可用的技能與它們的適用情境。
+                    </p>
+                  </li>
+                  <li>
+                    <h4 className="font-semibold text-gray-900 mb-2">2. 實踐階段</h4>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      從單一技能開始,例如在下個專案中試用「使用者訪談」技能。
+                    </p>
+                  </li>
+                  <li>
+                    <h4 className="font-semibold text-gray-900 mb-2">3. 整合階段</h4>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      將多個技能組合使用,建立完整的 UX 流程。
+                    </p>
+                  </li>
+                </ul>
+                <div className="mt-8 pt-6 border-t border-gray-200">
+                  <Link
+                    href="/skills"
+                    className="text-sm font-semibold text-gray-900 hover:text-gray-600 transition-colors inline-flex items-center gap-2 underline underline-offset-4"
+                  >
+                    前往技能庫
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
-        </section>
 
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">
-            推薦學習路徑
-          </h2>
-          <div className="grid gap-6 md:grid-cols-3">
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <div className="rounded-lg bg-blue-100 p-3 w-fit mb-4">
-                <BookOpen className="h-6 w-6 text-blue-600" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                初學者
-              </h3>
-              <p className="text-gray-600 text-sm mb-4">
-                從基礎的使用者研究和介面設計技能開始,建立扎實的 UX 基礎
-              </p>
-              <Link
-                href="/skills#research"
-                className="text-primary text-sm font-medium hover:underline inline-flex items-center gap-1"
-              >
-                開始學習
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <div className="rounded-lg bg-purple-100 p-3 w-fit mb-4">
-                <Zap className="h-6 w-6 text-purple-600" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                進階者
-              </h3>
-              <p className="text-gray-600 text-sm mb-4">
-                深入學習原型製作、可用性測試和無障礙設計,提升專業能力
-              </p>
-              <Link
-                href="/skills#prototyping"
-                className="text-primary text-sm font-medium hover:underline inline-flex items-center gap-1"
-              >
-                探索進階技能
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <div className="rounded-lg bg-green-100 p-3 w-fit mb-4">
-                <Users className="h-6 w-6 text-green-600" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                專家級
-              </h3>
-              <p className="text-gray-600 text-sm mb-4">
-                掌握設計系統建立和團隊協作,成為 UX 領域的專家
-              </p>
-              <Link
-                href="/skills#systems"
-                className="text-primary text-sm font-medium hover:underline inline-flex items-center gap-1"
-              >
-                查看專家技能
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        <div className="bg-gradient-to-r from-primary to-blue-600 rounded-lg p-8 text-center text-white">
-          <h2 className="text-2xl font-bold mb-4">準備好開始了嗎?</h2>
-          <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-            立即探索技能庫,開始你的 UX 設計學習之旅
-          </p>
-          <Link
-            href="/skills"
-            className="inline-flex items-center gap-2 rounded-md bg-white px-6 py-3 text-sm font-semibold text-primary hover:bg-gray-100 transition-colors"
-          >
-            探索所有技能
-            <ArrowRight className="h-4 w-4" />
-          </Link>
         </div>
+      </div>
+      <div className="bg-gray-900 rounded-lg p-8 mx-auto max-w-5xl mb-24 text-center text-white">
+        <h2 className="text-2xl font-bold mb-4">準備好開始了嗎?</h2>
+        <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
+          立即探索技能庫,開始你的 UX 設計學習之旅
+        </p>
+        <Link
+          href="/skills"
+          className="inline-flex items-center gap-2 rounded-md bg-white px-6 py-3 text-sm font-semibold text-gray-900 hover:bg-gray-100 transition-colors"
+        >
+          探索所有技能
+          <ArrowRight className="h-4 w-4" />
+        </Link>
       </div>
     </main>
   );
