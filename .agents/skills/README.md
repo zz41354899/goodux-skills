@@ -210,12 +210,12 @@ MIT License - 詳見 [LICENSE](LICENSE) 文件
 - [Agent Skills 官網](https://agentskills.io/)
 - [Agent Skills 規範](https://agentskills.io/specification)
 - [Windsurf](https://codeium.com/windsurf)
-- [Good UX 網站](https://github.com/goodux/goodux)
+- [Good UX Skills 網站](https://goodux-skills.vercel.app/)
 
 ## 📮 聯絡方式
 
-- GitHub Issues: [提出問題](https://github.com/goodux/skills/issues)
-- Email: hello@goodux.dev
+- GitHub Issues: [提出問題](https://github.com/zz41354899/goodux-skills/issues)
+- Email: usefulvibecode@gmail.com
 
 ## 🙏 致謝
 
