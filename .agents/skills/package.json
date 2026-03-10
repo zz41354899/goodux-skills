@@ -26,11 +26,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/你的用戶名/goodux-ux-skills.git"
+    "url": "https://github.com/zz41354899/goodux-skills.git"
   },
-  "homepage": "https://github.com/你的用戶名/goodux-ux-skills#readme",
+  "homepage": "https://github.com/zz41354899/goodux-skills#readme",
   "bugs": {
-    "url": "https://github.com/你的用戶名/goodux-ux-skills/issues"
+    "url": "https://github.com/zz41354899/goodux-skills/issues"
   },
   "files": [
     "user-interview/",
