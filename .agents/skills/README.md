@@ -42,20 +42,20 @@ Good UX Skills 是一套完整的 UX 設計技能庫,涵蓋從使用者研究到
 ### 方法 1: 使用 npx (推薦)
 
 ```bash
-npx @goodux/skills
+npx goodux-ux-skills
 ```
 
 ### 方法 2: 全域安裝
 
 ```bash
-npm install -g @goodux/skills
+npm install -g goodux-ux-skills
 goodux-skills
 ```
 
 ### 方法 3: 專案內安裝
 
 ```bash
-npm install @goodux/skills
+npm install goodux-ux-skills
 ```
 
 安裝後,技能會自動複製到 `.agents/skills` 目錄。
