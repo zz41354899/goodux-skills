@@ -27,6 +27,12 @@ export const Navigation = () => {
               技能庫
             </Link>
             <Link
+              href="/docs"
+              className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors"
+            >
+              文件
+            </Link>
+            <Link
               href="/getting-started"
               className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors"
             >
@@ -64,6 +70,13 @@ export const Navigation = () => {
               onClick={() => setIsOpen(false)}
             >
               技能庫
+            </Link>
+            <Link
+              href="/docs"
+              className="block rounded-md py-3 text-base font-medium text-gray-900 hover:text-gray-500 transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              文件
             </Link>
             <Link
               href="/getting-started"
