@@ -117,7 +117,7 @@ function install() {
   SKILLS.forEach(skill => {
     console.log(`  • ${SKILL_NAMES[skill]} ($${skill})`);
   });
-  console.log('\n更多資訊: https://github.com/goodux/skills');
+  console.log('\n更多資訊: https://github.com/zz41354899/goodux-skills');
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 }
 
