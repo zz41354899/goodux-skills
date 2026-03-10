@@ -1,7 +1,7 @@
 {
   "name": "goodux-ux-skills",
-  "version": "1.0.7",
-  "description": "專業的 UX 設計技能包 - 符合 Agent Skills 標準的可安裝技能庫。包含使用者訪談、人物誌、資訊架構、線框圖、UI 視覺設計、可用性測試、無障礙設計、設計系統、原型製作等 9 個實戰技能。整合 101 種專業設計風格參考。",
+  "version": "1.0.8",
+  "description": "專業的 UX 設計技能包 - 符合 Agent Skills 標準的可安裝技能庫。包含使用者訪談法則、人物誌法則、資訊架構法則、線框圖法則、UI 視覺設計法則、可用性測試法則、無障礙設計法則、設計系統法則、原型製作法則等 9 個實戰技能。整合 101 種專業設計風格參考。",
   "main": "install.js",
   "bin": {
     "goodux-skills": "./install.js"
