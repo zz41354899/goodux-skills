@@ -93,6 +93,7 @@ function parseArgs(argv) {
     dryRun: false,
     json: false,
     list: false,
+    listStyles: false,
     help: false,
     version: false,
     targetDir: null,
@@ -106,6 +107,7 @@ function parseArgs(argv) {
     if (arg === '--dry-run' || arg === '-d') { options.dryRun = true; continue; }
     if (arg === '--json') { options.json = true; continue; }
     if (arg === '--list' || arg === '-l') { options.list = true; continue; }
+    if (arg === '--list-styles') { options.listStyles = true; continue; }
     if (arg === '--help' || arg === '-h') { options.help = true; continue; }
     if (arg === '--version' || arg === '-v') { options.version = true; continue; }
 
@@ -200,6 +202,7 @@ function printHelp() {
     '  -f, --force           覆蓋已存在的技能',
     '  -d, --dry-run         僅顯示將執行的動作，不實際寫入',
     '  -l, --list            列出所有可安裝的技能',
+    '      --list-styles     列出所有可用的 UI 視覺風格',
     '      --json            以 JSON 格式輸出結果',
     '  -v, --version         顯示版本號',
     '  -h, --help            顯示說明',
@@ -209,7 +212,9 @@ function printHelp() {
     '  npx goodux-ux-skills -s wireframing        只安裝線框圖',
     '  npx goodux-ux-skills -f                    強制覆蓋更新',
     '  npx goodux-ux-skills -t ~/my-project       安裝到指定路徑',
-    '  npx goodux-ux-skills --list --json         JSON 格式列出技能',
+    '  npx goodux-ux-skills --list                列出所有技能',
+    '  npx goodux-ux-skills --list-styles         列出 20 個 UI 風格',
+    '  npx goodux-ux-skills --list-styles --json  JSON 格式列出風格',
     ''
   ];
   console.log(lines.join('\n'));
@@ -233,6 +238,52 @@ function listSkills(options) {
     console.log(`  • ${getLabel(id)}  (${id})`);
   });
   console.log('');
+}
+
+function listStyles(options) {
+  const stylesFile = path.join(__dirname, 'ui-visual-design', 'styleprompts.yaml');
+  
+  if (!fs.existsSync(stylesFile)) {
+    console.error('\n錯誤: 找不到 styleprompts.yaml 檔案\n');
+    process.exitCode = 1;
+    return;
+  }
+
+  const content = fs.readFileSync(stylesFile, 'utf-8');
+  const styles = [];
+  
+  // 簡單解析 YAML 抓出風格資訊
+  const lines = content.split('\n');
+  let currentStyle = null;
+  
+  for (const line of lines) {
+    if (line.trim().startsWith('- id:')) {
+      if (currentStyle) styles.push(currentStyle);
+      currentStyle = { id: '', code: '', name: '', summary: '' };
+      currentStyle.id = line.split(':')[1].trim();
+    } else if (currentStyle) {
+      if (line.trim().startsWith('code:')) {
+        currentStyle.code = line.split(':')[1].trim();
+      } else if (line.trim().startsWith('name:')) {
+        currentStyle.name = line.split(':')[1].trim();
+      } else if (line.trim().startsWith('summary:')) {
+        currentStyle.summary = line.substring(line.indexOf(':') + 1).trim();
+      }
+    }
+  }
+  if (currentStyle) styles.push(currentStyle);
+
+  if (options.json) {
+    console.log(JSON.stringify(styles, null, 2));
+    return;
+  }
+
+  console.log(`\n可用的 UI 視覺風格 (共 ${styles.length} 個):\n`);
+  styles.forEach((style) => {
+    console.log(`  • ${style.code} ${style.name} - ${style.summary}`);
+  });
+  console.log('\n使用方式:');
+  console.log('  安裝 ui-visual-design 技能後，AI 會自動從這些風格中推薦適合的方向\n');
 }
 
 // ---------------------------------------------------------------------------
@@ -359,6 +410,7 @@ if (require.main === module) {
   if (options.help) { printHelp(); process.exit(0); }
   if (options.version) { printVersion(); process.exit(0); }
   if (options.list) { listSkills(options); process.exit(0); }
+  if (options.listStyles) { listStyles(options); process.exit(0); }
 
   // postinstall 時使用靜默模式，避免 npm install 輸出太冗長
   const silent = isPostInstall();
