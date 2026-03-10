@@ -142,12 +142,12 @@ export default function Home() {
                 查看所有技能 →
               </Link>
               <a
-                href="https://www.npmjs.com/package/goodux-ux-skills"
+                href="https://github.com/zz41354899/goodux-skills"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm font-semibold text-gray-500 hover:text-gray-900 transition-colors"
               >
-                NPM 套件
+                GitHub
               </a>
             </div>
           </div>
