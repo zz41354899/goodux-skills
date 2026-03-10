@@ -1,0 +1,50 @@
+{
+  "name": "goodux-ux-skills",
+  "version": "1.0.1",
+  "description": "專業的 UX 設計技能包 - 符合 Agent Skills 標準的可安裝技能庫。包含使用者訪談、人物誌、資訊架構、線框圖、可用性測試、無障礙設計、設計系統、原型製作等 8 個實戰技能。",
+  "main": "install.js",
+  "bin": {
+    "goodux-skills": "./install.js"
+  },
+  "scripts": {
+    "postinstall": "node install.js"
+  },
+  "keywords": [
+    "ux",
+    "design",
+    "skills",
+    "agent-skills",
+    "user-experience",
+    "design-system",
+    "usability",
+    "accessibility",
+    "wireframing",
+    "prototyping",
+    "user-research"
+  ],
+  "author": "Good UX",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/你的用戶名/goodux-ux-skills.git"
+  },
+  "homepage": "https://github.com/你的用戶名/goodux-ux-skills#readme",
+  "bugs": {
+    "url": "https://github.com/你的用戶名/goodux-ux-skills/issues"
+  },
+  "files": [
+    "user-interview/",
+    "persona-creation/",
+    "information-architecture/",
+    "wireframing/",
+    "usability-testing/",
+    "accessibility-design/",
+    "design-system/",
+    "prototyping/",
+    "install.js",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
