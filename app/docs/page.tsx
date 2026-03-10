@@ -30,6 +30,12 @@ export default function DocsPage() {
               </p>
             </div>
             <div className="border border-gray-200 rounded-lg p-6">
+              <h3 className="font-semibold text-gray-900 mb-3">整合 101 種設計風格</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                整合 StylePrompts 設計風格庫,提供 101 種專業設計風格參考,快速提升介面設計品質。
+              </p>
+            </div>
+            <div className="border border-gray-200 rounded-lg p-6">
               <h3 className="font-semibold text-gray-900 mb-3">處理複雜業務需求</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
                 特別針對 B2B SaaS、企業後台、多角色系統等複雜場景優化,能夠理解並拆解複雜的業務流程。
@@ -39,12 +45,6 @@ export default function DocsPage() {
               <h3 className="font-semibold text-gray-900 mb-3">跨工具互通</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
                 基於 Agent Skills 開放標準,可在 Windsurf、Claude Code 等支援的 AI 工具中使用。
-              </p>
-            </div>
-            <div className="border border-gray-200 rounded-lg p-6">
-              <h3 className="font-semibold text-gray-900 mb-3">持續更新</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                定期更新技能內容,加入最新的 UX 最佳實踐與複雜情境處理能力。
               </p>
             </div>
           </div>
@@ -94,7 +94,7 @@ export default function DocsPage() {
                 瀏覽所有技能
               </h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                查看完整的 8 個 UX 技能,從使用者研究到設計系統建立。
+                查看完整的 9 個 UX 技能,從使用者研究到 UI 視覺設計。
               </p>
             </Link>
 
@@ -276,7 +276,7 @@ export default function DocsPage() {
       <section className="border-b border-gray-100">
         <div className="mx-auto max-w-5xl px-6 py-16 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-2">可用技能</h2>
-          <p className="text-gray-600 mb-8">8 個專業 UX 設計技能,涵蓋研究、設計、測試與系統</p>
+          <p className="text-gray-600 mb-8">9 個專業 UX 設計技能,涵蓋研究、設計、測試與系統</p>
           
           <div className="grid md:grid-cols-2 gap-4">
             {[
@@ -284,6 +284,7 @@ export default function DocsPage() {
               { name: "使用者人物誌", id: "persona-creation", desc: "創建代表性使用者角色" },
               { name: "資訊架構設計", id: "information-architecture", desc: "組織內容與導航結構" },
               { name: "線框圖設計", id: "wireframing", desc: "快速繪製介面草圖" },
+              { name: "UI 視覺設計", id: "ui-visual-design", desc: "選擇視覺風格,整合 101 種設計參考" },
               { name: "可用性測試", id: "usability-testing", desc: "發現可用性問題" },
               { name: "無障礙設計", id: "accessibility-design", desc: "確保產品符合 WCAG 標準" },
               { name: "設計系統建立", id: "design-system", desc: "創建可重複使用的元件庫" },

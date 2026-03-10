@@ -15,7 +15,7 @@ export default function Home() {
               人人創造設計思維
             </p>
             <p className="mt-4 text-base text-gray-500 leading-relaxed max-w-2xl">
-              專業的 UX 設計技能包,符合 Agent Skills 標準。8 個實戰技能,一行指令安裝到 AI 工具中使用。
+              專業的 UX 設計技能包,符合 Agent Skills 標準。9 個實戰技能,整合 101 種設計風格,一行指令安裝到 AI 工具中使用。
             </p>
             
             {/* NPM 安裝 - 簡潔版 */}
