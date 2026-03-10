@@ -15,7 +15,7 @@ export default function Home() {
               人人創造設計思維
             </p>
             <p className="mt-4 text-base text-gray-500 leading-relaxed max-w-2xl">
-              專業的 UX 設計技能包,符合 Agent Skills 標準。9 個實戰技能,整合 101 種設計風格,一行指令安裝到 AI 工具中使用。
+              專業的 UX 設計技能包，符合 Agent Skills 標準。9 個實戰技能，整合 101 種設計風格，支援 CLI 安裝、單一技能選裝與 JSON 輸出。
             </p>
             
             {/* NPM 安裝 - 簡潔版 */}
@@ -59,10 +59,10 @@ export default function Home() {
                 <Package className="h-8 w-8 text-gray-400" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                8 個專業技能
+                9 個專業技能
               </h3>
               <p className="text-sm text-gray-600 leading-relaxed">
-                使用者訪談、人物誌、資訊架構、線框圖、可用性測試、無障礙設計、設計系統、原型製作
+                使用者訪談、人物誌、資訊架構、線框圖、UI 視覺設計、可用性測試、無障礙設計、設計系統、原型製作
               </p>
             </div>
 
@@ -103,7 +103,7 @@ export default function Home() {
               與 AI 工具無縫整合
             </h2>
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              安裝後,這 8 個 UX 技能會自動整合到支援 Agent Skills 的 AI 工具中。
+              安裝後，這 9 個 UX 技能會自動整合到支援 Agent Skills 的 AI 工具中。支援單一技能選裝、強制覆蓋更新與 JSON 輸出。
             </p>
             
             <div className="flex flex-wrap gap-3 mb-10">
@@ -132,7 +132,7 @@ export default function Home() {
               立即開始你的<br />UX 學習之旅
             </h2>
             <p className="text-lg text-gray-600 mb-10 leading-relaxed">
-              從基礎概念到進階技巧,8 個實戰技能陪伴你成長
+              從基礎概念到進階技巧，9 個實戰技能陪伴你成長
             </p>
             <div className="flex items-center gap-6">
               <Link

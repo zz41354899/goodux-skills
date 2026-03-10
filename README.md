@@ -1,13 +1,14 @@
 # Good UX Skills
 
-一個現代化的 UX 設計技能學習平台,參考 OpenAI Codex Skills 的結構設計。
+專業的 UX 設計技能包，符合 Agent Skills 標準。9 個實戰技能，整合 101 種設計風格，一行指令安裝到 AI 工具中使用。
 
 ## 功能特色
 
-- 📚 **結構化技能庫** - 涵蓋使用者研究、介面設計、原型製作、可用性測試、無障礙設計和設計系統等領域
-- 🎯 **清晰的學習路徑** - 從初學者到專家的完整學習指引
-- 💡 **實戰導向** - 每個技能都包含使用時機、執行步驟、最佳實踐和實際範例
-- 🎨 **現代化 UI** - 使用 Next.js 14、TypeScript、Tailwind CSS 和 Lucide Icons 打造
+- 📚 **9 個專業技能** - 使用者訪談、人物誌、資訊架構、線框圖、UI 視覺設計、可用性測試、無障礙設計、設計系統、原型製作
+- 🤖 **Agent Skills 標準** - 直接整合到 Windsurf、Claude Code、Cursor 等 AI 工具
+- � **101 種設計風格** - 內建專業設計風格參考庫
+- ⚡ **CLI 安裝器** - 支援單一技能選裝、JSON 輸出、dry-run 模擬
+- � **現代化網站** - Next.js 14 + TypeScript + Tailwind CSS
 - 📱 **響應式設計** - 完美支援桌面和行動裝置
 
 ## 技術棧
@@ -20,26 +21,40 @@
 
 ## 快速開始
 
-### 安裝依賴
+### 安裝技能包到 AI 工具
 
 ```bash
+# 安裝所有技能
+npx goodux-ux-skills
+
+# 只安裝指定技能
+npx goodux-ux-skills -s wireframing -s user-interview
+
+# 強制覆蓋更新
+npx goodux-ux-skills -f
+
+# 列出所有可用技能
+npx goodux-ux-skills --list
+
+# JSON 格式輸出（適合 CI/CD）
+npx goodux-ux-skills --json
+```
+
+### 本地開發網站
+
+```bash
+# 安裝依賴
 npm install
-```
 
-### 開發模式
-
-```bash
+# 開發模式
 npm run dev
-```
 
-在瀏覽器中開啟 [http://localhost:3000](http://localhost:3000) 查看結果。
-
-### 建置生產版本
-
-```bash
+# 建置生產版本
 npm run build
 npm start
 ```
+
+在瀏覽器中開啟 [http://localhost:3000](http://localhost:3000) 查看結果。
 
 ## 專案結構
 
@@ -61,14 +76,17 @@ goodux-skills/
 └── public/                  # 靜態資源
 ```
 
-## 技能分類
+## 技能清單
 
-1. **使用者研究** - 使用者訪談、人物誌等
-2. **介面設計** - 資訊架構、線框圖等
-3. **原型製作** - 互動原型設計
-4. **可用性測試** - 使用者測試方法
-5. **無障礙設計** - WCAG 標準和實踐
-6. **設計系統** - 元件庫和設計規範
+1. **使用者訪談** (`user-interview`) - 質性研究與需求探索
+2. **使用者人物誌** (`persona-creation`) - 角色模型建立
+3. **資訊架構** (`information-architecture`) - 內容結構與導航設計
+4. **線框圖** (`wireframing`) - 低保真介面設計
+5. **UI 視覺設計** (`ui-visual-design`) - 視覺風格與 101 種設計參考
+6. **可用性測試** (`usability-testing`) - 使用者測試方法
+7. **無障礙設計** (`accessibility-design`) - WCAG 標準與實踐
+8. **設計系統** (`design-system`) - Design Tokens 與元件規範
+9. **原型製作** (`prototyping`) - 高保真互動原型
 
 ## 如何貢獻
 

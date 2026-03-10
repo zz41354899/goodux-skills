@@ -35,17 +35,27 @@ export default function GettingStartedPage() {
               
               <div className="prose prose-gray max-w-none text-gray-600 space-y-6">
                 <p className="leading-relaxed">
-                  首先,你需要將 Good UX Skills 安裝到你的開發環境中。請開啟終端機並執行以下指令:
+                  首先，你需要將 Good UX Skills 安裝到你的開發環境中。請開啟終端機並執行以下指令：
                 </p>
-                <div className="bg-gray-900 rounded-lg p-6">
-                  <div className="flex items-center gap-2 mb-3 text-gray-400 text-sm">
-                    <Terminal className="h-4 w-4" />
-                    Terminal
+                <div className="bg-gray-900 rounded-lg p-6 space-y-4">
+                  <div>
+                    <div className="flex items-center gap-2 mb-2 text-gray-400 text-sm">
+                      <Terminal className="h-4 w-4" />
+                      安裝所有技能
+                    </div>
+                    <code className="text-green-400 font-mono text-sm">npx goodux-ux-skills</code>
                   </div>
-                  <code className="text-green-400 font-mono text-sm">npx goodux-ux-skills</code>
+                  <div className="border-t border-gray-700 pt-4">
+                    <div className="text-gray-400 text-sm mb-2">進階用法：</div>
+                    <div className="space-y-2 text-xs">
+                      <div><code className="text-blue-400">npx goodux-ux-skills -s wireframing</code> <span className="text-gray-500"># 只裝線框圖</span></div>
+                      <div><code className="text-blue-400">npx goodux-ux-skills -f</code> <span className="text-gray-500"># 強制覆蓋更新</span></div>
+                      <div><code className="text-blue-400">npx goodux-ux-skills --list</code> <span className="text-gray-500"># 列出所有技能</span></div>
+                    </div>
+                  </div>
                 </div>
                 <p className="text-sm text-gray-500 leading-relaxed">
-                  這個指令會自動將所有 UX 技能下載並安裝到你電腦上的 <code className="bg-gray-50 px-1 rounded">.agents/skills</code> 目錄下。
+                  這個指令會自動將 9 個 UX 技能下載並安裝到你電腦上的 <code className="bg-gray-50 px-1 rounded">.agents/skills</code> 目錄下。支援單一技能選裝、JSON 輸出與 dry-run 模擬。
                 </p>
               </div>
             </section>
