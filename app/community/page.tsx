@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Github, Mail, MessageCircle, Users2 } from "lucide-react";
+import { Github, Mail, MessageCircle, Users2, MessageSquare } from "lucide-react";
 
 export default function CommunityPage() {
   return (
@@ -63,6 +63,27 @@ export default function CommunityPage() {
                 className="text-sm font-semibold text-gray-900 hover:text-gray-600 transition-colors underline underline-offset-4"
               >
                 前往 NPM →
+              </a>
+            </div>
+
+            {/* LINE */}
+            <div className="border border-gray-200 rounded-lg p-8 hover:border-gray-300 transition-colors">
+              <div className="mb-4">
+                <MessageSquare className="h-8 w-8 text-gray-900" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                LINE 社群
+              </h3>
+              <p className="text-sm text-gray-600 mb-6 leading-relaxed">
+                加入 LINE 社群,與其他 UX 設計師即時交流討論
+              </p>
+              <a
+                href="https://pse.is/8t8cyf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-semibold text-gray-900 hover:text-gray-600 transition-colors underline underline-offset-4"
+              >
+                加入 LINE 社群 →
               </a>
             </div>
 
