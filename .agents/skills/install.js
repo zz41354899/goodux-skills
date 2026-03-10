@@ -11,7 +11,8 @@ const SKILLS = [
   'usability-testing',
   'accessibility-design',
   'design-system',
-  'prototyping'
+  'prototyping',
+  'ui-visual-design'
 ];
 
 const SKILL_NAMES = {
@@ -22,7 +23,8 @@ const SKILL_NAMES = {
   'usability-testing': '可用性測試',
   'accessibility-design': '無障礙設計',
   'design-system': '設計系統建立',
-  'prototyping': '互動原型製作'
+  'prototyping': '互動原型製作',
+  'ui-visual-design': 'UI 視覺設計'
 };
 
 function findSkillsDirectory() {
