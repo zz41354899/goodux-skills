@@ -41,6 +41,8 @@ Good UX Skills 是一套完整的 UX 設計技能庫，涵蓋從使用者研究�
 npx goodux-ux-skills
 ```
 
+預設會安裝到當前目錄的 `.agents/skills/`，不會安裝到全域。
+
 ### CLI 進階用法
 
 ```bash
@@ -69,7 +71,7 @@ npx goodux-ux-skills --version
 npx goodux-ux-skills --help
 ```
 
-安裝後，技能會自動複製到 `.agents/skills` 目錄。
+安裝後，技能會自動複製到當前專案的 `.agents/skills` 目錄。如需安裝到其他位置，使用 `-t` 參數指定。
 
 ## 📖 使用方式
 

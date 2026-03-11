@@ -49,12 +49,12 @@ function getLabel(skillName) {
 }
 
 function getDefaultSkillsDirectory() {
+  const initCwd = process.env.INIT_CWD || process.cwd();
   const currentDir = process.cwd();
-  const homeDir = os.homedir();
   const possiblePaths = [
+    path.join(initCwd, '.agents', 'skills'),
     path.join(currentDir, '.agents', 'skills'),
-    path.join(currentDir, '..', '.agents', 'skills'),
-    path.join(homeDir, '.agents', 'skills')
+    path.join(currentDir, '..', '.agents', 'skills')
   ];
 
   for (const skillsPath of possiblePaths) {
@@ -214,7 +214,7 @@ function printHelp() {
     '  goodux-skills [options]',
     '',
     '選項:',
-    '  -t, --target <path>   指定技能安裝目錄 (預設: ./.agents/skills)',
+    '  -t, --target <path>   指定技能安裝目錄 (預設: 當前目錄/.agents/skills)',
     '  -s, --skill <name>    只安裝指定技能 (可多次使用)',
     '  -f, --force           覆蓋已存在的技能',
     '  -d, --dry-run         僅顯示將執行的動作，不實際寫入',
@@ -225,10 +225,10 @@ function printHelp() {
     '  -h, --help            顯示說明',
     '',
     '範例:',
-    '  npx goodux-ux-skills                      安裝所有技能',
+    '  npx goodux-ux-skills                      安裝所有技能到當前專案',
     '  npx goodux-ux-skills -s wireframing        只安裝線框圖',
     '  npx goodux-ux-skills -f                    強制覆蓋更新',
-    '  npx goodux-ux-skills -t ~/my-project       安裝到指定路徑',
+    '  npx goodux-ux-skills -t ~/my-project/.agents/skills  安裝到指定路徑',
     '  npx goodux-ux-skills --list                列出所有技能',
     '  npx goodux-ux-skills --list-styles         列出 20 個 UI 風格',
     '  npx goodux-ux-skills --list-styles --json  JSON 格式列出風格',
