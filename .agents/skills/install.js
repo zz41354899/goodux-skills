@@ -76,6 +76,18 @@ function ensureDirectory(dirPath, dryRun) {
   }
 }
 
+function copyIfExists(sourcePath, destPath, dryRun) {
+  if (!fs.existsSync(sourcePath)) {
+    return false;
+  }
+
+  if (!dryRun) {
+    fs.copyFileSync(sourcePath, destPath);
+  }
+
+  return true;
+}
+
 function isPostInstall() {
   return (
     process.env.npm_lifecycle_event === 'postinstall' ||
@@ -162,25 +174,30 @@ function copySkill(skillName, targetDir, options) {
 
   if (!options.dryRun) {
     fs.copyFileSync(sourceFile, destFile);
-    
-    // 如果是 ui-visual-design，也複製 styleprompts.yaml 和 TEMPLATE.md
-    if (skillName === 'ui-visual-design') {
-      const stylepromptsSource = path.join(sourceDir, 'styleprompts.yaml');
-      const stylepromptsDest = path.join(destDir, 'styleprompts.yaml');
-      const templateSource = path.join(sourceDir, 'TEMPLATE.md');
-      const templateDest = path.join(destDir, 'TEMPLATE.md');
-      
-      if (fs.existsSync(stylepromptsSource)) {
-        fs.copyFileSync(stylepromptsSource, stylepromptsDest);
-      }
-      
-      if (fs.existsSync(templateSource)) {
-        fs.copyFileSync(templateSource, templateDest);
-      }
-    }
   }
 
+  const templateSource = path.join(sourceDir, 'TEMPLATE.md');
+  const templateDest = path.join(destDir, 'TEMPLATE.md');
+  const examplesSource = path.join(sourceDir, 'examples.yaml');
+  const examplesDest = path.join(destDir, 'examples.yaml');
+  const stylepromptsSource = path.join(sourceDir, 'styleprompts.yaml');
+  const stylepromptsDest = path.join(destDir, 'styleprompts.yaml');
+
+  copyIfExists(templateSource, templateDest, options.dryRun);
+  copyIfExists(examplesSource, examplesDest, options.dryRun);
+  copyIfExists(stylepromptsSource, stylepromptsDest, options.dryRun);
+
   return { status: alreadyExists ? 'updated' : 'installed', skillName };
+}
+
+function copyRootFiles(targetDir, options) {
+  const rootFiles = ['README.md', 'CONTRIBUTING.md'];
+
+  rootFiles.forEach((fileName) => {
+    const sourcePath = path.join(__dirname, fileName);
+    const destPath = path.join(targetDir, fileName);
+    copyIfExists(sourcePath, destPath, options.dryRun);
+  });
 }
 
 // ---------------------------------------------------------------------------
@@ -330,6 +347,8 @@ function install(rawOptions = {}) {
   } else {
     log(`✓ 使用現有技能目錄: ${targetDir}\n`);
   }
+
+  copyRootFiles(targetDir, options);
 
   const summary = { installed: 0, updated: 0, skipped: 0, missing: 0 };
   const results = [];

@@ -1,0 +1,161 @@
+# 資訊架構範例庫
+
+ia_patterns:
+  hierarchy:
+    name: 階層式架構
+    description: 樹狀結構，從一般到具體
+    best_for: [企業網站, 電商, 內容網站]
+    structure:
+      - 首頁
+      - 主分類
+      - 次分類
+      - 內容頁
+    example:
+      - 首頁
+      - 產品 → 軟體 → 專案管理工具
+      - 服務 → 顧問 → UX 設計
+      - 關於我們 → 團隊 → 執行長
+  
+  database:
+    name: 資料庫式架構
+    description: 多維度分類，使用者可從不同角度切入
+    best_for: [電商, 內容平台, 知識庫]
+    features:
+      - 多重分類標籤
+      - 篩選器
+      - 搜尋功能
+    example: 電商商品可依品牌、價格、顏色、尺寸等多維度瀏覽
+  
+  sequential:
+    name: 線性式架構
+    description: 按步驟或時間順序組織
+    best_for: [教學課程, 註冊流程, 結帳流程]
+    structure:
+      - 步驟 1 → 步驟 2 → 步驟 3 → 完成
+    example: 註冊 → 填寫資料 → 驗證 Email → 完成設定
+  
+  matrix:
+    name: 矩陣式架構
+    description: 使用者可從多個入口進入
+    best_for: [大型網站, 多功能平台]
+    example: 使用者可從產品、產業、角色等不同維度進入相同內容
+
+navigation_types:
+  global:
+    name: 全域導航
+    description: 出現在所有頁面的主要導航
+    best_practices:
+      - 項目控制在 5-7 個
+      - 使用清晰的標籤
+      - 保持一致性
+    example: [首頁, 產品, 解決方案, 定價, 資源, 關於我們]
+  
+  local:
+    name: 區域導航
+    description: 特定區域的次級導航
+    example: 產品頁面的子導航 [功能, 規格, 評價, FAQ]
+  
+  contextual:
+    name: 情境導航
+    description: 根據內容動態顯示的相關連結
+    example: [相關文章, 推薦商品, 延伸閱讀]
+  
+  utility:
+    name: 工具導航
+    description: 輔助功能導航
+    example: [登入, 註冊, 語言切換, 搜尋, 購物車]
+
+card_sorting_guide:
+  open_sort:
+    description: 使用者自由分組並命名
+    when_to_use: 探索使用者的心智模型
+    steps:
+      - 準備內容卡片（30-60 張）
+      - 請使用者分組
+      - 請使用者為每組命名
+      - 分析分組模式
+  
+  closed_sort:
+    description: 使用者將卡片放入預定義的分類
+    when_to_use: 驗證既有架構
+    steps:
+      - 準備內容卡片和分類
+      - 請使用者將卡片歸類
+      - 分析歸類準確度
+      - 找出模糊或困難的項目
+
+sitemap_examples:
+  ecommerce:
+    name: 電商網站架構
+    structure:
+      首頁: null
+      商品分類:
+        - 依類別
+        - 依品牌
+        - 優惠專區
+        - 新品上市
+      購物車: null
+      會員中心:
+        - 訂單查詢
+        - 個人資料
+        - 收藏清單
+        - 優惠券
+      客服中心:
+        - 常見問題
+        - 聯絡我們
+        - 退換貨政策
+        - 運送說明
+  
+  saas_product:
+    name: SaaS 產品網站
+    structure:
+      首頁: null
+      產品:
+        - 功能
+        - 整合
+        - 安全性
+        - 定價
+      解決方案:
+        - 依產業
+        - 依角色
+        - 依公司規模
+      資源:
+        - 部落格
+        - 案例研究
+        - 文件
+        - API 文件
+      公司:
+        - 關於我們
+        - 團隊
+        - 職缺
+        - 新聞
+
+labeling_principles:
+  - principle: 使用使用者的語言
+    description: 避免內部術語或行話
+    good: 訂單查詢
+    bad: Order Management System
+  
+  - principle: 保持簡潔
+    description: 標籤盡量簡短明確
+    good: 定價
+    bad: 產品定價與方案說明
+  
+  - principle: 避免重複
+    description: 同一層級避免相似標籤
+    good: [產品, 服務, 支援]
+    bad: [產品介紹, 產品功能, 產品規格]
+  
+  - principle: 使用動詞表達行動
+    description: 對於操作性項目使用動詞
+    good: 立即購買
+    bad: 購買頁面
+
+best_practices:
+  - 從使用者需求出發，而非組織架構
+  - 保持層級深度在 3-4 層以內
+  - 提供多種尋找資訊的路徑
+  - 使用麵包屑導航幫助定位
+  - 定期進行樹狀測試驗證架構
+  - 考慮未來擴展性
+  - 確保搜尋功能作為備援方案

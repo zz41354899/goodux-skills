@@ -1,0 +1,121 @@
+# 使用者訪談範例庫
+
+question_templates:
+  discovery:
+    - id: q01
+      question: 請描述您最近一次使用類似產品的經驗？
+      purpose: 了解使用情境
+      follow_up:
+        - 當時遇到什麼困難？
+        - 最後如何解決？
+      tags: [情境, 行為, 痛點]
+    
+    - id: q02
+      question: 在使用過程中，哪些功能對您最重要？為什麼？
+      purpose: 優先級排序
+      follow_up:
+        - 如果沒有這個功能會怎麼樣？
+        - 您會用什麼替代方案？
+      tags: [需求, 優先級]
+    
+    - id: q03
+      question: 您通常在什麼情況下會使用這類產品？
+      purpose: 使用情境
+      follow_up:
+        - 使用頻率如何？
+        - 通常在什麼時間、地點使用？
+      tags: [情境, 頻率]
+
+  pain_points:
+    - id: q04
+      question: 目前的解決方案有哪些讓您感到不滿意的地方？
+      purpose: 識別痛點
+      follow_up:
+        - 這個問題多久發生一次？
+        - 對您的影響有多大（1-10分）？
+        - 您嘗試過什麼解決方法？
+      tags: [痛點, 頻率, 影響]
+    
+    - id: q05
+      question: 在完成這個任務時，最讓您感到挫折的是什麼？
+      purpose: 挖掘深層痛點
+      follow_up:
+        - 為什麼這會讓您感到挫折？
+        - 理想中應該是什麼樣子？
+      tags: [痛點, 期望]
+
+  goals_motivations:
+    - id: q06
+      question: 使用這個產品時，您最想達成什麼目標？
+      purpose: 了解核心目標
+      follow_up:
+        - 達成這個目標對您有什麼意義？
+        - 如果達不到會有什麼影響？
+      tags: [目標, 動機]
+    
+    - id: q07
+      question: 是什麼促使您開始尋找這類解決方案？
+      purpose: 了解觸發點
+      follow_up:
+        - 當時發生了什麼事？
+        - 您期待解決什麼問題？
+      tags: [動機, 觸發點]
+
+  decision_making:
+    - id: q08
+      question: 在選擇類似產品時，您最看重哪些因素？
+      purpose: 決策標準
+      follow_up:
+        - 這些因素的優先順序如何？
+        - 您會參考哪些資訊來源？
+      tags: [決策, 標準]
+
+interview_frameworks:
+  - name: 5個為什麼
+    description: 透過連續追問「為什麼」深入挖掘根本原因
+    steps:
+      - 詢問表面問題
+      - 追問「為什麼會這樣？」
+      - 繼續追問「為什麼？」（重複3-5次）
+      - 找出根本原因
+    example:
+      q1: 為什麼您不喜歡這個功能？
+      a1: 因為太複雜了
+      q2: 為什麼覺得複雜？
+      a2: 因為步驟太多
+      q3: 為什麼步驟多會是問題？
+      a3: 因為我時間很趕
+      q4: 為什麼時間很趕？
+      a4: 因為我需要在會議前完成
+      insight: 使用者需要快速完成任務的情境
+
+  - name: TEDW 框架
+    description: Task, Environment, Decision, Why
+    components:
+      task: 使用者想完成什麼任務？
+      environment: 在什麼環境/情境下？
+      decision: 如何做決策？
+      why: 為什麼這樣做？
+
+best_practices:
+  - category: 準備階段
+    tips:
+      - 每次訪談準備 8-12 個問題
+      - 控制訪談時間在 45-60 分鐘
+      - 提前測試錄音設備
+      - 準備開場白建立信任
+  
+  - category: 執行階段
+    tips:
+      - 使用開放式問題而非封閉式
+      - 保持中立，避免引導
+      - 80/20 法則：使用者說 80%，你說 20%
+      - 觀察非語言訊號
+      - 適時沉默，給使用者思考時間
+  
+  - category: 分析階段
+    tips:
+      - 訪談後 24 小時內整理筆記
+      - 標記關鍵引言
+      - 識別重複出現的模式
+      - 區分「說的」vs「做的」

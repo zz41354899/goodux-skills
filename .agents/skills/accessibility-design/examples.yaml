@@ -1,0 +1,229 @@
+# 無障礙設計範例庫
+
+wcag_checklist:
+  perceivable:
+    - id: contrast
+      requirement: 文字對比度至少 4.5:1（一般文字）
+      level: AA
+      how_to_check: 使用對比度檢測工具
+      tools: [WebAIM Contrast Checker, Chrome DevTools]
+      example:
+        good: 深灰文字 (#333) 在白色背景 (#FFF) - 對比度 12.6:1
+        bad: 淺灰文字 (#999) 在白色背景 (#FFF) - 對比度 2.8:1
+    
+    - id: large_text_contrast
+      requirement: 大文字（18pt+ 或粗體 14pt+）對比度至少 3:1
+      level: AA
+      how_to_check: 使用對比度檢測工具
+    
+    - id: alt_text
+      requirement: 所有有意義的圖片都要有替代文字
+      level: A
+      how_to_check: 檢查 img 標籤的 alt 屬性
+      example:
+        good: <img src="logo.png" alt="公司名稱 Logo">
+        bad: <img src="logo.png" alt="">
+        decorative: <img src="decoration.png" alt="" role="presentation">
+    
+    - id: color_alone
+      requirement: 不要僅用顏色傳達資訊
+      level: A
+      example:
+        good: 錯誤訊息用紅色 + 圖示 + 文字說明
+        bad: 僅用紅色標示錯誤欄位
+  
+  operable:
+    - id: keyboard_access
+      requirement: 所有功能都能用鍵盤操作
+      level: A
+      how_to_check: 只用 Tab、Enter、Space、方向鍵測試
+      key_points:
+        - Tab 可以到達所有互動元素
+        - Enter/Space 可以啟動按鈕和連結
+        - Esc 可以關閉對話框
+        - 方向鍵可以在選單中移動
+    
+    - id: focus_indicator
+      requirement: 焦點指示器清晰可見
+      level: AA
+      how_to_check: 用 Tab 鍵瀏覽，觀察焦點樣式
+      example:
+        good: 藍色外框 2px，對比度足夠
+        bad: 瀏覽器預設的淡藍色虛線
+    
+    - id: skip_link
+      requirement: 提供跳過導航的連結
+      level: A
+      implementation: <a href="#main-content" class="skip-link">跳到主要內容</a>
+    
+    - id: no_keyboard_trap
+      requirement: 鍵盤焦點不能被困住
+      level: A
+      example: 對話框開啟時，Tab 應該在對話框內循環，Esc 可關閉
+  
+  understandable:
+    - id: page_title
+      requirement: 每個頁面都要有描述性的標題
+      level: A
+      example:
+        good: <title>購物車 - 電商網站</title>
+        bad: <title>頁面</title>
+    
+    - id: heading_structure
+      requirement: 使用正確的標題層級（h1-h6）
+      level: A
+      how_to_check: 檢查標題是否按順序（不跳級）
+      example:
+        good: h1 → h2 → h3 → h2
+        bad: h1 → h3 → h2
+    
+    - id: label_form
+      requirement: 表單欄位都要有明確的標籤
+      level: A
+      example:
+        good: <label for="email">Email 地址</label><input id="email" type="email">
+        bad: <input type="email" placeholder="Email">
+    
+    - id: error_message
+      requirement: 錯誤訊息要清楚說明問題和解決方法
+      level: A
+      example:
+        good: Email 格式不正確，請輸入有效的 Email 地址（例如：user@example.com）
+        bad: 錯誤
+  
+  robust:
+    - id: valid_html
+      requirement: 使用有效的 HTML 標記
+      level: A
+      how_to_check: 使用 W3C HTML Validator
+    
+    - id: aria_labels
+      requirement: 正確使用 ARIA 屬性
+      level: A
+      example:
+        button: <button aria-label="關閉對話框">×</button>
+        navigation: <nav aria-label="主要導航">
+        live_region: <div aria-live="polite" aria-atomic="true">
+
+aria_patterns:
+  button:
+    html: <button aria-label="刪除項目" aria-pressed="false">
+    attributes:
+      - aria-label: 按鈕的無障礙名稱
+      - aria-pressed: 切換按鈕的狀態
+      - aria-disabled: 停用狀態
+  
+  dialog:
+    html: <div role="dialog" aria-labelledby="dialog-title" aria-modal="true">
+    attributes:
+      - role="dialog": 標示為對話框
+      - aria-labelledby: 指向標題元素
+      - aria-modal="true": 標示為模態對話框
+    keyboard:
+      - Tab: 在對話框內循環
+      - Esc: 關閉對話框
+  
+  menu:
+    html: <nav role="navigation" aria-label="主選單">
+    attributes:
+      - role="menu": 標示為選單
+      - aria-haspopup: 有子選單
+      - aria-expanded: 展開/收合狀態
+    keyboard:
+      - 方向鍵: 在選單項目間移動
+      - Enter: 選擇項目
+  
+  tab_panel:
+    html: |
+      <div role="tablist">
+        <button role="tab" aria-selected="true" aria-controls="panel1">標籤 1</button>
+        <button role="tab" aria-selected="false" aria-controls="panel2">標籤 2</button>
+      </div>
+      <div role="tabpanel" id="panel1">內容 1</div>
+    keyboard:
+      - 左右方向鍵: 切換標籤
+      - Tab: 進入面板內容
+
+screen_reader_testing:
+  tools:
+    - name: NVDA
+      platform: Windows
+      free: true
+      url: https://www.nvaccess.org/
+    
+    - name: JAWS
+      platform: Windows
+      free: false
+      url: https://www.freedomscientific.com/
+    
+    - name: VoiceOver
+      platform: macOS/iOS
+      free: true
+      activation: Cmd + F5
+    
+    - name: TalkBack
+      platform: Android
+      free: true
+  
+  test_checklist:
+    - 所有內容都能被讀出
+    - 互動元素有清楚的標籤
+    - 標題層級正確
+    - 表單欄位有標籤和說明
+    - 錯誤訊息能被讀出
+    - 圖片有替代文字
+    - 連結文字有意義
+
+common_issues:
+  - issue: 低對比度文字
+    impact: 視覺障礙者難以閱讀
+    solution: 確保對比度至少 4.5:1
+  
+  - issue: 缺少 alt 文字
+    impact: 螢幕閱讀器無法描述圖片
+    solution: 為所有有意義的圖片加上描述性 alt 文字
+  
+  - issue: 無法用鍵盤操作
+    impact: 無法使用滑鼠的使用者無法操作
+    solution: 確保所有功能都能用鍵盤完成
+  
+  - issue: 焦點指示器不明顯
+    impact: 鍵盤使用者不知道目前焦點在哪
+    solution: 設計清晰的焦點樣式
+  
+  - issue: 表單欄位沒有標籤
+    impact: 螢幕閱讀器無法說明欄位用途
+    solution: 使用 <label> 標籤或 aria-label
+  
+  - issue: 僅用顏色傳達資訊
+    impact: 色盲使用者無法理解
+    solution: 加上圖示或文字說明
+
+testing_tools:
+  automated:
+    - name: axe DevTools
+      type: 瀏覽器擴充功能
+      coverage: 約 57% 的 WCAG 問題
+    
+    - name: WAVE
+      type: 線上工具
+      url: https://wave.webaim.org/
+    
+    - name: Lighthouse
+      type: Chrome DevTools 內建
+      coverage: 基本無障礙檢查
+  
+  manual:
+    - 鍵盤導航測試
+    - 螢幕閱讀器測試
+    - 色盲模擬測試
+    - 縮放測試（200%）
+
+best_practices:
+  - 從設計階段就考慮無障礙
+  - 使用語意化 HTML 標籤
+  - 提供多種感官管道（視覺、聽覺、觸覺）
+  - 確保內容可縮放至 200%
+  - 提供清晰的錯誤訊息和說明
+  - 定期進行無障礙測試
+  - 邀請身心障礙者參與測試

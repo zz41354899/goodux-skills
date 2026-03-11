@@ -1,0 +1,204 @@
+# 可用性測試範例庫
+
+test_scenarios:
+  ecommerce:
+    - scenario: 購買特定商品
+      task: 請在網站上找到並購買一雙藍色運動鞋，尺寸 US 9
+      success_criteria:
+        - 找到符合條件的商品
+        - 加入購物車
+        - 完成結帳流程
+      metrics:
+        - 完成時間
+        - 點擊次數
+        - 錯誤次數
+    
+    - scenario: 使用篩選功能
+      task: 找到價格在 2000-3000 元之間的黑色背包
+      success_criteria:
+        - 正確使用篩選器
+        - 找到符合條件的商品
+      metrics:
+        - 是否能找到篩選功能
+        - 篩選設定是否正確
+    
+    - scenario: 查詢訂單狀態
+      task: 查看您上週訂購的商品目前配送到哪裡
+      success_criteria:
+        - 登入帳號
+        - 找到訂單記錄
+        - 查看物流資訊
+      metrics:
+        - 完成時間
+        - 是否需要協助
+  
+  saas_product:
+    - scenario: 建立新專案
+      task: 為您的團隊建立一個名為「網站改版」的新專案
+      success_criteria:
+        - 找到建立專案功能
+        - 輸入專案名稱
+        - 成功建立
+      metrics:
+        - 完成時間
+        - 是否能直覺找到功能
+    
+    - scenario: 邀請團隊成員
+      task: 邀請 john@example.com 加入您的專案
+      success_criteria:
+        - 找到邀請功能
+        - 輸入 Email
+        - 發送邀請
+      metrics:
+        - 完成時間
+        - 錯誤次數
+    
+    - scenario: 匯出報告
+      task: 匯出本月的專案進度報告為 PDF
+      success_criteria:
+        - 找到匯出功能
+        - 選擇正確格式
+        - 成功下載
+      metrics:
+        - 完成時間
+        - 是否需要提示
+
+test_methods:
+  moderated:
+    name: 主持式測試
+    description: 研究員在場引導和觀察
+    pros:
+      - 可以深入追問
+      - 即時觀察反應
+      - 可以提供協助
+    cons:
+      - 成本較高
+      - 需要排程
+      - 可能影響自然行為
+    best_for: [複雜產品, 早期原型, 深度洞察]
+  
+  unmoderated:
+    name: 非主持式測試
+    description: 使用者獨立完成測試
+    pros:
+      - 成本較低
+      - 可大量測試
+      - 更自然的行為
+    cons:
+      - 無法追問
+      - 可能中途放棄
+      - 洞察較淺
+    best_for: [簡單任務, 大量樣本, 快速驗證]
+  
+  ab_testing:
+    name: A/B 測試
+    description: 比較兩個版本的表現
+    metrics:
+      - 轉換率
+      - 完成率
+      - 點擊率
+      - 停留時間
+    best_for: [優化設計, 驗證假設, 數據驅動決策]
+
+metrics:
+  quantitative:
+    - name: 任務完成率
+      description: 成功完成任務的使用者百分比
+      formula: (成功人數 / 總人數) × 100%
+      benchmark: "> 80% 為良好"
+    
+    - name: 完成時間
+      description: 完成任務所需的平均時間
+      unit: 秒或分鐘
+      benchmark: 與競品或前版本比較
+    
+    - name: 錯誤率
+      description: 使用者犯錯的次數
+      types: [嚴重錯誤, 輕微錯誤, 可恢復錯誤]
+      benchmark: "< 5% 為良好"
+    
+    - name: 點擊次數
+      description: 完成任務所需的點擊數
+      benchmark: 越少越好
+  
+  qualitative:
+    - name: 滿意度評分
+      description: 使用者主觀滿意度
+      scale: 1-5 分或 1-10 分
+      method: 測試後問卷
+    
+    - name: SUS 分數
+      description: System Usability Scale
+      scale: 0-100 分
+      benchmark: "> 68 為平均水準"
+    
+    - name: 出聲思考
+      description: 使用者說出的想法和感受
+      insights: [困惑點, 期望, 情緒反應]
+
+test_plan_template:
+  objectives:
+    - 測試目標 1
+    - 測試目標 2
+  
+  participants:
+    number: 5-8 人
+    criteria:
+      - 目標使用者特徵
+      - 經驗程度
+      - 排除條件
+  
+  tasks:
+    - task_1:
+        description: 任務描述
+        scenario: 情境說明
+        success_criteria: 成功標準
+    - task_2:
+        description: 任務描述
+        scenario: 情境說明
+        success_criteria: 成功標準
+  
+  logistics:
+    duration: 45-60 分鐘
+    location: 遠端或現場
+    tools: [錄影軟體, 原型工具, 問卷]
+  
+  script:
+    introduction: 歡迎詞和說明
+    tasks: 任務指示
+    wrap_up: 結束問題和感謝
+
+severity_rating:
+  critical:
+    level: 1
+    description: 阻止任務完成的問題
+    action: 立即修復
+    example: 結帳按鈕無法點擊
+  
+  serious:
+    level: 2
+    description: 造成重大困擾但可繞過
+    action: 優先修復
+    example: 搜尋功能難以找到
+  
+  moderate:
+    level: 3
+    description: 造成輕微不便
+    action: 排程修復
+    example: 標籤文字不夠清楚
+  
+  minor:
+    level: 4
+    description: 美觀或細節問題
+    action: 有時間再修復
+    example: 顏色不夠美觀
+
+best_practices:
+  - 5-8 位使用者可發現 85% 問題
+  - 使用真實任務而非功能展示
+  - 保持中立，不要引導使用者
+  - 鼓勵出聲思考
+  - 記錄定量和定性資料
+  - 測試後立即整理筆記
+  - 按嚴重程度排序問題
+  - 提供具體可行的改善建議

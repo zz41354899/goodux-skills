@@ -1,0 +1,150 @@
+# 使用者人物誌範例庫
+
+templates:
+  b2b_professional:
+    name: B2B 專業人士範本
+    structure:
+      basic_info:
+        - 姓名
+        - 年齡範圍
+        - 職業
+        - 地區
+      professional:
+        - 職位
+        - 年資
+        - 公司規模
+        - 產業
+      goals:
+        - 主要目標
+        - 次要目標
+      pain_points:
+        - 主要挫折點
+        - 日常挑戰
+      behaviors:
+        - 常用工具
+        - 工作流程
+        - 決策方式
+      quote: 代表性引言
+    
+  consumer:
+    name: 一般消費者範本
+    structure:
+      basic_info:
+        - 姓名
+        - 年齡
+        - 職業
+        - 家庭狀況
+      lifestyle:
+        - 興趣愛好
+        - 生活型態
+        - 消費習慣
+      goals:
+        - 使用產品的目標
+        - 期望達成的成果
+      pain_points:
+        - 目前遇到的問題
+        - 使用障礙
+      behaviors:
+        - 使用習慣
+        - 偏好的管道
+        - 決策因素
+      quote: 代表性引言
+
+  developer:
+    name: 開發者範本
+    structure:
+      basic_info:
+        - 姓名
+        - 年資
+        - 專長技術棧
+      technical:
+        - 主要使用語言
+        - 開發環境
+        - 工具鏈
+      goals:
+        - 技術目標
+        - 效率目標
+      pain_points:
+        - 開發痛點
+        - 學習障礙
+      behaviors:
+        - 學習方式
+        - 資訊來源
+        - 社群參與
+      quote: 代表性引言
+
+example_personas:
+  - name: 忙碌的專案經理 - 王大明
+    age: 35-42
+    occupation: 專案經理
+    company_size: 中型企業 (100-500人)
+    experience: 8年
+    goals:
+      primary: 提升團隊協作效率，準時交付專案
+      secondary: 減少會議時間，提高透明度
+    pain_points:
+      - 資訊散落在多個工具中，難以追蹤
+      - 團隊成員進度不透明
+      - 花太多時間在狀態更新會議
+    behaviors:
+      tools: [Jira, Slack, Excel, Email]
+      workflow: 早上檢查進度 → 處理阻礙 → 晚上更新報告
+      decision_making: 重視 ROI，需要主管批准
+    quote: "我需要一眼就能看到專案健康度，而不是花一小時整理報告。"
+    tech_comfort: 中等
+    
+  - name: 精打細算的小資族 - 林小美
+    age: 25-30
+    occupation: 行政助理
+    lifestyle: 注重 CP 值，喜歡比價
+    goals:
+      primary: 用最少的錢買到最好的商品
+      secondary: 省時省力的購物體驗
+    pain_points:
+      - 比價太花時間
+      - 不確定是否買到最低價
+      - 促銷資訊太多難以追蹤
+    behaviors:
+      shopping_habits: 先比價再下單，喜歡用優惠券
+      channels: 手機 App 為主，偶爾用電腦
+      decision_factors: [價格, 評價, 運費, 退貨政策]
+    quote: "我不介意多花 10 分鐘比價，只要能省 100 塊就值得。"
+
+persona_attributes:
+  demographics:
+    - 年齡
+    - 性別
+    - 地區
+    - 教育程度
+    - 收入範圍
+  
+  psychographics:
+    - 價值觀
+    - 生活型態
+    - 個性特質
+    - 態度
+  
+  behavioral:
+    - 使用頻率
+    - 使用情境
+    - 偏好功能
+    - 決策過程
+  
+  goals_needs:
+    - 主要目標
+    - 次要目標
+    - 期望成果
+  
+  pain_points:
+    - 挫折點
+    - 障礙
+    - 未滿足需求
+
+best_practices:
+  - 基於真實研究資料，不要憑空想像
+  - 通常 3-5 個主要人物誌即可
+  - 包含具體的引言增加真實感
+  - 避免刻板印象
+  - 定期更新以反映使用者變化
+  - 給每個人物誌取一個好記的名字
+  - 加上照片或插圖增加辨識度

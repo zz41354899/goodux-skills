@@ -1,0 +1,324 @@
+# 設計系統範例庫
+
+design_tokens:
+  color:
+    brand:
+      primary: "#3B82F6"
+      primary_hover: "#2563EB"
+      primary_active: "#1D4ED8"
+      secondary: "#8B5CF6"
+      accent: "#F59E0B"
+    
+    neutral:
+      white: "#FFFFFF"
+      gray_50: "#F9FAFB"
+      gray_100: "#F3F4F6"
+      gray_200: "#E5E7EB"
+      gray_300: "#D1D5DB"
+      gray_400: "#9CA3AF"
+      gray_500: "#6B7280"
+      gray_600: "#4B5563"
+      gray_700: "#374151"
+      gray_800: "#1F2937"
+      gray_900: "#111827"
+      black: "#000000"
+    
+    semantic:
+      success: "#10B981"
+      warning: "#F59E0B"
+      error: "#EF4444"
+      info: "#3B82F6"
+    
+    text:
+      primary: "#111827"
+      secondary: "#6B7280"
+      tertiary: "#9CA3AF"
+      inverse: "#FFFFFF"
+  
+  typography:
+    font_family:
+      sans: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+      serif: "'Merriweather', Georgia, serif"
+      mono: "'Fira Code', 'Courier New', monospace"
+    
+    font_size:
+      xs: "12px"
+      sm: "14px"
+      base: "16px"
+      lg: "18px"
+      xl: "20px"
+      "2xl": "24px"
+      "3xl": "30px"
+      "4xl": "36px"
+      "5xl": "48px"
+    
+    font_weight:
+      light: 300
+      regular: 400
+      medium: 500
+      semibold: 600
+      bold: 700
+    
+    line_height:
+      tight: 1.25
+      normal: 1.5
+      relaxed: 1.75
+  
+  spacing:
+    scale: 4px
+    values:
+      0: "0"
+      1: "4px"
+      2: "8px"
+      3: "12px"
+      4: "16px"
+      5: "20px"
+      6: "24px"
+      8: "32px"
+      10: "40px"
+      12: "48px"
+      16: "64px"
+      20: "80px"
+      24: "96px"
+  
+  radius:
+    none: "0"
+    sm: "4px"
+    base: "8px"
+    md: "12px"
+    lg: "16px"
+    xl: "24px"
+    full: "9999px"
+  
+  shadow:
+    sm: "0 1px 2px 0 rgba(0, 0, 0, 0.05)"
+    base: "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"
+    md: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
+    lg: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
+    xl: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+
+component_library:
+  button:
+    variants:
+      primary:
+        bg: brand.primary
+        text: neutral.white
+        hover_bg: brand.primary_hover
+        border: none
+      
+      secondary:
+        bg: neutral.white
+        text: brand.primary
+        hover_bg: neutral.gray_50
+        border: 1px solid neutral.gray_300
+      
+      ghost:
+        bg: transparent
+        text: brand.primary
+        hover_bg: neutral.gray_100
+        border: none
+    
+    sizes:
+      sm:
+        height: "32px"
+        padding: "0 12px"
+        font_size: typography.font_size.sm
+      
+      md:
+        height: "40px"
+        padding: "0 16px"
+        font_size: typography.font_size.base
+      
+      lg:
+        height: "48px"
+        padding: "0 24px"
+        font_size: typography.font_size.lg
+    
+    states:
+      - default
+      - hover
+      - active
+      - disabled
+      - loading
+  
+  input:
+    variants:
+      default:
+        border: 1px solid neutral.gray_300
+        bg: neutral.white
+        text: text.primary
+      
+      error:
+        border: 1px solid semantic.error
+        bg: neutral.white
+        text: text.primary
+    
+    sizes:
+      sm:
+        height: "32px"
+        padding: "0 12px"
+        font_size: typography.font_size.sm
+      
+      md:
+        height: "40px"
+        padding: "0 16px"
+        font_size: typography.font_size.base
+      
+      lg:
+        height: "48px"
+        padding: "0 16px"
+        font_size: typography.font_size.lg
+    
+    states:
+      - default
+      - focus
+      - disabled
+      - error
+  
+  card:
+    variants:
+      elevated:
+        bg: neutral.white
+        border: none
+        shadow: shadow.md
+      
+      outlined:
+        bg: neutral.white
+        border: 1px solid neutral.gray_200
+        shadow: none
+      
+      filled:
+        bg: neutral.gray_50
+        border: none
+        shadow: none
+    
+    padding:
+      sm: spacing.4
+      md: spacing.6
+      lg: spacing.8
+    
+    radius: radius.lg
+
+naming_conventions:
+  components:
+    pattern: PascalCase
+    examples: [Button, InputField, NavigationBar, UserCard]
+  
+  tokens:
+    pattern: kebab-case
+    examples: [primary-color, font-size-lg, spacing-4]
+  
+  variants:
+    pattern: lowercase
+    examples: [primary, secondary, ghost, outlined]
+  
+  states:
+    pattern: lowercase
+    examples: [hover, active, disabled, focus]
+
+documentation_structure:
+  component_page:
+    sections:
+      - overview: 元件用途和使用時機
+      - variants: 所有變體展示
+      - props: 屬性說明
+      - examples: 使用範例
+      - accessibility: 無障礙指南
+      - best_practices: 最佳實踐
+      - do_dont: 正確/錯誤示範
+  
+  token_page:
+    sections:
+      - overview: Token 說明
+      - values: 所有數值
+      - usage: 使用指南
+      - examples: 實際應用範例
+
+governance:
+  contribution_process:
+    steps:
+      - 提出需求或問題
+      - 設計提案
+      - 團隊審查
+      - 實作（設計 + 開發）
+      - 測試
+      - 文件更新
+      - 發布
+  
+  versioning:
+    major: 破壞性變更（移除元件、改變 API）
+    minor: 新增功能（新元件、新變體）
+    patch: 修復錯誤、小改進
+  
+  deprecation:
+    process:
+      - 標記為 deprecated
+      - 提供遷移指南
+      - 至少保留 2 個版本
+      - 最終移除
+
+implementation_examples:
+  css_variables:
+    code: |
+      :root {
+        --color-primary: #3B82F6;
+        --color-primary-hover: #2563EB;
+        --spacing-4: 16px;
+        --radius-base: 8px;
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+      
+      .button-primary {
+        background: var(--color-primary);
+        padding: var(--spacing-4);
+        border-radius: var(--radius-base);
+        box-shadow: var(--shadow-md);
+      }
+  
+  tailwind_config:
+    code: |
+      module.exports = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#3B82F6',
+              secondary: '#8B5CF6',
+            },
+            spacing: {
+              '4': '16px',
+              '6': '24px',
+            },
+            borderRadius: {
+              'base': '8px',
+              'lg': '16px',
+            }
+          }
+        }
+      }
+  
+  react_component:
+    code: |
+      import { tokens } from './design-tokens';
+      
+      export const Button = ({ variant = 'primary', size = 'md', children }) => {
+        const styles = {
+          backgroundColor: tokens.color.brand[variant],
+          padding: tokens.spacing[size],
+          borderRadius: tokens.radius.base,
+          fontSize: tokens.typography.fontSize[size],
+        };
+        
+        return <button style={styles}>{children}</button>;
+      };
+
+best_practices:
+  - 從小規模開始，逐步擴展
+  - 優先處理最常用的元件
+  - 保持元件的靈活性和可組合性
+  - 提供清晰的命名規範
+  - 包含使用範例和反例
+  - 設計和開發緊密協作
+  - 建立治理流程管理變更
+  - 定期審查和更新
+  - 收集使用者回饋
+  - 保持文件同步更新

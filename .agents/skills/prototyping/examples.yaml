@@ -1,0 +1,265 @@
+# 原型製作範例庫
+
+fidelity_levels:
+  low:
+    name: 低保真原型
+    characteristics:
+      - 紙筆草圖或簡單線框
+      - 無顏色或基本灰階
+      - 假文字內容
+      - 基本互動流程
+    tools: [紙筆, Balsamiq, 白板, Miro]
+    time_investment: 數小時
+    best_for:
+      - 快速概念驗證
+      - 早期團隊討論
+      - 探索多個方向
+    pros:
+      - 快速製作
+      - 易於修改
+      - 專注於功能而非視覺
+    cons:
+      - 不適合客戶展示
+      - 難以測試細節互動
+  
+  mid:
+    name: 中保真原型
+    characteristics:
+      - 清晰的版面結構
+      - 基本視覺設計
+      - 真實或接近真實的內容
+      - 主要互動流程
+    tools: [Figma, Sketch, Adobe XD, Axure]
+    time_investment: 數天
+    best_for:
+      - 內部審查
+      - 開發交接
+      - 基本可用性測試
+    pros:
+      - 平衡速度和細節
+      - 適合大多數測試場景
+    cons:
+      - 可能不夠真實
+      - 需要一定時間投入
+  
+  high:
+    name: 高保真原型
+    characteristics:
+      - 完整視覺設計
+      - 真實內容和圖片
+      - 詳細互動和動畫
+      - 接近最終產品
+    tools: [Figma, Framer, ProtoPie, Principle]
+    time_investment: 數週
+    best_for:
+      - 客戶提案
+      - 投資人展示
+      - 詳細可用性測試
+      - 開發規格
+    pros:
+      - 最真實的體驗
+      - 適合正式展示
+      - 可測試細節互動
+    cons:
+      - 耗時
+      - 修改成本高
+      - 可能過早投入細節
+
+interaction_patterns:
+  navigation:
+    - pattern: 標籤切換
+      description: 在不同內容區塊間切換
+      trigger: 點擊標籤
+      animation: 淡入淡出或滑動
+      duration: 200-300ms
+    
+    - pattern: 抽屜選單
+      description: 從側邊滑出的導航選單
+      trigger: 點擊漢堡圖示
+      animation: 從左/右滑入
+      duration: 300ms
+    
+    - pattern: 模態對話框
+      description: 覆蓋在主內容上的對話框
+      trigger: 點擊按鈕或連結
+      animation: 淡入 + 縮放
+      duration: 200ms
+      backdrop: 半透明黑色遮罩
+  
+  feedback:
+    - pattern: 載入動畫
+      description: 顯示處理中狀態
+      types: [旋轉圖示, 進度條, 骨架屏]
+      duration: 持續到載入完成
+    
+    - pattern: 成功提示
+      description: 操作成功的回饋
+      display: Toast 訊息或內嵌提示
+      duration: 3-5 秒自動消失
+      animation: 從上/下滑入
+    
+    - pattern: 錯誤提示
+      description: 錯誤訊息顯示
+      display: 紅色邊框 + 錯誤文字
+      position: 欄位下方或頂部橫幅
+      dismissal: 手動關閉或修正後消失
+  
+  transitions:
+    - pattern: 頁面轉場
+      description: 頁面間的過渡效果
+      types: [淡入淡出, 滑動, 推入]
+      duration: 300-400ms
+    
+    - pattern: 展開/收合
+      description: 內容區塊的展開收合
+      trigger: 點擊標題或箭頭
+      animation: 高度動畫
+      duration: 200-300ms
+    
+    - pattern: 懸停效果
+      description: 滑鼠懸停時的視覺回饋
+      effects: [顏色變化, 陰影加深, 縮放]
+      duration: 150-200ms
+
+prototyping_flows:
+  user_registration:
+    screens:
+      - 歡迎頁
+      - 註冊表單
+      - Email 驗證
+      - 個人資料設定
+      - 完成頁面
+    interactions:
+      - 點擊「註冊」按鈕 → 顯示表單
+      - 填寫表單 → 即時驗證
+      - 提交表單 → 載入動畫 → 成功訊息
+      - 點擊驗證連結 → 跳轉到設定頁
+    states:
+      - 空白狀態
+      - 填寫中
+      - 驗證錯誤
+      - 載入中
+      - 成功
+  
+  ecommerce_checkout:
+    screens:
+      - 購物車
+      - 配送資訊
+      - 付款方式
+      - 訂單確認
+      - 完成頁面
+    interactions:
+      - 修改數量 → 即時更新總價
+      - 套用優惠券 → 顯示折扣
+      - 選擇配送方式 → 更新運費
+      - 填寫信用卡 → 即時驗證
+      - 提交訂單 → 載入 → 成功頁面
+    components:
+      - 訂單摘要（固定側邊欄）
+      - 進度指示器
+      - 表單驗證
+      - 錯誤處理
+  
+  dashboard_overview:
+    screens:
+      - 登入頁
+      - 儀表板首頁
+      - 詳細報表
+      - 設定頁面
+    interactions:
+      - 點擊圖表 → 顯示詳細資料
+      - 切換日期範圍 → 更新數據
+      - 點擊通知 → 展開詳情
+      - 搜尋 → 即時篩選結果
+    states:
+      - 載入中（骨架屏）
+      - 有數據
+      - 空白狀態
+      - 錯誤狀態
+
+animation_guidelines:
+  duration:
+    micro: 100-150ms
+    description: 小型互動（按鈕懸停、核取方塊）
+    
+    short: 150-250ms
+    description: 簡單轉場（淡入淡出、顏色變化）
+    
+    medium: 250-400ms
+    description: 複雜轉場（頁面切換、抽屜開關）
+    
+    long: 400-600ms
+    description: 大型動畫（全屏轉場、複雜序列）
+  
+  easing:
+    ease_out:
+      curve: cubic-bezier(0, 0, 0.2, 1)
+      use_for: 進入畫面的元素
+    
+    ease_in:
+      curve: cubic-bezier(0.4, 0, 1, 1)
+      use_for: 離開畫面的元素
+    
+    ease_in_out:
+      curve: cubic-bezier(0.4, 0, 0.2, 1)
+      use_for: 在畫面內移動的元素
+  
+  principles:
+    - 動畫要有目的，不要為動而動
+    - 保持一致的速度和緩動曲線
+    - 避免過長的動畫（> 600ms）
+    - 考慮減少動畫的無障礙選項
+    - 在低效能裝置上優雅降級
+
+tool_comparison:
+  figma:
+    strengths: [協作, 元件系統, 易學, 跨平台]
+    limitations: [複雜動畫受限, 條件邏輯有限]
+    best_for: 團隊協作、基本到中等複雜度原型
+  
+  framer:
+    strengths: [強大動畫, 程式碼整合, 真實互動]
+    limitations: [學習曲線陡, 需要程式基礎]
+    best_for: 高保真原型、複雜動畫
+  
+  protopie:
+    strengths: [複雜互動, 感應器整合, 條件邏輯]
+    limitations: [價格較高, 學習曲線]
+    best_for: 行動 App、複雜互動流程
+  
+  axure:
+    strengths: [條件邏輯, 變數, 詳細規格]
+    limitations: [介面較舊, 學習曲線陡]
+    best_for: 複雜企業應用、詳細規格文件
+
+testing_checklist:
+  before_testing:
+    - 確認所有主要流程都能完成
+    - 測試所有互動是否正常
+    - 檢查錯誤狀態和邊界情況
+    - 準備測試腳本和任務
+    - 確認原型在目標裝置上運作正常
+  
+  during_testing:
+    - 觀察使用者如何探索原型
+    - 記錄卡點和困惑
+    - 注意意外的互動方式
+    - 收集口頭回饋
+  
+  after_testing:
+    - 整理發現的問題
+    - 優先排序改善項目
+    - 更新原型
+    - 必要時進行第二輪測試
+
+best_practices:
+  - 根據目標選擇適當的保真度
+  - 專注於關鍵流程，不需要完整產品
+  - 使用真實內容而非假資料
+  - 保持互動的一致性
+  - 加入適當的載入和錯誤狀態
+  - 記錄原型的限制和假設
+  - 定期與團隊同步
+  - 不要過早投入高保真細節
+  - 考慮不同裝置和螢幕尺寸
+  - 測試前先自己走過一遍流程

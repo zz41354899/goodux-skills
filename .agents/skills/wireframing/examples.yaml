@@ -1,0 +1,205 @@
+# 線框圖範例庫
+
+layout_patterns:
+  hero_section:
+    name: Hero 區塊
+    description: 首頁主視覺區
+    components:
+      - 主標題
+      - 副標題
+      - CTA 按鈕
+      - 主視覺圖片/影片
+    variations:
+      - 置中對齊 + 背景圖
+      - 左右分欄（文字 + 圖片）
+      - 全寬影片背景
+    best_for: [落地頁, 產品首頁, 行銷頁面]
+  
+  card_grid:
+    name: 卡片網格
+    description: 網格式卡片佈局
+    components:
+      - 卡片容器
+      - 圖片
+      - 標題
+      - 描述
+      - 操作按鈕
+    variations:
+      - 2 欄網格
+      - 3 欄網格
+      - 4 欄網格
+      - 響應式網格
+    best_for: [產品列表, 部落格, 作品集]
+  
+  sidebar_layout:
+    name: 側邊欄佈局
+    description: 主內容 + 側邊欄
+    components:
+      - 主內容區
+      - 側邊欄（導航/篩選/相關內容）
+    variations:
+      - 左側邊欄
+      - 右側邊欄
+      - 雙側邊欄
+    best_for: [部落格, 文件, 儀表板]
+  
+  dashboard:
+    name: 儀表板佈局
+    description: 資料視覺化介面
+    components:
+      - 頂部導航
+      - 側邊選單
+      - 統計卡片
+      - 圖表區
+      - 資料表格
+    best_for: [後台系統, 分析工具, 管理介面]
+  
+  form_layout:
+    name: 表單佈局
+    description: 資料輸入介面
+    components:
+      - 表單標題
+      - 輸入欄位
+      - 標籤
+      - 說明文字
+      - 錯誤訊息
+      - 提交按鈕
+    variations:
+      - 單欄表單
+      - 雙欄表單
+      - 分步驟表單
+    best_for: [註冊, 結帳, 設定頁面]
+
+component_library:
+  navigation:
+    - 水平導航列
+    - 垂直側邊選單
+    - 漢堡選單
+    - 麵包屑
+    - 分頁標籤
+  
+  content:
+    - 卡片
+    - 清單
+    - 表格
+    - 手風琴
+    - 標籤頁
+  
+  input:
+    - 文字輸入框
+    - 下拉選單
+    - 單選按鈕
+    - 核取方塊
+    - 開關切換
+    - 日期選擇器
+  
+  feedback:
+    - 提示訊息
+    - 載入動畫
+    - 進度條
+    - 空白狀態
+    - 錯誤頁面
+  
+  actions:
+    - 主要按鈕
+    - 次要按鈕
+    - 文字連結
+    - 圖示按鈕
+    - 浮動操作按鈕
+
+annotation_guide:
+  interaction:
+    - 點擊後的行為
+    - 懸停效果
+    - 展開/收合
+    - 頁面跳轉
+  
+  content:
+    - 動態內容說明
+    - 字數限制
+    - 圖片尺寸
+    - 資料來源
+  
+  state:
+    - 預設狀態
+    - 懸停狀態
+    - 啟用/停用
+    - 載入中
+    - 錯誤狀態
+  
+  responsive:
+    - 桌面版佈局
+    - 平板版調整
+    - 手機版變化
+
+fidelity_levels:
+  low:
+    name: 低保真線框圖
+    characteristics:
+      - 黑白灰階
+      - 方框代表圖片
+      - Lorem ipsum 文字
+      - 基本形狀
+    when_to_use: 快速概念驗證、早期討論
+    tools: [紙筆, Balsamiq, 白板]
+  
+  mid:
+    name: 中保真線框圖
+    characteristics:
+      - 灰階 + 少量顏色
+      - 真實內容
+      - 基本排版
+      - 簡單互動說明
+    when_to_use: 內部審查、開發交接
+    tools: [Figma, Sketch, Adobe XD]
+  
+  high:
+    name: 高保真線框圖
+    characteristics:
+      - 接近最終視覺
+      - 真實內容和圖片
+      - 詳細互動
+      - 完整註解
+    when_to_use: 使用者測試、客戶提案
+    tools: [Figma, Sketch, Adobe XD]
+
+common_patterns:
+  landing_page:
+    sections:
+      - Hero 區塊
+      - 功能介紹（3-4 個）
+      - 社會證明（客戶 Logo/評價）
+      - 定價方案
+      - FAQ
+      - CTA 區塊
+  
+  product_page:
+    sections:
+      - 產品圖片輪播
+      - 產品名稱和價格
+      - 規格說明
+      - 加入購物車按鈕
+      - 產品描述
+      - 評價區
+      - 相關產品
+  
+  checkout_flow:
+    steps:
+      - 購物車確認
+      - 配送資訊
+      - 付款方式
+      - 訂單確認
+    components:
+      - 訂單摘要（固定側邊欄）
+      - 進度指示器
+      - 返回/繼續按鈕
+
+best_practices:
+  - 保持簡單，專注於結構而非視覺
+  - 使用真實內容而非 Lorem ipsum
+  - 標註清楚互動和狀態
+  - 考慮不同螢幕尺寸
+  - 保持元件一致性
+  - 快速迭代，不要過早追求完美
+  - 加入註解說明特殊邏輯
+  - 考慮邊界情況（空白狀態、錯誤、載入中）
