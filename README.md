@@ -5,10 +5,11 @@
 ## 功能特色
 
 - 📚 **9 個專業技能** - 使用者訪談、人物誌、資訊架構、線框圖、UI 視覺設計、可用性測試、無障礙設計、設計系統、原型製作
-- 🤖 **Agent Skills 標準** - 直接整合到 Windsurf、Claude Code、Cursor 等 AI 工具
+- 🤖 **6 種 AI 工具支援** - Windsurf、Cursor、Claude Code、Continue、Cline、Aider (v2.2.0)
 - 🎨 **20 個 UI 風格** - 內建精選視覺風格資料庫，涵蓋科技極簡、賽博龐克、日式和風等多種風格
-- ⚡ **CLI 安裝器** - 支援單一技能選裝、JSON 輸出、dry-run 模擬
-- � **現代化網站** - Next.js 14 + TypeScript + Tailwind CSS
+- ⚡ **強大 CLI** - 多工具支援、單一技能選裝、JSON 輸出、dry-run 模擬 (v2.2.0)
+- 🔧 **模組化架構** - 清晰的程式碼結構，易於維護和擴展 (v2.2.0)
+- 🌐 **現代化網站** - Next.js 14 + TypeScript + Tailwind CSS
 - 📱 **響應式設計** - 完美支援桌面和行動裝置
 
 ## 技術棧
@@ -24,8 +25,14 @@
 ### 安裝技能包到 AI 工具
 
 ```bash
-# 安裝所有技能
+# 安裝所有技能（預設支援當前工具）
 npx goodux-ux-skills
+
+# 支援多個 AI 工具（v2.2.0 新功能）
+npx goodux-ux-skills --tool windsurf --tool cursor --tool claude-code
+
+# 列出支援的 AI 工具
+npx goodux-ux-skills --list-tools
 
 # 只安裝指定技能
 npx goodux-ux-skills -s wireframing -s user-interview
@@ -35,6 +42,9 @@ npx goodux-ux-skills -f
 
 # 列出所有可用技能
 npx goodux-ux-skills --list
+
+# 列出 UI 視覺風格庫（20 個風格）
+npx goodux-ux-skills --list-styles
 
 # JSON 格式輸出（適合 CI/CD）
 npx goodux-ux-skills --json
