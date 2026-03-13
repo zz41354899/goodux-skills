@@ -48,7 +48,7 @@
     "claude-code": {
       "name": "Claude Code",
       "description": "Anthropic 官方開發工具",
-      "workflowDir": ".claude/workflows",
+      "workflowDir": ".claude/skills",
       "commandPrefix": "/",
       "fileExtension": ".md",
       "supported": true,
