@@ -48,14 +48,15 @@ export default function GettingStartedPage() {
                   <div className="border-t border-gray-700 pt-4">
                     <div className="text-gray-400 text-sm mb-2">進階用法：</div>
                     <div className="space-y-2 text-xs">
+                      <div><code className="text-blue-400">npx goodux-ux-skills --tool cursor</code> <span className="text-gray-500"># 支援 Cursor</span></div>
+                      <div><code className="text-blue-400">npx goodux-ux-skills --tool windsurf --tool claude-code</code> <span className="text-gray-500"># 多工具</span></div>
                       <div><code className="text-blue-400">npx goodux-ux-skills -s wireframing</code> <span className="text-gray-500"># 只裝線框圖</span></div>
-                      <div><code className="text-blue-400">npx goodux-ux-skills -f</code> <span className="text-gray-500"># 強制覆蓋更新</span></div>
-                      <div><code className="text-blue-400">npx goodux-ux-skills --list</code> <span className="text-gray-500"># 列出所有技能</span></div>
+                      <div><code className="text-blue-400">npx goodux-ux-skills --list-tools</code> <span className="text-gray-500"># 列出支援的工具</span></div>
                     </div>
                   </div>
                 </div>
                 <p className="text-sm text-gray-500 leading-relaxed">
-                  這個指令會自動將 9 個 UX 技能（含 20 個內建 UI 風格）下載並安裝到你電腦上的 <code className="bg-gray-50 px-1 rounded">.agents/skills</code> 目錄下。支援單一技能選裝、JSON 輸出與 dry-run 模擬。
+                  這個指令會自動將 9 個 UX 技能（含 20 個內建 UI 風格）下載並安裝到你電腦上的 <code className="bg-gray-50 px-1 rounded">.agents/skills</code> 目錄下。v2.2.0 支援 6 種 AI 工具（Windsurf、Cursor、Claude Code、Continue、Cline、Aider），可透過 <code className="bg-gray-50 px-1 rounded">--tool</code> 參數指定，支援單一技能選裝、多工具同時支援、JSON 輸出與 dry-run 模擬。
                 </p>
               </div>
             </section>
@@ -77,11 +78,19 @@ export default function GettingStartedPage() {
                 <div className="grid gap-4 sm:grid-cols-2 mt-8">
                   <div className="border border-gray-200 rounded-lg p-6 hover:border-gray-900 transition-colors">
                     <h3 className="font-semibold text-gray-900 mb-2">Windsurf</h3>
-                    <p className="text-sm text-gray-500 leading-relaxed">內建強大的 AI 代理功能,能完美整合技能庫。</p>
+                    <p className="text-sm text-gray-500 leading-relaxed">內建強大的 AI 代理功能,能完美整合技能庫。使用 <code className="bg-gray-50 px-1 rounded text-xs">/skill</code> 命令。</p>
+                  </div>
+                  <div className="border border-gray-200 rounded-lg p-6 hover:border-gray-900 transition-colors">
+                    <h3 className="font-semibold text-gray-900 mb-2">Cursor</h3>
+                    <p className="text-sm text-gray-500 leading-relaxed">AI-first 程式碼編輯器,支援 Agent Skills。使用 <code className="bg-gray-50 px-1 rounded text-xs">/skill</code> 命令。</p>
                   </div>
                   <div className="border border-gray-200 rounded-lg p-6 hover:border-gray-900 transition-colors">
                     <h3 className="font-semibold text-gray-900 mb-2">Claude Code</h3>
-                    <p className="text-sm text-gray-500 leading-relaxed">Anthropic 推出的官方開發工具,原生支援 Agent Skills。</p>
+                    <p className="text-sm text-gray-500 leading-relaxed">Anthropic 官方開發工具,原生支援 Agent Skills。使用 <code className="bg-gray-50 px-1 rounded text-xs">/skill</code> 命令。</p>
+                  </div>
+                  <div className="border border-gray-200 rounded-lg p-6 hover:border-gray-900 transition-colors">
+                    <h3 className="font-semibold text-gray-900 mb-2">Continue</h3>
+                    <p className="text-sm text-gray-500 leading-relaxed">開源 AI 編碼助手,支援多種模型。使用 <code className="bg-gray-50 px-1 rounded text-xs">@skill</code> 命令。</p>
                   </div>
                 </div>
               </div>
@@ -98,7 +107,7 @@ export default function GettingStartedPage() {
               
               <div className="prose prose-gray max-w-none text-gray-600 space-y-6">
                 <p className="leading-relaxed">
-                  有兩種方式可以觸發這些 UX 技能:
+                  有三種方式可以觸發這些 UX 技能:
                 </p>
 
                 <div className="space-y-8 mt-8">
@@ -111,6 +120,21 @@ export default function GettingStartedPage() {
                     <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
                       <p className="text-gray-900 font-medium">
                         「<span className="text-gray-600 font-mono">$wireframing</span> 幫我設計一個電商結帳頁面」
+                      </p>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                      <Terminal className="h-5 w-5 text-gray-400" />
+                      斜線命令 (Slash Command) <span className="text-xs text-gray-500 font-normal">v2.2.0 新功能</span>
+                    </h3>
+                    <p className="mb-4 leading-relaxed">使用斜線命令快速觸發技能:</p>
+                    <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 space-y-3">
+                      <p className="text-gray-900 font-medium">
+                        Windsurf/Cursor: <code className="text-gray-600 font-mono bg-white px-2 py-1 rounded">/prototyping</code>
+                      </p>
+                      <p className="text-gray-900 font-medium">
+                        Continue: <code className="text-gray-600 font-mono bg-white px-2 py-1 rounded">@prototyping</code>
                       </p>
                     </div>
                   </div>

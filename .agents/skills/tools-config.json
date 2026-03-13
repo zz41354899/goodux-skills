@@ -1,0 +1,86 @@
+{
+  "tools": {
+    "windsurf": {
+      "name": "Windsurf",
+      "description": "Codeium 推出的 AI IDE",
+      "workflowDir": ".windsurf/workflows",
+      "commandPrefix": "/",
+      "fileExtension": ".md",
+      "supported": true,
+      "template": "windsurf"
+    },
+    "cursor": {
+      "name": "Cursor",
+      "description": "AI-first 程式碼編輯器",
+      "workflowDir": ".cursor/workflows",
+      "commandPrefix": "/",
+      "fileExtension": ".md",
+      "supported": true,
+      "template": "cursor"
+    },
+    "continue": {
+      "name": "Continue",
+      "description": "開源 AI 編碼助手",
+      "workflowDir": ".continue/skills",
+      "commandPrefix": "@",
+      "fileExtension": ".md",
+      "supported": true,
+      "template": "continue"
+    },
+    "cline": {
+      "name": "Cline",
+      "description": "VS Code AI 助手擴充功能",
+      "workflowDir": ".cline/skills",
+      "commandPrefix": "/",
+      "fileExtension": ".md",
+      "supported": true,
+      "template": "cline"
+    },
+    "aider": {
+      "name": "Aider",
+      "description": "命令列 AI 編碼工具",
+      "workflowDir": ".aider/skills",
+      "commandPrefix": "/",
+      "fileExtension": ".md",
+      "supported": true,
+      "template": "aider"
+    },
+    "claude-code": {
+      "name": "Claude Code",
+      "description": "Anthropic 官方開發工具",
+      "workflowDir": ".claude/workflows",
+      "commandPrefix": "/",
+      "fileExtension": ".md",
+      "supported": true,
+      "template": "claude-code"
+    }
+  },
+  "templates": {
+    "windsurf": {
+      "format": "yaml-frontmatter",
+      "sections": ["description", "usage", "steps", "details"]
+    },
+    "cursor": {
+      "format": "yaml-frontmatter",
+      "sections": ["description", "usage", "steps", "details"]
+    },
+    "continue": {
+      "format": "markdown",
+      "sections": ["title", "description", "usage", "steps"]
+    },
+    "cline": {
+      "format": "yaml-frontmatter",
+      "sections": ["description", "usage", "steps"]
+    },
+    "aider": {
+      "format": "markdown",
+      "sections": ["title", "description", "commands"]
+    },
+    "claude-code": {
+      "format": "yaml-frontmatter",
+      "sections": ["description", "usage", "steps", "details"]
+    }
+  },
+  "defaultTools": ["windsurf"],
+  "autoDetect": true
+}

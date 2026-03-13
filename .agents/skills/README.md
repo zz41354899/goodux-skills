@@ -13,9 +13,10 @@ Good UX Skills 是一套完整的 UX 設計技能庫，涵蓋從使用者研究�
 ### ✨ 特色
 
 - 🎯 **9 個專業技能** - 使用者訪談、人物誌、資訊架構、線框圖、UI 視覺設計、可用性測試、無障礙設計、設計系統、原型製作
-- 🤖 **Agent Skills 標準** - 直接整合到 Windsurf、Claude Code、Cursor 等 AI 工具
+- 🤖 **6 種 AI 工具支援** - Windsurf、Cursor、Claude Code、Continue、Cline、Aider
 - 🎨 **20 個 UI 風格** - 內建精選視覺風格資料庫（UI 視覺設計技能）
-- ⚡ **強大 CLI** - 支援單一技能選裝、JSON 輸出、dry-run 模擬
+- ⚡ **強大 CLI** - 多工具支援、單一技能選裝、JSON 輸出、dry-run 模擬
+- 🔧 **模組化架構** - 清晰的程式碼結構，易於維護和擴展
 - 📦 **精簡規格** - 每個技能壓縮至 300 行內，專注可執行性
 - 🌐 **正體中文** - 完整繁體中文內容
 
@@ -46,6 +47,12 @@ npx goodux-ux-skills
 ### CLI 進階用法
 
 ```bash
+# 支援多個 AI 工具（v2.2.0 新功能）
+npx goodux-ux-skills --tool windsurf --tool cursor --tool claude-code
+
+# 列出支援的 AI 工具
+npx goodux-ux-skills --list-tools
+
 # 只安裝指定技能
 npx goodux-ux-skills -s wireframing -s user-interview
 
@@ -54,6 +61,9 @@ npx goodux-ux-skills -f
 
 # 列出所有可用技能
 npx goodux-ux-skills --list
+
+# 列出 UI 視覺風格庫（20 個風格）
+npx goodux-ux-skills --list-styles
 
 # JSON 格式輸出（適合 CI/CD）
 npx goodux-ux-skills --json
@@ -75,28 +85,36 @@ npx goodux-ux-skills --help
 
 ## 📖 使用方式
 
-### 在 Windsurf / Claude Code / Cursor 中使用
+### 在 AI 工具中使用
 
-安裝後，技能會自動被偵測到。你可以：
+安裝後，技能會自動被偵測到。你可以用三種方式觸發：
 
-**隱式調用**（推薦）
+**1. 斜線命令**（v2.2.0 新功能）
+```
+Windsurf/Cursor: /prototyping
+Continue: @prototyping
+```
+
+**2. 隱式調用**（推薦）
 ```
 "請幫我規劃一個使用者訪談"
 → AI 會自動使用 user-interview 技能
 ```
 
-**顯式調用**
+**3. 顯式調用**
 ```
 "$wireframing 幫我設計購物車頁面的線框圖"
 "使用 ui-visual-design 技能，參考 Minimalist 風格設計一個登入頁"
 ```
 
-### 支援的 AI 工具
+### 支援的 AI 工具（v2.2.0）
 
-- ✅ [Windsurf](https://codeium.com/windsurf) - Codeium 推出的 AI IDE
-- ✅ [Claude Code](https://claude.ai/code) - Anthropic 官方開發工具
-- ✅ [Cursor](https://cursor.sh/) - AI-first 程式碼編輯器
-- ✅ [Continue](https://continue.dev/) - 開源 AI 編碼助手
+- ✅ [Windsurf](https://codeium.com/windsurf) - Codeium 推出的 AI IDE（命令：`/skill`）
+- ✅ [Cursor](https://cursor.sh/) - AI-first 程式碼編輯器（命令：`/skill`）
+- ✅ [Claude Code](https://claude.ai/code) - Anthropic 官方開發工具（命令：`/skill`）
+- ✅ [Continue](https://continue.dev/) - 開源 AI 編碼助手（命令：`@skill`）
+- ✅ [Cline](https://github.com/cline/cline) - VS Code AI 助手擴充功能（命令：`/skill`）
+- ✅ [Aider](https://aider.chat/) - 命令列 AI 編碼工具（命令：`/skill`）
 
 只要工具支援 Agent Skills 標準，就會自動掃描 `.agents/skills` 目錄並載入技能。
 
