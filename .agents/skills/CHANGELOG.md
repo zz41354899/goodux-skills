@@ -21,10 +21,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 📝 **更新的說明文件**：加入多工具支援和斜線命令的完整說明
 - 🔄 **優化的安裝流程**：更清晰的進度提示和錯誤訊息
 
+### Fixed
+- 🔧 **Claude Code 路徑修正**：將 Claude Code 的 workflow 目錄從 `.claude/workflows` 修正為 `.claude/skills`，符合官方規範
+
 ### Technical
 - 📁 **程式碼重構**：從 617 行單一檔案重構為 234 行主檔案 + 4 個模組
 - 🧪 **完整測試**：所有 6 種工具的 workflow 生成功能已驗證通過
 - 📦 **套件優化**：更新 package.json，加入新的關鍵字和檔案清單
+- ✅ **路徑驗證**：所有 6 種工具的安裝路徑已通過官方文件驗證
 
 ## [2.1.3] - 2024-XX-XX
 
