@@ -48,34 +48,17 @@ Good UX Skills 是一套完整的 UX 設計技能庫，涵蓋從使用者研究�
 ### 安裝所有技能
 
 ```bash
+# 安裝所有 5 個設計思考流程技能（預設支援當前工具）
 npx goodux-ux-skills
-```
 
-預設會安裝到當前目錄的 `.agents/skills/`，不會安裝到全域。
+# 支援多個 AI 工具
+npx goodux-ux-skills --tool cursor --tool claude-code
 
-### CLI 進階用法
-
-```bash
-# 支援多個 AI 工具（v2.2.0 新功能）
-npx goodux-ux-skills --tool windsurf --tool cursor --tool claude-code
-
-# 列出支援的 AI 工具
+# 列出所有支援的 AI 工具
 npx goodux-ux-skills --list-tools
-
-# 只安裝指定技能
-npx goodux-ux-skills -s wireframing -s user-interview
 
 # 強制覆蓋更新
 npx goodux-ux-skills -f
-
-# 列出所有可用技能
-npx goodux-ux-skills --list
-
-# 列出 UI 視覺風格庫（20 個風格）
-npx goodux-ux-skills --list-styles
-
-# 指定安裝目錄
-npx goodux-ux-skills -t ~/my-project/.agents/skills
 
 # 顯示版本號
 npx goodux-ux-skills --version

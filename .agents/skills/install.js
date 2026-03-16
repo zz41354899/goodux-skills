@@ -7,7 +7,7 @@ const path = require('path');
 const PKG = require(path.join(__dirname, 'package.json'));
 const TOOLS_CONFIG = require(path.join(__dirname, 'tools-config.json'));
 const { parseArgs } = require('./lib/cli');
-const { printHelp, printVersion, listSkills, listTools, listStyles } = require('./lib/display');
+const { printHelp, printVersion, listTools } = require('./lib/display');
 const { createWorkflowFiles, ensureDirectory } = require('./lib/workflow');
 const { discoverSkills, getLabel, getDefaultSkillsDirectory, copyIfExists, isPostInstall } = require('./lib/utils');
 
@@ -109,19 +109,8 @@ function install(rawOptions = {}) {
     tools: rawOptions.tools || null
   };
 
-  // 決定要安裝哪些技能
-  let skillsToInstall = allSkills;
-
-  if (Array.isArray(rawOptions.skills) && rawOptions.skills.length > 0) {
-    const invalid = rawOptions.skills.filter((s) => !allSkills.includes(s));
-    if (invalid.length > 0 && !options.silent) {
-      console.error(`\n❌ 找不到技能: ${invalid.join(', ')}`);
-      console.error(`   使用 --list 查看可安裝的技能\n`);
-      process.exitCode = 1;
-      return { installed: 0, updated: 0, skipped: 0, missing: invalid.length };
-    }
-    skillsToInstall = rawOptions.skills.filter((s) => allSkills.includes(s));
-  }
+  // 安裝所有技能
+  const skillsToInstall = allSkills;
 
   const log = options.silent ? () => {} : console.log;
   const targetDir = options.targetDir;
@@ -137,6 +126,23 @@ function install(rawOptions = {}) {
     log(`✅ 建立技能目錄: ${targetDir}\n`);
   } else {
     log(`✅ 使用現有技能目錄: ${targetDir}\n`);
+    
+    // 清理舊版本的 references 子目錄（如果存在）
+    const oldReferenceDirs = [
+      'user-interview', 'persona-creation', 'information-architecture',
+      'wireframing', 'ui-visual-design', 'usability-testing',
+      'accessibility-design', 'design-system', 'prototyping'
+    ];
+    
+    oldReferenceDirs.forEach(dirName => {
+      const oldPath = path.join(targetDir, dirName);
+      if (fs.existsSync(oldPath)) {
+        fs.rmSync(oldPath, { recursive: true, force: true });
+        log(`🗑️  移除舊版本目錄: ${dirName}`);
+      }
+    });
+    
+    log('');
   }
 
   copyRootFiles(targetDir, options);
@@ -248,16 +254,6 @@ if (require.main === module) {
 
   if (options.help) { printHelp(PKG); process.exit(0); }
   if (options.version) { printVersion(PKG); process.exit(0); }
-  if (options.list) { 
-    const skills = discoverSkills(__dirname);
-    listSkills(skills, getLabel, options); 
-    process.exit(0); 
-  }
-  if (options.listStyles) { 
-    const stylesFile = path.join(__dirname, 'references', 'ui-visual-design', 'styleprompts.yaml');
-    listStyles(stylesFile, options); 
-    process.exit(0); 
-  }
   if (options.listTools) { listTools(options); process.exit(0); }
 
   const silent = isPostInstall();
@@ -275,8 +271,6 @@ if (require.main === module) {
   install({
     force: options.force,
     silent,
-    targetDir: options.targetDir,
-    skills: options.skills,
     createWorkflows: !options.noWorkflows,
     tools: options.tools.length > 0 ? options.tools : null
   });

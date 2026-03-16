@@ -26,26 +26,20 @@
 ### 安裝技能包到 AI 工具
 
 ```bash
-# 安裝所有技能（預設支援當前工具）
+# 安裝所有 5 個設計思考流程技能（預設支援當前工具）
 npx goodux-ux-skills
 
-# 支援多個 AI 工具（v2.2.0 新功能）
-npx goodux-ux-skills --tool windsurf --tool cursor --tool claude-code
+# 支援多個 AI 工具
+npx goodux-ux-skills --tool cursor --tool claude-code
 
-# 列出支援的 AI 工具
+# 列出所有支援的 AI 工具
 npx goodux-ux-skills --list-tools
-
-# 只安裝指定技能
-npx goodux-ux-skills -s empathize -s ideate -s prototype
 
 # 強制覆蓋更新
 npx goodux-ux-skills -f
 
-# 列出所有可用技能
-npx goodux-ux-skills --list
-
-# 列出 UI 視覺風格庫（20 個風格）
-npx goodux-ux-skills --list-styles
+# 顯示說明
+npx goodux-ux-skills --help
 ```
 
 ### 本地開發網站
