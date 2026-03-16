@@ -127,22 +127,62 @@ function install(rawOptions = {}) {
   } else {
     log(`✅ 使用現有技能目錄: ${targetDir}\n`);
     
-    // 清理舊版本的 references 子目錄（如果存在）
-    const oldReferenceDirs = [
-      'user-interview', 'persona-creation', 'information-architecture',
-      'wireframing', 'ui-visual-design', 'usability-testing',
-      'accessibility-design', 'design-system', 'prototyping'
-    ];
-    
-    oldReferenceDirs.forEach(dirName => {
-      const oldPath = path.join(targetDir, dirName);
-      if (fs.existsSync(oldPath)) {
-        fs.rmSync(oldPath, { recursive: true, force: true });
-        log(`🗑️  移除舊版本目錄: ${dirName}`);
+    // 如果使用 force 選項，清除所有舊檔案以強制更新到最新版本
+    if (options.force) {
+      log('🔄 強制更新模式：清除所有舊檔案...\n');
+      
+      // 清除所有技能目錄
+      allSkills.forEach(skillName => {
+        const skillPath = path.join(targetDir, skillName);
+        if (fs.existsSync(skillPath)) {
+          fs.rmSync(skillPath, { recursive: true, force: true });
+          log(`🗑️  移除舊版本: ${skillName}`);
+        }
+      });
+      
+      // 清除 references 目錄
+      const referencesPath = path.join(targetDir, 'references');
+      if (fs.existsSync(referencesPath)) {
+        fs.rmSync(referencesPath, { recursive: true, force: true });
+        log(`🗑️  移除舊版本: references`);
       }
-    });
-    
-    log('');
+      
+      // 清除舊版本的 references 子目錄（如果存在）
+      const oldReferenceDirs = [
+        'user-interview', 'persona-creation', 'information-architecture',
+        'wireframing', 'ui-visual-design', 'usability-testing',
+        'accessibility-design', 'design-system', 'prototyping'
+      ];
+      
+      oldReferenceDirs.forEach(dirName => {
+        const oldPath = path.join(targetDir, dirName);
+        if (fs.existsSync(oldPath)) {
+          fs.rmSync(oldPath, { recursive: true, force: true });
+          log(`🗑️  移除舊版本目錄: ${dirName}`);
+        }
+      });
+      
+      log('');
+    } else {
+      // 非 force 模式，只清理舊版本的 references 子目錄
+      const oldReferenceDirs = [
+        'user-interview', 'persona-creation', 'information-architecture',
+        'wireframing', 'ui-visual-design', 'usability-testing',
+        'accessibility-design', 'design-system', 'prototyping'
+      ];
+      
+      oldReferenceDirs.forEach(dirName => {
+        const oldPath = path.join(targetDir, dirName);
+        if (fs.existsSync(oldPath)) {
+          fs.rmSync(oldPath, { recursive: true, force: true });
+          log(`🗑️  移除舊版本目錄: ${dirName}`);
+        }
+      });
+      
+      if (oldReferenceDirs.some(dir => fs.existsSync(path.join(targetDir, dir)))) {
+        log('');
+      }
+    }
   }
 
   copyRootFiles(targetDir, options);

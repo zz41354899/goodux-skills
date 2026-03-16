@@ -21,7 +21,7 @@ function printHelp(PKG) {
     '      --list-tools      列出所有支援的 AI 工具',
     '      --tool <name>     指定要支援的 AI 工具 (可多次使用)',
     '                        可用工具: windsurf, cursor, continue, cline, aider, claude-code',
-    '  -f, --force           覆蓋已存在的技能與 workflow 檔案',
+    '  -f, --force           強制更新到最新版本（清除所有舊檔案）',
     '      --no-workflows    不建立任何工具的 workflow 命令',
     '',
     '💡 使用範例:',

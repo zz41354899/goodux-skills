@@ -67,7 +67,7 @@ npx goodux-ux-skills --version
 npx goodux-ux-skills --help
 ```
 
-安裝後，技能會自動複製到當前專案的 `.agents/skills` 目錄。如需安裝到其他位置，使用 `-t` 參數指定。
+安裝後，技能會自動複製到當前專案的 `.agents/skills` 目錄。
 
 ## 📖 使用方式
 

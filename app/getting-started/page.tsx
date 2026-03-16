@@ -45,13 +45,12 @@ export default function GettingStartedPage() {
                     </div>
                     <code className="text-green-400 font-mono text-sm">npx goodux-ux-skills</code>
                   </div>
-                  <div className="border-t border-gray-700 pt-4">
+                  <div className="bg-gray-900 rounded-lg p-6 mt-6">
                     <div className="text-gray-400 text-sm mb-2">進階用法：</div>
                     <div className="space-y-2 text-xs">
-                      <div><code className="text-blue-400">npx goodux-ux-skills --tool cursor</code> <span className="text-gray-500"># 支援 Cursor</span></div>
-                      <div><code className="text-blue-400">npx goodux-ux-skills --tool windsurf --tool claude-code</code> <span className="text-gray-500"># 多工具</span></div>
-                      <div><code className="text-blue-400">npx goodux-ux-skills -s empathize -s ideate</code> <span className="text-gray-500"># 只裝指定技能</span></div>
+                      <div><code className="text-blue-400">npx goodux-ux-skills --tool cursor --tool claude-code</code> <span className="text-gray-500"># 支援多個工具</span></div>
                       <div><code className="text-blue-400">npx goodux-ux-skills --list-tools</code> <span className="text-gray-500"># 列出支援的工具</span></div>
+                      <div><code className="text-blue-400">npx goodux-ux-skills -f</code> <span className="text-gray-500"># 強制覆蓋更新</span></div>
                     </div>
                   </div>
                 </div>
