@@ -1,6 +1,6 @@
 {
   "name": "goodux-ux-skills",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "專業的 UX 設計技能包 — 符合 Agent Skills 標準的可安裝技能庫。基於設計思考流程，包含 Empathize（同理洞察）、Define（問題定義）、Ideate（發想構思，內建 20 個 UI 風格）、Prototype（原型製作）、Test（可用性驗證）五大核心技能。內建避免錯亂機制、專案檢測、開發選項（React + Shadcn/UI 或 spec.md）、品質保證流程。整合 11 個參考資料（2 個使用指引 + 9 個詳細方法）。支援 Windsurf、Cursor、Continue、Cline、Aider、Claude Code 等 AI 工具。",
   "main": "install.js",
   "bin": {

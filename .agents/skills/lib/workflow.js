@@ -6,14 +6,12 @@ const TOOLS_CONFIG = require('../tools-config.json');
  * Workflow 生成相關函數
  */
 
-function ensureDirectory(dirPath, dryRun) {
+function ensureDirectory(dirPath) {
   if (fs.existsSync(dirPath)) {
     return;
   }
 
-  if (!dryRun) {
-    fs.mkdirSync(dirPath, { recursive: true });
-  }
+  fs.mkdirSync(dirPath, { recursive: true });
 }
 
 function getWorkflowContent(toolId, skillName, label, skillPath) {
@@ -129,12 +127,10 @@ function createWorkflowFiles(skillName, projectRoot, options, getLabel) {
       return;
     }
     
-    ensureDirectory(workflowDir, options.dryRun);
+    ensureDirectory(workflowDir);
     
-    if (!options.dryRun) {
-      const content = getWorkflowContent(toolId, skillName, label, skillPath);
-      fs.writeFileSync(workflowFile, content, 'utf-8');
-    }
+    const content = getWorkflowContent(toolId, skillName, label, skillPath);
+    fs.writeFileSync(workflowFile, content, 'utf-8');
     
     const status = fs.existsSync(workflowFile) ? 'updated' : 'created';
     results[status] += 1;

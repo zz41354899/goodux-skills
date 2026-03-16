@@ -36,11 +36,9 @@ function copySkill(skillName, targetDir, options) {
     return { status: 'skipped', skillName };
   }
 
-  ensureDirectory(destDir, options.dryRun);
+  ensureDirectory(destDir);
 
-  if (!options.dryRun) {
-    fs.copyFileSync(sourceFile, destFile);
-  }
+  fs.copyFileSync(sourceFile, destFile);
 
   const templateSource = path.join(sourceDir, 'TEMPLATE.md');
   const templateDest = path.join(destDir, 'TEMPLATE.md');
@@ -49,9 +47,9 @@ function copySkill(skillName, targetDir, options) {
   const stylepromptsSource = path.join(sourceDir, 'styleprompts.yaml');
   const stylepromptsDest = path.join(destDir, 'styleprompts.yaml');
 
-  copyIfExists(templateSource, templateDest, options.dryRun);
-  copyIfExists(examplesSource, examplesDest, options.dryRun);
-  copyIfExists(stylepromptsSource, stylepromptsDest, options.dryRun);
+  copyIfExists(templateSource, templateDest);
+  copyIfExists(examplesSource, examplesDest);
+  copyIfExists(stylepromptsSource, stylepromptsDest);
 
   return { status: alreadyExists ? 'updated' : 'installed', skillName };
 }
@@ -62,7 +60,7 @@ function copyRootFiles(targetDir, options) {
   rootFiles.forEach((fileName) => {
     const sourcePath = path.join(__dirname, fileName);
     const destPath = path.join(targetDir, fileName);
-    copyIfExists(sourcePath, destPath, options.dryRun);
+    copyIfExists(sourcePath, destPath);
   });
 }
 
@@ -75,8 +73,6 @@ function install(rawOptions = {}) {
 
   const options = {
     force: Boolean(rawOptions.force),
-    dryRun: Boolean(rawOptions.dryRun),
-    json: Boolean(rawOptions.json),
     silent: Boolean(rawOptions.silent),
     targetDir: rawOptions.targetDir || getDefaultSkillsDirectory(),
     createWorkflows: rawOptions.createWorkflows !== false,
@@ -104,15 +100,11 @@ function install(rawOptions = {}) {
     log('\n╔═══════════════════════════════════════════════════════════════╗');
     log(`║  Good UX Skills 安裝程式 v${PKG.version}`.padEnd(64) + '║');
     log('╚═══════════════════════════════════════════════════════════════╝\n');
-    
-    if (options.dryRun) {
-      log('🔍 模擬模式: 不會實際寫入任何檔案\n');
-    }
   }
 
   if (!fs.existsSync(targetDir)) {
-    ensureDirectory(targetDir, options.dryRun);
-    log(`${options.dryRun ? '📋' : '✅'} 建立技能目錄: ${targetDir}\n`);
+    ensureDirectory(targetDir);
+    log(`✅ 建立技能目錄: ${targetDir}\n`);
   } else {
     log(`✅ 使用現有技能目錄: ${targetDir}\n`);
   }
@@ -136,11 +128,11 @@ function install(rawOptions = {}) {
 
     switch (result.status) {
       case 'installed':
-        log(`${options.dryRun ? '📋' : '✅'} ${label}${extraInfo}`);
+        log(`✅ ${label}${extraInfo}`);
         summary.installed += 1;
         break;
       case 'updated':
-        log(`${options.dryRun ? '📋' : '🔄'} ${label}${extraInfo} (${options.dryRun ? '將覆蓋' : '已更新'})`);
+        log(`🔄 ${label}${extraInfo} (已更新)`);
         summary.updated += 1;
         break;
       case 'skipped':
@@ -166,23 +158,6 @@ function install(rawOptions = {}) {
       workflowSummary.skipped += workflowResult.skipped;
     }
   });
-
-  // JSON 輸出
-  if (options.json) {
-    const output = {
-      version: PKG.version,
-      targetDir,
-      projectRoot,
-      dryRun: options.dryRun,
-      summary,
-      workflowSummary,
-      results,
-      workflowResults
-    };
-    console.log(JSON.stringify(output, null, 2));
-    if (summary.missing > 0) { process.exitCode = 1; }
-    return summary;
-  }
 
   // 人類可讀摘要
   log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
@@ -268,8 +243,6 @@ if (require.main === module) {
 
   install({
     force: options.force,
-    dryRun: options.dryRun,
-    json: options.json,
     silent,
     targetDir: options.targetDir,
     skills: options.skills,

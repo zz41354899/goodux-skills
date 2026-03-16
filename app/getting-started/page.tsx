@@ -56,7 +56,7 @@ export default function GettingStartedPage() {
                   </div>
                 </div>
                 <p className="text-sm text-gray-500 leading-relaxed">
-                  這個指令會自動將 5 個設計思考流程技能（Empathize、Define、Ideate、Prototype、Test）下載並安裝到 <code className="bg-gray-50 px-1 rounded">.agents/skills</code> 目錄。Ideate 技能內建 20 個 UI 風格。支援 6 種 AI 工具，可透過 <code className="bg-gray-50 px-1 rounded">--tool</code> 參數指定。
+                  這個指令會自動將 5 個設計思考流程技能（Empathize、Define、Ideate、Prototype、Test）下載並安裝到 <code className="bg-gray-50 px-1 rounded">.agents/skills</code> 目錄。Ideate 技能內建 20 個 UI 風格。支援 6 種 AI 工具（Windsurf、Cursor、Claude Code、Continue、Cline、Aider）。
                 </p>
               </div>
             </section>

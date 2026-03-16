@@ -5,8 +5,6 @@
 function parseArgs(argv) {
   const options = {
     force: false,
-    dryRun: false,
-    json: false,
     list: false,
     listStyles: false,
     listTools: false,
@@ -22,8 +20,6 @@ function parseArgs(argv) {
     const arg = argv[i];
 
     if (arg === '--force' || arg === '-f') { options.force = true; continue; }
-    if (arg === '--dry-run' || arg === '-d') { options.dryRun = true; continue; }
-    if (arg === '--json') { options.json = true; continue; }
     if (arg === '--list' || arg === '-l') { options.list = true; continue; }
     if (arg === '--list-styles') { options.listStyles = true; continue; }
     if (arg === '--list-tools') { options.listTools = true; continue; }

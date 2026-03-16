@@ -74,12 +74,6 @@ npx goodux-ux-skills --list
 # 列出 UI 視覺風格庫（20 個風格）
 npx goodux-ux-skills --list-styles
 
-# JSON 格式輸出（適合 CI/CD）
-npx goodux-ux-skills --json
-
-# 模擬安裝（不實際寫入）
-npx goodux-ux-skills --dry-run
-
 # 指定安裝目錄
 npx goodux-ux-skills -t ~/my-project/.agents/skills
 

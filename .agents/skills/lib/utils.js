@@ -62,14 +62,12 @@ function getDefaultSkillsDirectory() {
   return possiblePaths[0];
 }
 
-function copyIfExists(sourcePath, destPath, dryRun) {
+function copyIfExists(sourcePath, destPath) {
   if (!fs.existsSync(sourcePath)) {
     return false;
   }
 
-  if (!dryRun) {
-    fs.copyFileSync(sourcePath, destPath);
-  }
+  fs.copyFileSync(sourcePath, destPath);
 
   return true;
 }
