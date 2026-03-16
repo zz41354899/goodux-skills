@@ -26,7 +26,7 @@ export default function DocsPage() {
             <div className="border border-gray-200 rounded-lg p-6">
               <h3 className="font-semibold text-gray-900 mb-3">專業 UX 方法</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                基於設計思考流程的 5 個核心技能，整合使用者訪談、人物誌、資訊架構等 9 個詳細參考方法，讓 AI 能夠提供專業級的設計建議。
+                5 個設計思考流程技能（Empathize、Define、Ideate、Prototype、Test），整合 11 個參考資料（2 個使用指引 + 9 個詳細方法），讓 AI 能夠提供專業級的設計建議。
               </p>
             </div>
             <div className="border border-gray-200 rounded-lg p-6">
@@ -94,7 +94,7 @@ export default function DocsPage() {
                 瀏覽所有技能
               </h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                查看完整的 5 個核心 UX 技能，涵蓋設計思考完整流程。
+                查看 5 個設計思考流程技能（Empathize、Define、Ideate、Prototype、Test）。
               </p>
             </Link>
 

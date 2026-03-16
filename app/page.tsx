@@ -15,7 +15,7 @@ export default function Home() {
               人人創造設計思維
             </p>
             <p className="mt-4 text-base text-gray-500 leading-relaxed max-w-2xl">
-              專業的 UX 設計技能包，符合 Agent Skills 標準。基於設計思考流程的 5 個核心技能 + 內建 20 個 UI 風格，支援 6 種 AI 工具。包含避免錯亂機制、專案檢測、開發選項，整合 9 個詳細參考方法。
+              專業的 UX 設計技能包，符合 Agent Skills 標準。5 個設計思考流程技能（Empathize、Define、Ideate、Prototype、Test）+ 內建 20 個 UI 風格。包含避免錯亂機制、專案檢測、開發選項（React + Shadcn/UI 或 spec.md）。
             </p>
             
             {/* NPM 安裝 - 簡潔版 */}
