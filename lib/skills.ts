@@ -1,3 +1,7 @@
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+
 export interface Skill {
   id: string;
   name: string;
@@ -13,340 +17,195 @@ export interface Skill {
   };
 }
 
+export interface SkillMetadata {
+  name: string;
+  description: string;
+  license: string;
+  metadata: {
+    author: string;
+    version: string;
+    category: string;
+    language: string;
+  };
+}
+
+export interface SkillContent {
+  taskDefinition: string;
+  whenToUse: string[];
+  requiredInput: string[];
+  expectedOutput: string[];
+  completionCriteria: string[];
+  notApplicable: string[];
+  triggerConditions: string[];
+  clarificationNeeded: string[];
+  relatedSkills: string[];
+  references: string[];
+  executionSteps: string[];
+  executionChecklist: string[];
+  exampleOutput: string;
+}
+
 export const skillCategories = [
-  { id: "research", name: "使用者研究", color: "bg-white text-gray-900 border border-gray-200" },
-  { id: "design", name: "介面設計", color: "bg-white text-gray-900 border border-gray-200" },
-  { id: "prototyping", name: "原型製作", color: "bg-white text-gray-900 border border-gray-200" },
-  { id: "testing", name: "可用性測試", color: "bg-white text-gray-900 border border-gray-200" },
-  { id: "accessibility", name: "無障礙設計", color: "bg-white text-gray-900 border border-gray-200" },
-  { id: "systems", name: "設計系統", color: "bg-white text-gray-900 border border-gray-200" },
+  { id: "empathize", name: "Empathize 同理", color: "bg-white text-gray-900 border border-gray-200" },
+  { id: "define", name: "Define 定義", color: "bg-white text-gray-900 border border-gray-200" },
+  { id: "ideate", name: "Ideate 發想", color: "bg-white text-gray-900 border border-gray-200" },
+  { id: "prototype", name: "Prototype 原型", color: "bg-white text-gray-900 border border-gray-200" },
+  { id: "test", name: "Test 測試", color: "bg-white text-gray-900 border border-gray-200" },
 ];
 
 export const skills: Skill[] = [
   {
-    id: "user-interview",
-    name: "使用者訪談",
-    description: "規劃與執行使用者訪談,用來理解需求、行為、動機與痛點,並整理質性研究洞察",
-    category: "research",
+    id: "empathize",
+    name: "Empathize 同理洞察",
+    description: "蒐集使用者洞察、執行訪談並萃取人物誌與需求背景，建立對目標族群的同理心。",
+    category: "empathize",
     content: {
-      overview: "使用者訪談是一種質性研究方法,透過與目標使用者進行一對一的深度對話,了解他們的需求、期望、行為模式和使用情境。這是 UX 研究中最基礎且重要的技能之一。",
+      overview:
+        "Empathize 聚焦理解使用者：透過訪談、觀察與資料彙整，萃取痛點、動機與情境，形成後續定義的依據。",
       whenToUse: [
-        "專案初期需要了解使用者需求時",
-        "驗證產品假設或設計決策時",
-        "探索新的使用情境或問題領域時",
-        "需要深入理解使用者動機和情感時",
+        "專案初期需要確認真實使用者需求",
+        "需要建立人物誌、旅程與情境圖以對齊團隊認知",
+        "重新檢視既有產品的核心痛點與動機",
       ],
       howToUse: [
-        "**準備階段**:定義研究目標,招募合適的受訪者,準備訪談大綱",
-        "**執行訪談**:建立信任關係,使用開放式問題,保持中立態度,適時追問",
-        "**記錄資料**:錄音或錄影(需徵得同意),做筆記記錄關鍵洞察",
-        "**分析整理**:轉錄訪談內容,提取關鍵主題,識別模式和洞察",
-        "**產出報告**:整理發現,提供可行的設計建議",
+        "**規劃研究**: 明確目標、招募對象、撰寫訪談/觀察大綱",
+        "**執行研究**: 訪談或實地觀察，蒐集語錄、行為與情緒訊號",
+        "**整理洞察**: 轉錄、分組、標註主題，形成人物誌與關鍵痛點",
+        "**對齊共識**: 與團隊分享洞察牆/旅程圖，確認後續定義方向",
       ],
       bestPractices: [
-        "每次訪談控制在 45-60 分鐘",
-        "使用「5 個為什麼」技巧深入挖掘根本原因",
-        "避免引導性問題,讓使用者自由表達",
-        "觀察非語言訊號和情緒反應",
-        "訪談後立即整理筆記,避免遺忘細節",
-        "至少訪談 5-8 位使用者以獲得足夠洞察",
+        "使用開放式問題並追問「為什麼」",
+        "避免引導，保持中立並觀察非語言訊號",
+        "至少訪談 5-8 位目標使用者以捕捉模式",
+        "研究後立即整理筆記，與團隊共讀形成共識",
       ],
       examples: [
-        "產品開發前期的需求探索訪談",
-        "現有產品的使用體驗回饋訪談",
-        "競品使用者的轉換動機訪談",
+        "電商結帳流程的使用者訪談與痛點牆",
+        "SaaS 管理員的日常情境旅程圖",
       ],
     },
   },
   {
-    id: "persona-creation",
-    name: "使用者人物誌",
-    description: "將研究資料整理成具代表性的使用者人物誌,幫助團隊對目標使用者建立共同理解",
-    category: "research",
+    id: "define",
+    name: "Define 問題定義",
+    description: "收斂洞察、界定問題、優先順序與成功指標，並確認限制條件（含可及性/a11y）。",
+    category: "define",
     content: {
-      overview: "使用者人物誌(Persona)是基於真實使用者研究資料所創建的虛構角色,代表一群具有相似特徵、需求和行為模式的使用者群體。它幫助設計團隊在整個產品開發過程中保持對使用者的關注。",
+      overview:
+        "Define 將研究洞察轉為明確問題敘述：對齊目標、範疇、限制與成功指標，為後續構思與驗證奠基。",
       whenToUse: [
-        "完成使用者研究後,需要整合洞察時",
-        "團隊需要對目標使用者有共同理解時",
-        "做設計決策時需要參考依據",
-        "向利害關係人溝通使用者需求時",
+        "完成研究後需要收斂關鍵問題與需求",
+        "多方利害關係人需要共識與優先排序",
+        "需要定義成功指標與驗收標準（含 a11y）",
       ],
       howToUse: [
-        "**收集資料**:整合訪談、問卷、分析等研究資料",
-        "**識別模式**:找出使用者在目標、行為、痛點上的共同特徵",
-        "**分群歸類**:將相似的使用者歸為同一群體",
-        "**創建人物誌**:為每個群體創建一個代表性角色,包含姓名、照片、背景、目標、痛點、使用情境等",
-        "**驗證調整**:與團隊和真實使用者驗證人物誌的準確性",
+        "**彙整洞察**: 聚合痛點/目標，繪製問題陳述與 POV",
+        "**界定範疇**: 明確角色、場景、限制（技術/法規/可及性）",
+        "**優先排序**: 以影響力×可行性排序需求，確定 MVP 範圍",
+        "**設定指標**: 定義成效衡量與驗收標準（如完成率、錯誤率、WCAG 等級）",
       ],
       bestPractices: [
-        "基於真實資料而非假設創建",
-        "通常創建 3-5 個主要人物誌即可",
-        "包含具體的目標、動機和痛點",
-        "加入真實的引言增加可信度",
-        "定期更新以反映使用者變化",
-        "避免刻板印象和過度簡化",
+        "以使用者目標撰寫問題敘述，避免解法先行",
+        "同時紀錄已知限制與假設，降低落地風險",
+        "將 a11y/法規要求視為範疇的一部分",
+        "對齊利害關係人並記錄決策依據",
       ],
       examples: [
-        "電商平台的「精打細算的小資族」人物誌",
-        "企業軟體的「忙碌的專案經理」人物誌",
-        "健康 App 的「注重養生的銀髮族」人物誌",
+        "行動銀行轉帳的核心問題陳述與成功指標",
+        "企業後台資料表易讀性與 WCAG AA 對齊的需求列表",
       ],
     },
   },
   {
-    id: "information-architecture",
-    name: "資訊架構設計",
-    description: "規劃資訊架構、內容層級與導航結構,讓使用者更容易理解與找到資訊",
-    category: "design",
+    id: "ideate",
+    name: "Ideate 發想構思",
+    description: "發散解法、繪製線框並探索視覺方向；內含 20 種 UI 風格參考以快速收斂。",
+    category: "ideate",
     content: {
-      overview: "資訊架構(Information Architecture, IA)是組織、結構化和標記內容的藝術與科學,目的是幫助使用者輕鬆找到資訊並完成任務。良好的 IA 是優秀使用者體驗的基礎。",
+      overview:
+        "Ideate 透過發散與收斂將問題轉為候選解法，涵蓋流程草圖、線框、資訊架構與視覺方向探索。",
       whenToUse: [
-        "設計新產品或網站的結構時",
-        "重新組織現有內容時",
-        "使用者反映難以找到資訊時",
-        "內容量大且複雜時",
+        "問題定義完成，需要多個解法選項時",
+        "需要快速產出線框驗證流程與結構",
+        "需要挑選合適的視覺風格與設計語言",
       ],
       howToUse: [
-        "**內容盤點**:列出所有需要呈現的內容和功能",
-        "**卡片分類**:讓使用者將內容卡片分組,了解他們的心智模型",
-        "**建立架構**:根據研究結果設計層級結構",
-        "**創建導航**:設計主導航、次導航和麵包屑",
-        "**繪製網站地圖**:視覺化整體架構",
-        "**測試驗證**:透過樹狀測試驗證架構的可用性",
+        "**發散想法**: Crazy 8s / 雙鑽等方法產生多個概念",
+        "**線框與流程**: 繪製關鍵路徑線框，標註互動與狀態",
+        "**視覺方向**: 參考 20 種 UI 風格，建立 2-3 個候選樣式",
+        "**收斂評估**: 以可行性、可用性、一致性與 a11y 為準則選擇方案",
       ],
       bestPractices: [
-        "遵循使用者的心智模型,而非組織內部結構",
-        "保持層級深度在 3-4 層以內",
-        "使用清晰、一致的標籤命名",
-        "提供多種尋找資訊的路徑",
-        "考慮內容的可擴展性",
-        "使用卡片分類法驗證分類邏輯",
+        "保持低保真快速迭代，再逐步提高保真度",
+        "用真實內容取代 Lorem，避免資訊密度錯判",
+        "使用一致的間距/排版系統，方便後續原型與系統化",
+        "考慮深色模式與對比度需求，及早納入 a11y",
       ],
       examples: [
-        "電商網站的商品分類架構",
-        "企業官網的內容組織",
-        "知識庫的文章分類系統",
+        "B2B 儀表板線框與資料密度策略",
+        "電商結帳流程的兩版視覺方向（Minimalist vs. Tech）",
       ],
     },
   },
   {
-    id: "wireframing",
-    name: "線框圖設計",
-    description: "建立低至中保真的介面線框圖,用於快速規劃版面、資訊層級與互動骨架",
-    category: "design",
+    id: "prototype",
+    name: "Prototype 原型製作",
+    description: "將優選解法轉成可操作原型，設定互動、轉場與狀態，為測試與示範做準備。",
+    category: "prototype",
     content: {
-      overview: "線框圖(Wireframe)是網頁或應用程式介面的低保真度視覺呈現,專注於內容佈局、資訊層級和功能流程,而不涉及顏色、字型等視覺設計細節。它是設計流程中的重要溝通工具。",
+      overview:
+        "Prototype 著重把線框/視覺稿變成可互動的體驗，涵蓋流程串接、狀態、動畫與分享設定，用於可用性與利益關係人驗證。",
       whenToUse: [
-        "概念發想和快速迭代階段",
-        "與團隊討論介面結構時",
-        "在投入高保真設計前驗證想法",
-        "向利害關係人展示初步構想時",
+        "需要讓使用者或利害關係人實際操作體驗時",
+        "在開發前驗證關鍵互動/技術可行性",
+        "需要對外展示概念並收集回饋",
       ],
       howToUse: [
-        "**定義目標**:明確頁面或功能的目的",
-        "**繪製草圖**:用紙筆或工具快速繪製多個版本",
-        "**確定佈局**:決定內容區塊的位置和大小",
-        "**標註說明**:加入必要的註解說明互動和功能",
-        "**團隊審查**:與團隊討論並收集回饋",
-        "**迭代優化**:根據回饋快速調整",
+        "**組裝畫面**: 將線框/高保真畫面串接完整流程",
+        "**設定互動**: 點擊、滑動、鍵盤導覽、狀態/錯誤分支",
+        "**補足情境**: 加入 loading/empty/error，模擬真實資料",
+        "**分享與說明**: 設定可測試連結、說明限制與假設",
       ],
       bestPractices: [
-        "保持簡單,使用灰階和基本形狀",
-        "專注於功能和內容,而非視覺美感",
-        "標示清楚互動元素和狀態",
-        "保持一致的元件使用",
-        "快速迭代,不要過早追求完美",
-        "使用真實內容而非 Lorem Ipsum",
+        "以測試任務為主線，只做必要畫面與分支",
+        "保持互動一致性，避免隱藏的跳轉與無回饋狀態",
+        "加入焦點順序與鍵盤操作，預留 a11y 驗證",
+        "記錄原型限制與假設，避免誤判可行性",
       ],
       examples: [
-        "網站首頁的內容佈局線框圖",
-        "行動應用程式的主要流程線框圖",
-        "表單頁面的欄位配置線框圖",
+        "行動支付綁卡流程高保真原型",
+        "B2B 報表篩選與下載體驗原型",
       ],
     },
   },
   {
-    id: "ui-visual-design",
-    name: "UI 視覺設計",
-    description: "選擇與應用適合的 UI 視覺風格,提升介面設計品質與一致性。內建 20 個精選 UI 風格",
-    category: "design",
+    id: "test",
+    name: "Test 可用性驗證",
+    description: "規劃與執行可用性測試，蒐集行為與回饋，整理優先修正清單（可含 a11y 驗證）。",
+    category: "test",
     content: {
-      overview: "UI 視覺設計專注於選擇與應用適合的視覺風格,包含色彩系統、字體排版、間距佈局與元件風格規範。內建 20 個精選 UI 風格資料庫,幫助快速建立高品質的介面視覺。",
+      overview:
+        "Test 透過任務操作觀察使用者行為，量化/質化回饋並排序問題，為迭代提供明確修正方向。",
       whenToUse: [
-        "需要選擇或定義產品視覺風格時",
-        "建立色彩、字體、間距等視覺規範時",
-        "提升介面設計專業度與美感時",
-        "需要快速參考專業設計風格時",
+        "原型或產品釋出前需要驗證體驗",
+        "比對多個方案或追蹤迭代成效",
+        "需要同時檢視可用性與可及性風險",
       ],
       howToUse: [
-        "**了解產品**:收集產品類型、目標使用者、品牌調性等資訊",
-        "**選擇風格**:參考 StylePrompts 風格庫,選擇 2-3 個適合的風格方向",
-        "**定義色彩**:建立主色、輔助色、中性色與語意色系統",
-        "**設定字體**:選擇字體家族並定義字級、行高、字重規範",
-        "**規劃間距**:建立一致的間距系統(4px 或 8px 倍數)",
-        "**設計元件**:定義按鈕、表單、卡片等元件的視覺風格",
+        "**定義目標**: 設定任務、成功標準、評估指標",
+        "**招募與安排**: 找 5-8 位目標使用者，安排錄影/紀錄",
+        "**執行測試**: 出聲思考、觀察行為/卡點，標記嚴重度",
+        "**整理輸出**: 問題清單、影響層級、建議修正與 a/b 後續計畫",
       ],
       bestPractices: [
-        "參考內建的 20 個精選 UI 風格",
-        "根據產品類型選擇適合的風格(極簡/專業/溫暖/科技)",
-        "確保色彩對比度符合 WCAG 無障礙標準",
-        "使用一致的間距系統避免視覺混亂",
-        "建立可重複使用的視覺規範文件",
-        "考慮深色模式與響應式設計",
+        "以任務完成率、時間、錯誤率搭配質性觀察",
+        "保持中立，不替使用者解題，專注觀察",
+        "用統一格式記錄問題與嚴重度，方便排序",
+        "若包含 a11y，記錄對比度、鍵盤流程、朗讀與替代文字",
       ],
       examples: [
-        "B2B SaaS 平台的專業視覺風格設計",
-        "消費性 App 的溫暖親和視覺風格",
-        "企業後台的高效資料視覺化風格",
-      ],
-    },
-  },
-  {
-    id: "usability-testing",
-    name: "可用性測試",
-    description: "觀察真實使用者與產品互動,發現可用性問題並收集改善建議",
-    category: "testing",
-    content: {
-      overview: "可用性測試是讓真實使用者在觀察下使用產品或原型,以發現介面問題、了解使用行為並評估產品的易用性。這是驗證設計決策最有效的方法之一。",
-      whenToUse: [
-        "原型或產品開發的任何階段",
-        "發布前驗證設計是否符合使用者需求",
-        "發現可用性問題時",
-        "比較不同設計方案時",
-      ],
-      howToUse: [
-        "**定義目標**:明確想要測試的功能或流程",
-        "**準備任務**:設計 3-5 個真實的使用情境任務",
-        "**招募參與者**:找 5-8 位目標使用者",
-        "**執行測試**:觀察使用者完成任務,鼓勵他們出聲思考",
-        "**記錄問題**:記錄卡點、錯誤和使用者反應",
-        "**分析結果**:整理發現,按嚴重程度排序問題",
-        "**提出建議**:針對問題提供具體的改善方案",
-      ],
-      bestPractices: [
-        "5 位使用者可發現 85% 的可用性問題",
-        "使用「出聲思考」協定了解使用者想法",
-        "保持中立,不要引導或幫助使用者",
-        "測試真實任務而非功能展示",
-        "記錄定量數據(完成率、時間)和定性觀察",
-        "盡早且頻繁地測試",
-      ],
-      examples: [
-        "電商結帳流程的可用性測試",
-        "新功能原型的使用者測試",
-        "競品對比測試",
-      ],
-    },
-  },
-  {
-    id: "accessibility-design",
-    name: "無障礙設計",
-    description: "確保產品能被所有人使用,包括身心障礙者,符合 WCAG 標準",
-    category: "accessibility",
-    content: {
-      overview: "無障礙設計(Accessibility Design)確保數位產品能被所有人使用,包括視覺、聽覺、行動或認知障礙者。這不僅是道德責任,也是法律要求,更能提升所有使用者的體驗。",
-      whenToUse: [
-        "任何數位產品的設計階段",
-        "需要符合法規要求時(如 WCAG 2.1)",
-        "擴大目標使用者群體時",
-        "改善產品整體可用性時",
-      ],
-      howToUse: [
-        "**了解標準**:學習 WCAG 2.1 的 A、AA、AAA 等級要求",
-        "**設計檢查**:確保色彩對比度、字體大小、可鍵盤操作等",
-        "**語意化標記**:使用正確的 HTML 標籤和 ARIA 屬性",
-        "**提供替代方案**:為圖片加 alt 文字,為影片加字幕",
-        "**測試驗證**:使用螢幕閱讀器和無障礙檢測工具",
-        "**持續改善**:定期審查並更新無障礙功能",
-      ],
-      bestPractices: [
-        "色彩對比度至少達到 4.5:1(AA 級)",
-        "所有功能都能用鍵盤操作",
-        "提供清晰的焦點指示器",
-        "使用語意化的標題層級",
-        "表單欄位有明確的標籤",
-        "避免僅用顏色傳達資訊",
-        "確保內容可縮放至 200% 仍可用",
-      ],
-      examples: [
-        "為圖片加上描述性的 alt 文字",
-        "設計高對比度的按鈕和連結",
-        "提供鍵盤快捷鍵導航",
-      ],
-    },
-  },
-  {
-    id: "design-system",
-    name: "設計系統建立",
-    description: "創建可重複使用的元件庫和設計規範,確保產品一致性和效率",
-    category: "systems",
-    content: {
-      overview: "設計系統是一套完整的設計標準、元件庫、模式和指南,幫助團隊快速且一致地建立產品。它包含視覺風格、UI 元件、互動模式和使用指南。",
-      whenToUse: [
-        "產品規模擴大,需要保持一致性時",
-        "多個團隊協作開發時",
-        "需要提升設計和開發效率時",
-        "品牌需要統一視覺語言時",
-      ],
-      howToUse: [
-        "**審查現況**:盤點現有的設計元素和模式",
-        "**定義原則**:建立設計原則和價值觀",
-        "**建立基礎**:定義顏色、字型、間距等設計 token",
-        "**創建元件**:設計可重複使用的 UI 元件",
-        "**撰寫文件**:記錄使用指南和最佳實踐",
-        "**工具整合**:在 Figma/Sketch 和程式碼中實作",
-        "**持續維護**:定期更新和改善系統",
-      ],
-      bestPractices: [
-        "從小規模開始,逐步擴展",
-        "優先處理最常用的元件",
-        "保持元件的靈活性和可組合性",
-        "提供清晰的命名規範",
-        "包含使用範例和反例",
-        "設計和開發緊密協作",
-        "建立治理流程管理變更",
-      ],
-      examples: [
-        "Material Design、Ant Design 等知名設計系統",
-        "企業內部的品牌設計系統",
-        "產品線的元件庫",
-      ],
-    },
-  },
-  {
-    id: "prototype-testing",
-    name: "互動原型製作",
-    description: "創建可互動的高保真原型,模擬真實產品體驗以進行測試和驗證",
-    category: "prototyping",
-    content: {
-      overview: "互動原型是具有真實互動功能的產品模擬,讓使用者能夠點擊、滑動和操作,體驗接近最終產品的流程。這是驗證設計和收集回饋的有效工具。",
-      whenToUse: [
-        "需要測試複雜的互動流程時",
-        "向利害關係人展示設計概念時",
-        "在開發前驗證技術可行性時",
-        "進行可用性測試時",
-      ],
-      howToUse: [
-        "**選擇工具**:根據需求選擇 Figma、Protopie、Framer 等工具",
-        "**設計畫面**:創建所需的介面畫面",
-        "**加入互動**:設定點擊、滑動、轉場等互動",
-        "**建立流程**:連接各個畫面形成完整流程",
-        "**加入動畫**:增加過渡動畫提升真實感",
-        "**測試調整**:自己先測試並修正問題",
-        "**分享測試**:與使用者或團隊分享進行測試",
-      ],
-      bestPractices: [
-        "根據測試目標決定保真度層級",
-        "專注於關鍵流程,不需要完整產品",
-        "使用真實內容而非假資料",
-        "保持互動的一致性",
-        "加入適當的載入和錯誤狀態",
-        "記錄原型的限制和假設",
-      ],
-      examples: [
-        "App 的註冊登入流程原型",
-        "電商購物車結帳流程原型",
-        "複雜表單的填寫體驗原型",
+        "企業後台表格操作的可用性測試報告",
+        "行動 App 註冊流程的 5 人快速測試與修正建議",
       ],
     },
   },
@@ -359,3 +218,108 @@ export const getSkillsByCategory = (categoryId: string): Skill[] => {
 export const getSkillById = (skillId: string): Skill | undefined => {
   return skills.find((skill) => skill.id === skillId);
 };
+
+/**
+ * 從 .agents/skills/{skillId}/SKILL.md 動態讀取完整技能內容
+ */
+export function getSkillContentFromFile(skillId: string): {
+  metadata: SkillMetadata;
+  content: SkillContent;
+  rawMarkdown: string;
+} | null {
+  try {
+    const skillPath = path.join(
+      process.cwd(),
+      '.agents',
+      'skills',
+      skillId,
+      'SKILL.md'
+    );
+
+    if (!fs.existsSync(skillPath)) {
+      console.warn(`Skill file not found: ${skillPath}`);
+      return null;
+    }
+
+    const fileContent = fs.readFileSync(skillPath, 'utf-8');
+    const { data, content: markdown } = matter(fileContent);
+
+    const parsedContent = parseSkillMarkdown(markdown);
+
+    return {
+      metadata: data as SkillMetadata,
+      content: parsedContent,
+      rawMarkdown: markdown,
+    };
+  } catch (error) {
+    console.error(`Error reading skill file for ${skillId}:`, error);
+    return null;
+  }
+}
+
+/**
+ * 解析 SKILL.md 的 Markdown 內容為結構化資料
+ */
+function parseSkillMarkdown(markdown: string): SkillContent {
+  const sections: Record<string, string> = {};
+  const lines = markdown.split('\n');
+  let currentSection = '';
+  let currentContent: string[] = [];
+
+  for (const line of lines) {
+    if (line.startsWith('## ')) {
+      if (currentSection) {
+        sections[currentSection] = currentContent.join('\n').trim();
+      }
+      currentSection = line.replace('## ', '').trim();
+      currentContent = [];
+    } else if (currentSection) {
+      currentContent.push(line);
+    }
+  }
+
+  if (currentSection) {
+    sections[currentSection] = currentContent.join('\n').trim();
+  }
+
+  const parseList = (text: string): string[] => {
+    return text
+      .split('\n')
+      .filter((line) => line.trim().startsWith('-'))
+      .map((line) => line.replace(/^-\s*/, '').trim())
+      .filter((line) => line.length > 0);
+  };
+
+  return {
+    taskDefinition: sections['任務定義'] || '',
+    whenToUse: parseList(sections['何時使用'] || ''),
+    requiredInput: parseList(sections['必要輸入'] || ''),
+    expectedOutput: parseList(sections['預期輸出'] || ''),
+    completionCriteria: parseList(sections['完成條件'] || ''),
+    notApplicable: parseList(sections['不適用情境'] || ''),
+    triggerConditions: parseList(sections['觸發條件'] || ''),
+    clarificationNeeded: parseList(sections['必要澄清'] || ''),
+    relatedSkills: parseList(sections['可搭配技能'] || ''),
+    references: parseList(sections['參考資料 (References)'] || ''),
+    executionSteps: parseList(sections['執行步驟'] || ''),
+    executionChecklist: parseList(sections['執行檢查'] || ''),
+    exampleOutput: sections['精簡範例輸出'] || '',
+  };
+}
+
+/**
+ * 取得所有技能的完整內容（用於 SSG/SSR）
+ */
+export function getAllSkillsContent(): Map<string, ReturnType<typeof getSkillContentFromFile>> {
+  const skillsMap = new Map();
+  const skillIds = ['empathize', 'define', 'ideate', 'prototype', 'test'];
+
+  for (const skillId of skillIds) {
+    const content = getSkillContentFromFile(skillId);
+    if (content) {
+      skillsMap.set(skillId, content);
+    }
+  }
+
+  return skillsMap;
+}

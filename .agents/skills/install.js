@@ -130,7 +130,7 @@ function install(rawOptions = {}) {
     const result = copySkill(skillName, targetDir, options);
     const label = getLabel(skillName);
     
-    const extraInfo = skillName === 'ui-visual-design' ? ' - 含 20 個 UI 風格' : '';
+    const extraInfo = skillName === 'ideate' ? ' - 含 20 個 UI 風格參考' : '';
 
     results.push({ id: skillName, name: label, status: result.status });
 
@@ -248,7 +248,7 @@ if (require.main === module) {
     process.exit(0); 
   }
   if (options.listStyles) { 
-    const stylesFile = path.join(__dirname, 'ui-visual-design', 'styleprompts.yaml');
+    const stylesFile = path.join(__dirname, 'references', 'ui-visual-design', 'styleprompts.yaml');
     listStyles(stylesFile, options); 
     process.exit(0); 
   }

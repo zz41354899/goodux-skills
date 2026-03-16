@@ -5,30 +5,39 @@ const path = require('path');
  * 工具函數
  */
 
+// 核心技能：設計思考五大流程
 const SKILL_NAMES = {
-  'user-interview': '使用者訪談',
-  'persona-creation': '使用者人物誌',
-  'information-architecture': '資訊架構設計',
-  'wireframing': '線框圖設計',
-  'usability-testing': '可用性測試',
-  'accessibility-design': '無障礙設計',
-  'design-system': '設計系統建立',
-  'prototyping': '互動原型製作',
-  'ui-visual-design': 'UI 視覺設計'
+  empathize: 'Empathize 同理洞察',
+  define: 'Define 問題定義',
+  ideate: 'Ideate 發想構思',
+  prototype: 'Prototype 原型製作',
+  test: 'Test 可用性驗證'
 };
 
+// References 參考資料（不安裝，僅供查閱）
+// 位於 references/ 目錄：user-interview, persona-creation, information-architecture,
+// wireframing, ui-visual-design, usability-testing, accessibility-design,
+// design-system, prototyping
+
 function discoverSkills(baseDir) {
+  const coreSkills = Object.keys(SKILL_NAMES);
+  const allowList = new Set(coreSkills);
   try {
     return fs.readdirSync(baseDir, { withFileTypes: true })
-      .filter((entry) => entry.isDirectory())
+      .filter((entry) => entry.isDirectory() && allowList.has(entry.name))
       .map((entry) => entry.name)
       .filter((name) => {
         const skillFile = path.join(baseDir, name, 'SKILL.md');
         return fs.existsSync(skillFile);
-      });
+      })
+      .sort((a, b) => coreSkills.indexOf(a) - coreSkills.indexOf(b)); // 依流程順序排列
   } catch {
-    return Object.keys(SKILL_NAMES);
+    return coreSkills;
   }
+}
+
+function getCoreSkills() {
+  return Object.keys(SKILL_NAMES);
 }
 
 function getLabel(skillName) {
@@ -75,6 +84,7 @@ function isPostInstall() {
 module.exports = {
   SKILL_NAMES,
   discoverSkills,
+  getCoreSkills,
   getLabel,
   getDefaultSkillsDirectory,
   copyIfExists,

@@ -1,7 +1,7 @@
 {
   "name": "goodux-ux-skills",
-  "version": "2.2.1",
-  "description": "專業的 UX 設計技能包 — 符合 Agent Skills 標準的可安裝技能庫。包含使用者訪談、人物誌、資訊架構、線框圖、UI 視覺設計（內建 20 個 UI 風格）、可用性測試、無障礙設計、設計系統、原型製作等 9 個實戰技能。支援 6 種 AI 工具（Windsurf、Cursor、Continue、Cline、Aider、Claude Code）。模組化架構，強大 CLI，支援單一技能選裝、多工具支援、JSON 輸出與 dry-run 模擬。",
+  "version": "2.3.0",
+  "description": "專業的 UX 設計技能包 — 符合 Agent Skills 標準的可安裝技能庫。基於設計思考流程，包含 Empathize（同理洞察）、Define（問題定義）、Ideate（發想構思，內建 20 個 UI 風格）、Prototype（原型製作）、Test（可用性驗證）五大核心技能。整合使用者訪談、人物誌、資訊架構、線框圖、UI 視覺設計、可用性測試、無障礙設計、設計系統、原型製作等詳細參考方法。支援 Windsurf、Cursor、Continue、Cline、Aider、Claude Code 等 AI 工具。",
   "main": "install.js",
   "bin": {
     "goodux-skills": "./install.js",
@@ -45,15 +45,12 @@
     "url": "https://github.com/zz41354899/goodux-skills/issues"
   },
   "files": [
-    "user-interview/",
-    "persona-creation/",
-    "information-architecture/",
-    "wireframing/",
-    "ui-visual-design/",
-    "usability-testing/",
-    "accessibility-design/",
-    "design-system/",
-    "prototyping/",
+    "empathize/",
+    "define/",
+    "ideate/",
+    "prototype/",
+    "test/",
+    "references/",
     "lib/",
     "install.js",
     "tools-config.json",

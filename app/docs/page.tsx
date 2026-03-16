@@ -26,7 +26,7 @@ export default function DocsPage() {
             <div className="border border-gray-200 rounded-lg p-6">
               <h3 className="font-semibold text-gray-900 mb-3">專業 UX 方法</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                將使用者訪談、人物誌、資訊架構等專業 UX 方法打包成可重複使用的技能,讓 AI 能夠提供專業級的設計建議。
+                基於設計思考流程的 5 個核心技能，整合使用者訪談、人物誌、資訊架構等 9 個詳細參考方法，讓 AI 能夠提供專業級的設計建議。
               </p>
             </div>
             <div className="border border-gray-200 rounded-lg p-6">
@@ -94,7 +94,7 @@ export default function DocsPage() {
                 瀏覽所有技能
               </h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                查看完整的 9 個 UX 技能,從使用者研究到 UI 視覺設計。
+                查看完整的 5 個核心 UX 技能，涵蓋設計思考完整流程。
               </p>
             </Link>
 
@@ -170,7 +170,7 @@ export default function DocsPage() {
                     "我需要了解使用者為什麼放棄購物車,該怎麼做?"
                   </p>
                   <p className="text-sm text-gray-500 mt-2">
-                    → AI 會自動使用 <code className="bg-gray-100 px-2 py-1 rounded">user-interview</code> 技能
+                    → AI 會自動使用 <code className="bg-gray-100 px-2 py-1 rounded">empathize</code> 技能
                   </p>
                 </div>
 
@@ -180,7 +180,7 @@ export default function DocsPage() {
                     "幫我設計一個電商結帳頁面的線框圖"
                   </p>
                   <p className="text-sm text-gray-500 mt-2">
-                    → AI 會自動使用 <code className="bg-gray-100 px-2 py-1 rounded">wireframing</code> 技能
+                    → AI 會自動使用 <code className="bg-gray-100 px-2 py-1 rounded">ideate</code> 技能
                   </p>
                 </div>
 
@@ -190,7 +190,7 @@ export default function DocsPage() {
                     "我想測試這個新功能是否好用"
                   </p>
                   <p className="text-sm text-gray-500 mt-2">
-                    → AI 會自動使用 <code className="bg-gray-100 px-2 py-1 rounded">usability-testing</code> 技能
+                    → AI 會自動使用 <code className="bg-gray-100 px-2 py-1 rounded">test</code> 技能
                   </p>
                 </div>
               </div>
@@ -206,14 +206,14 @@ export default function DocsPage() {
                 <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
                   <p className="text-sm font-medium text-gray-700 mb-2">使用 /skills 選單</p>
                   <div className="font-mono text-sm text-gray-900">
-                    /skills → 選擇「使用者訪談」
+                    /empathize → 觸發「Empathize 同理洞察」技能
                   </div>
                 </div>
 
                 <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
                   <p className="text-sm font-medium text-gray-700 mb-2">使用 $ 符號(Windsurf)</p>
                   <div className="font-mono text-sm text-gray-900">
-                    $wireframing 設計一個登入頁面
+                    $ideate 設計一個登入頁面的線框圖
                   </div>
                 </div>
               </div>
@@ -276,19 +276,15 @@ export default function DocsPage() {
       <section className="border-b border-gray-100">
         <div className="mx-auto max-w-5xl px-6 py-16 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-2">可用技能</h2>
-          <p className="text-gray-600 mb-8">9 個專業 UX 設計技能,涵蓋研究、設計、測試與系統</p>
+          <p className="text-gray-600 mb-8">5 個核心 UX 設計技能，基於設計思考流程，整合 9 個詳細參考方法</p>
           
           <div className="grid md:grid-cols-2 gap-4">
             {[
-              { name: "使用者訪談", id: "user-interview", desc: "深度訪談了解需求與痛點" },
-              { name: "使用者人物誌", id: "persona-creation", desc: "創建代表性使用者角色" },
-              { name: "資訊架構設計", id: "information-architecture", desc: "組織內容與導航結構" },
-              { name: "線框圖設計", id: "wireframing", desc: "快速繪製介面草圖" },
-              { name: "UI 視覺設計", id: "ui-visual-design", desc: "選擇視覺風格,內建 20 個 UI 風格" },
-              { name: "可用性測試", id: "usability-testing", desc: "發現可用性問題" },
-              { name: "無障礙設計", id: "accessibility-design", desc: "確保產品符合 WCAG 標準" },
-              { name: "設計系統建立", id: "design-system", desc: "創建可重複使用的元件庫" },
-              { name: "互動原型製作", id: "prototyping", desc: "創建可互動的高保真原型" },
+              { name: "Empathize 同理洞察", id: "empathize", desc: "使用者訪談、人物誌與研究洞察整理" },
+              { name: "Define 問題定義", id: "define", desc: "問題界定、需求優先順序、限制與成功指標" },
+              { name: "Ideate 發想構思", id: "ideate", desc: "概念發散、線框與視覺方向探索（含 20 種 UI 風格）" },
+              { name: "Prototype 原型製作", id: "prototype", desc: "建立可操作的互動原型" },
+              { name: "Test 可用性驗證", id: "test", desc: "可用性測試與回饋收斂（可涵蓋 a11y 驗證）" },
             ].map((skill) => (
               <Link
                 key={skill.id}

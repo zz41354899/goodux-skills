@@ -104,6 +104,27 @@ export default function BestPracticesPage() {
           description: "包含載入、錯誤、空狀態等真實情境"
         }
       ]
+    },
+    {
+      category: "Skills 使用",
+      items: [
+        {
+          title: "一次只使用一個 Skill",
+          description: "避免同時觸發多個 skills,確保流程清晰不混亂"
+        },
+        {
+          title: "在 Define 階段決定開發方式",
+          description: "選擇用 React + Shadcn/UI 做原型,或先產生 spec.md 規格文件"
+        },
+        {
+          title: "允許在任何階段重新開始",
+          description: "測試後如不滿意,可回到 Empathize/Define/Ideate/Prototype 重新設計"
+        },
+        {
+          title: "確保完成所有執行步驟",
+          description: "每個 skill 都有 4 個執行步驟,確保全部完成再進入下一階段"
+        }
+      ]
     }
   ];
 

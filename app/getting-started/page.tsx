@@ -50,13 +50,13 @@ export default function GettingStartedPage() {
                     <div className="space-y-2 text-xs">
                       <div><code className="text-blue-400">npx goodux-ux-skills --tool cursor</code> <span className="text-gray-500"># 支援 Cursor</span></div>
                       <div><code className="text-blue-400">npx goodux-ux-skills --tool windsurf --tool claude-code</code> <span className="text-gray-500"># 多工具</span></div>
-                      <div><code className="text-blue-400">npx goodux-ux-skills -s wireframing</code> <span className="text-gray-500"># 只裝線框圖</span></div>
+                      <div><code className="text-blue-400">npx goodux-ux-skills -s empathize -s ideate</code> <span className="text-gray-500"># 只裝指定技能</span></div>
                       <div><code className="text-blue-400">npx goodux-ux-skills --list-tools</code> <span className="text-gray-500"># 列出支援的工具</span></div>
                     </div>
                   </div>
                 </div>
                 <p className="text-sm text-gray-500 leading-relaxed">
-                  這個指令會自動將 9 個 UX 技能（含 20 個內建 UI 風格）下載並安裝到你電腦上的 <code className="bg-gray-50 px-1 rounded">.agents/skills</code> 目錄下。v2.2.0 支援 6 種 AI 工具（Windsurf、Cursor、Claude Code、Continue、Cline、Aider），可透過 <code className="bg-gray-50 px-1 rounded">--tool</code> 參數指定，支援單一技能選裝、多工具同時支援、JSON 輸出與 dry-run 模擬。
+                  這個指令會自動將 5 個核心 UX 技能（含 20 個內建 UI 風格）下載並安裝到你電腦上的 <code className="bg-gray-50 px-1 rounded">.agents/skills</code> 目錄下。v2.3.0 支援 6 種 AI 工具（Windsurf、Cursor、Claude Code、Continue、Cline、Aider），可透過 <code className="bg-gray-50 px-1 rounded">--tool</code> 參數指定，支援單一技能選裝、多工具同時支援、JSON 輸出與 dry-run 模擬。
                 </p>
               </div>
             </section>
@@ -119,22 +119,22 @@ export default function GettingStartedPage() {
                     <p className="mb-4 leading-relaxed">直接在對話中輸入技能名稱:</p>
                     <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
                       <p className="text-gray-900 font-medium">
-                        「<span className="text-gray-600 font-mono">$wireframing</span> 幫我設計一個電商結帳頁面」
+                        「<span className="text-gray-600 font-mono">$ideate</span> 幫我設計一個電商結帳頁面的線框圖」
                       </p>
                     </div>
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                       <Terminal className="h-5 w-5 text-gray-400" />
-                      斜線命令 (Slash Command) <span className="text-xs text-gray-500 font-normal">v2.2.0 新功能</span>
+                      斜線命令 (Slash Command)
                     </h3>
                     <p className="mb-4 leading-relaxed">使用斜線命令快速觸發技能:</p>
                     <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 space-y-3">
                       <p className="text-gray-900 font-medium">
-                        Windsurf/Cursor: <code className="text-gray-600 font-mono bg-white px-2 py-1 rounded">/prototyping</code>
+                        Windsurf/Cursor: <code className="text-gray-600 font-mono bg-white px-2 py-1 rounded">/prototype</code>
                       </p>
                       <p className="text-gray-900 font-medium">
-                        Continue: <code className="text-gray-600 font-mono bg-white px-2 py-1 rounded">@prototyping</code>
+                        Continue: <code className="text-gray-600 font-mono bg-white px-2 py-1 rounded">@prototype</code>
                       </p>
                     </div>
                   </div>
@@ -149,7 +149,7 @@ export default function GettingStartedPage() {
                         「我們需要了解使用者為什麼在購物車放棄結帳,請幫我規劃一下該怎麼做。」
                       </p>
                       <p className="text-sm text-gray-500 mt-4 pt-4 border-t border-gray-200">
-                        → AI 會自動載入 <span className="font-mono text-gray-700">user-interview</span> 技能
+                        → AI 會自動載入 <span className="font-mono text-gray-700">empathize</span> 技能
                       </p>
                     </div>
                   </div>
@@ -176,7 +176,7 @@ export default function GettingStartedPage() {
                   <li>
                     <h4 className="font-semibold text-gray-900 mb-2">2. 實踐階段</h4>
                     <p className="text-sm text-gray-600 leading-relaxed">
-                      從單一技能開始,例如在下個專案中試用「使用者訪談」技能。
+                      從單一技能開始,例如在下個專案中試用「Empathize 同理洞察」技能。
                     </p>
                   </li>
                   <li>

@@ -1,16 +1,17 @@
 # Good UX Skills
 
-專業的 UX 設計技能包，符合 Agent Skills 標準。9 個實戰技能 + 內建 20 個 UI 風格，一行指令安裝到 AI 工具中使用。
+專業的 UX 設計技能包，符合 Agent Skills 標準。**5 大設計思考流程 + 內建 20 個 UI 風格**，一行指令安裝到 AI 工具中使用。
 
 ## 功能特色
 
-- 📚 **9 個專業技能** - 使用者訪談、人物誌、資訊架構、線框圖、UI 視覺設計、可用性測試、無障礙設計、設計系統、原型製作
-- 🤖 **6 種 AI 工具支援** - Windsurf、Cursor、Claude Code、Continue、Cline、Aider (v2.2.0)
+- 📚 **5 大設計思考流程** - Empathize 同理洞察、Define 問題定義、Ideate 發想構思、Prototype 原型製作、Test 可用性驗證
+- 🤖 **6 種 AI 工具支援** - Windsurf、Cursor、Claude Code、Continue、Cline、Aider
 - 🎨 **20 個 UI 風格** - 內建精選視覺風格資料庫，涵蓋科技極簡、賽博龐克、日式和風等多種風格
-- ⚡ **強大 CLI** - 多工具支援、單一技能選裝、JSON 輸出、dry-run 模擬 (v2.2.0)
-- 🔧 **模組化架構** - 清晰的程式碼結構，易於維護和擴展 (v2.2.0)
+- 🛡️ **避免錯亂機制** - 一次只推薦一個 skill、衝突解決規則、專案狀態檢測
+- 💻 **開發選項** - Ideate/Prototype 階段可選 React + Shadcn/UI 直接實作測試
+- ⚡ **強大 CLI** - 多工具支援、單一技能選裝、JSON 輸出、dry-run 模擬
+- 🔧 **簡潔架構** - 11 個 references 檔案，易於維護和擴展
 - 🌐 **現代化網站** - Next.js 14 + TypeScript + Tailwind CSS
-- 📱 **響應式設計** - 完美支援桌面和行動裝置
 
 ## 技術棧
 
@@ -35,7 +36,7 @@ npx goodux-ux-skills --tool windsurf --tool cursor --tool claude-code
 npx goodux-ux-skills --list-tools
 
 # 只安裝指定技能
-npx goodux-ux-skills -s wireframing -s user-interview
+npx goodux-ux-skills -s empathize -s ideate -s prototype
 
 # 強制覆蓋更新
 npx goodux-ux-skills -f
@@ -88,15 +89,26 @@ goodux-skills/
 
 ## 技能清單
 
-1. **使用者訪談** (`user-interview`) - 質性研究與需求探索
-2. **使用者人物誌** (`persona-creation`) - 角色模型建立
-3. **資訊架構** (`information-architecture`) - 內容結構與導航設計
-4. **線框圖** (`wireframing`) - 低保真介面設計
-5. **UI 視覺設計** (`ui-visual-design`) - 視覺風格與 20 個 UI 風格
-6. **可用性測試** (`usability-testing`) - 使用者測試方法
-7. **無障礙設計** (`accessibility-design`) - WCAG 標準與實踐
-8. **設計系統** (`design-system`) - Design Tokens 與元件規範
-9. **原型製作** (`prototyping`) - 高保真互動原型
+### 設計思考五大流程
+
+1. **Empathize 同理洞察** (`empathize`) - 使用者訪談、人物誌與研究洞察整理
+2. **Define 問題定義** (`define`) - 問題界定、需求優先順序、限制與成功指標（含 a11y 規範）
+3. **Ideate 發想構思** (`ideate`) - 概念發散、線框與視覺方向探索（含 20 種 UI 風格參考）
+4. **Prototype 原型製作** (`prototype`) - 建立可操作的互動原型
+5. **Test 可用性驗證** (`test`) - 可用性測試與回饋收斂（可涵蓋 a11y 驗證）
+
+### References 參考資料（11 個）
+
+位於 `.agents/skills/references/`，包含：
+
+**使用指引（2 個）**：
+- `SKILL_USAGE_GUIDE.md` - Skill 使用規則、避免錯亂、專案檢測、開發選項
+- `KEYWORDS_LIBRARY.md` - 五大技能的觸發關鍵字與衝突解決規則
+
+**詳細方法（9 個）**：
+- `user-interview`, `persona-creation`, `information-architecture`, `wireframing`, `ui-visual-design`, `usability-testing`, `accessibility-design`, `design-system`, `prototyping`
+
+各核心技能的 SKILL.md 內含對應 references 的引用說明。
 
 ## 如何貢獻
 

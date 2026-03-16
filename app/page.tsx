@@ -15,7 +15,7 @@ export default function Home() {
               人人創造設計思維
             </p>
             <p className="mt-4 text-base text-gray-500 leading-relaxed max-w-2xl">
-              專業的 UX 設計技能包，符合 Agent Skills 標準。9 個實戰技能 + 內建 20 個 UI 風格，支援 6 種 AI 工具。模組化架構，強大 CLI，支援多工具、單一技能選裝與 JSON 輸出。
+              專業的 UX 設計技能包，符合 Agent Skills 標準。基於設計思考流程的 5 個核心技能 + 內建 20 個 UI 風格，支援 6 種 AI 工具。包含避免錯亂機制、專案檢測、開發選項，整合 9 個詳細參考方法。
             </p>
             
             {/* NPM 安裝 - 簡潔版 */}
@@ -59,10 +59,10 @@ export default function Home() {
                 <Package className="h-8 w-8 text-gray-400" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                9 個專業技能 + 20 個 UI 風格
+                5 個核心技能 + 智慧推薦
               </h3>
               <p className="text-sm text-gray-600 leading-relaxed">
-                使用者訪談、人物誌、資訊架構、線框圖、UI 視覺設計、可用性測試、無障礙設計、設計系統、原型製作，內建 20 個精選視覺風格資料庫
+                基於設計思考流程：Empathize（同理洞察）、Define（問題定義）、Ideate（發想構思，含 20 個 UI 風格）、Prototype（原型製作）、Test（可用性驗證）。內建避免錯亂機制，確保 AI 推薦正確的 skill
               </p>
             </div>
 
@@ -103,7 +103,7 @@ export default function Home() {
               與 AI 工具無縫整合
             </h2>
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              安裝後，這 9 個 UX 技能會自動整合到支援 Agent Skills 的 AI 工具中。v2.2.0 支援 6 種 AI 工具，可透過 <code className="bg-gray-100 px-2 py-1 rounded text-sm">--tool</code> 參數指定，支援單一技能選裝、多工具同時支援、強制覆蓋更新與 JSON 輸出。
+              安裝後，這 5 個核心 UX 技能會自動整合到支援 Agent Skills 的 AI 工具中。v2.3.0 支援 6 種 AI 工具，可透過 <code className="bg-gray-100 px-2 py-1 rounded text-sm">--tool</code> 參數指定，支援單一技能選裝、多工具同時支援、強制覆蓋更新與 JSON 輸出。
             </p>
             
             <div className="flex flex-wrap gap-3 mb-10">
@@ -117,11 +117,11 @@ export default function Home() {
             <div className="border-l-2 border-gray-300 pl-6 space-y-4">
               <p className="text-sm text-gray-600 leading-relaxed">
                 <strong className="text-gray-900">使用範例:</strong><br />
-                在 AI 工具中輸入「幫我規劃使用者訪談」,AI 會自動使用 <code className="bg-gray-100 px-2 py-1 rounded text-xs">$user-interview</code> 技能提供專業指導
+                在 AI 工具中輸入「幫我規劃使用者研究」,AI 會自動使用 <code className="bg-gray-100 px-2 py-1 rounded text-xs">$empathize</code> 技能提供專業指導
               </p>
               <p className="text-sm text-gray-600 leading-relaxed">
                 <strong className="text-gray-900">斜線命令:</strong><br />
-                在 Windsurf 中輸入 <code className="bg-gray-100 px-2 py-1 rounded text-xs">/prototyping</code>，在 Continue 中輸入 <code className="bg-gray-100 px-2 py-1 rounded text-xs">@prototyping</code>，快速觸發對應技能
+                在 Windsurf 中輸入 <code className="bg-gray-100 px-2 py-1 rounded text-xs">/empathize</code>，在 Continue 中輸入 <code className="bg-gray-100 px-2 py-1 rounded text-xs">@prototype</code>，快速觸發對應技能
               </p>
               <p className="text-sm text-gray-600 leading-relaxed">
                 <strong className="text-gray-900">多工具支援:</strong><br />
@@ -140,7 +140,7 @@ export default function Home() {
               立即開始你的<br />UX 學習之旅
             </h2>
             <p className="text-lg text-gray-600 mb-10 leading-relaxed">
-              從基礎概念到進階技巧，9 個實戰技能陪伴你成長
+              從同理洞察到可用性驗證，5 個核心技能帶你走完設計思考流程
             </p>
             <div className="flex items-center gap-6">
               <Link

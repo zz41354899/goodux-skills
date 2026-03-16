@@ -26,7 +26,7 @@ function printHelp(PKG) {
     '  -t, --target <path>   指定技能安裝目錄',
     '                        預設: 當前目錄/.agents/skills',
     '  -s, --skill <name>    只安裝指定技能 (可多次使用)',
-    '                        例如: -s wireframing -s prototyping',
+    '                        例如: -s empathize -s prototype',
     '      --tool <name>     指定要支援的 AI 工具 (可多次使用)',
     '                        可用工具: windsurf, cursor, continue, cline, aider, claude-code',
     '  -f, --force           覆蓋已存在的技能與 workflow 檔案',
@@ -36,44 +36,19 @@ function printHelp(PKG) {
     '📤 輸出選項:',
     '      --json            以 JSON 格式輸出結果 (適合 CI/CD)',
     '',
-    '💡 快速開始:',
-    '  # 安裝所有技能 (預設支援 Windsurf)',
+    '💡 使用範例:',
+    '  # 安裝所有 5 個設計思考流程技能',
     '  npx goodux-ux-skills',
     '',
-    '  # 支援多個 AI 工具',
-    '  npx goodux-ux-skills --tool windsurf --tool cursor --tool claude-code',
-    '',
     '  # 只安裝特定技能',
-    '  npx goodux-ux-skills -s wireframing -s prototyping -s ui-visual-design',
+    '  npx goodux-ux-skills -s empathize -s define',
     '',
-    '  # 強制覆蓋更新所有內容',
-    '  npx goodux-ux-skills -f',
+    '  # 支援多個 AI 工具',
+    '  npx goodux-ux-skills --tool cursor --tool claude-code',
     '',
-    '📋 查看資訊:',
-    '  # 列出所有可用技能',
+    '  # 查看可用技能與 UI 風格',
     '  npx goodux-ux-skills --list',
-    '',
-    '  # 列出支援的 AI 工具',
-    '  npx goodux-ux-skills --list-tools',
-    '',
-    '  # 列出 UI 視覺風格庫 (20 個風格)',
     '  npx goodux-ux-skills --list-styles',
-    '',
-    '  # JSON 格式輸出 (適合程式處理)',
-    '  npx goodux-ux-skills --list --json',
-    '',
-    '🎨 進階範例:',
-    '  # 為 Claude Code 安裝所有技能',
-    '  npx goodux-ux-skills --tool claude-code -f',
-    '',
-    '  # 安裝到指定目錄',
-    '  npx goodux-ux-skills -t ~/my-project/.agents/skills',
-    '',
-    '  # 模擬安裝，查看會執行什麼動作',
-    '  npx goodux-ux-skills --dry-run',
-    '',
-    '  # 只安裝技能，不建立 workflow 檔案',
-    '  npx goodux-ux-skills --no-workflows',
     '',
     '🔗 更多資訊:',
     `  網站: ${PKG.homepage || 'https://goodux-skills.vercel.app/'}`,
@@ -99,33 +74,27 @@ function listSkills(skills, getLabel, options) {
   console.log(`║  可安裝的 UX 設計技能 (共 ${skills.length} 個)`.padEnd(64) + '║');
   console.log('╚═══════════════════════════════════════════════════════════════╝\n');
 
-  const categories = {
-    research: ['user-interview', 'persona-creation', 'usability-testing'],
-    design: ['wireframing', 'ui-visual-design', 'prototyping'],
-    system: ['information-architecture', 'accessibility-design', 'design-system']
-  };
+  const flow = [
+    'empathize',
+    'define',
+    'ideate',
+    'prototype',
+    'test',
+  ];
 
-  const categoryNames = {
-    research: '🔍 使用者研究',
-    design: '🎨 介面設計',
-    system: '⚙️  系統與規範'
-  };
-
-  Object.entries(categories).forEach(([cat, skillIds]) => {
-    console.log(`${categoryNames[cat]}:`);
-    skillIds.forEach((id) => {
-      if (skills.includes(id)) {
-        const label = getLabel(id);
-        const extra = id === 'ui-visual-design' ? ' (含 20 個 UI 風格)' : '';
-        console.log(`  • ${label.padEnd(20)} ($${id})${extra}`);
-      }
-    });
-    console.log('');
+  console.log('🎯 設計思考流程:');
+  flow.forEach((id) => {
+    if (skills.includes(id)) {
+      const label = getLabel(id);
+      const extra = id === 'ideate' ? ' (含 20 個 UI 風格參考)' : '';
+      console.log(`  • ${label.padEnd(20)} ($${id})${extra}`);
+    }
   });
+  console.log('');
 
   console.log('💡 使用方式:');
   console.log('  安裝所有技能:  npx goodux-ux-skills');
-  console.log('  安裝指定技能:  npx goodux-ux-skills -s wireframing -s prototyping');
+  console.log('  安裝指定技能:  npx goodux-ux-skills -s empathize -s prototype');
   console.log('  查看詳細說明:  npx goodux-ux-skills --help\n');
 }
 
@@ -221,7 +190,8 @@ function listStyles(stylesFile, options) {
     console.log(`  • ${style.code} ${style.name} - ${style.summary}`);
   });
   console.log('\n使用方式:');
-  console.log('  安裝 ui-visual-design 技能後，AI 會自動從這些風格中推薦適合的方向\n');
+  console.log('  這些風格資料位於 references/ui-visual-design/styleprompts.yaml');
+  console.log('  安裝 ideate 技能後，AI 會自動引用這些風格進行視覺方向推薦\n');
 }
 
 module.exports = {

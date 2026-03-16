@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { skills, skillCategories } from "@/lib/skills";
-import { ArrowRight } from "lucide-react";
+import { skills, skillCategories, getSkillContentFromFile } from "@/lib/skills";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 export default function SkillsPage() {
   return (
@@ -52,26 +52,49 @@ export default function SkillsPage() {
                     {category.name}
                   </h2>
                   <div className="grid gap-6 md:grid-cols-2">
-                    {categorySkills.map((skill) => (
-                      <Link
-                        key={skill.id}
-                        href={`/skills/${skill.id}`}
-                        className="group block p-6 border border-gray-200 rounded-lg hover:border-gray-900 transition-colors bg-white"
-                      >
-                        <div className="flex items-start justify-between mb-4">
-                          <h3 className="text-xl font-semibold text-gray-900">
-                            {skill.name}
-                          </h3>
-                          <ArrowRight className="h-5 w-5 text-gray-400 group-hover:text-gray-900 group-hover:translate-x-1 transition-all" />
-                        </div>
-                        <p className="text-sm text-gray-600 leading-relaxed mb-6 line-clamp-2">
-                          {skill.description}
-                        </p>
-                        <div className="inline-flex items-center px-2.5 py-1 rounded-md bg-gray-50 text-xs font-medium text-gray-600">
-                          {skill.id}
-                        </div>
-                      </Link>
-                    ))}
+                    {categorySkills.map((skill) => {
+                      const skillContent = getSkillContentFromFile(skill.id);
+                      return (
+                        <Link
+                          key={skill.id}
+                          href={`/skills/${skill.id}`}
+                          className="group block p-6 border border-gray-200 rounded-lg hover:border-gray-900 transition-all bg-white hover:shadow-lg"
+                        >
+                          <div className="flex items-start justify-between mb-4">
+                            <div className="flex-1">
+                              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                                {skill.name}
+                              </h3>
+                              <div className="inline-flex items-center px-2.5 py-1 rounded-md bg-gray-50 text-xs font-medium text-gray-600">
+                                /{skill.id}
+                              </div>
+                            </div>
+                            <ArrowRight className="h-5 w-5 text-gray-400 group-hover:text-gray-900 group-hover:translate-x-1 transition-all flex-shrink-0" />
+                          </div>
+                          <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                            {skillContent?.content.taskDefinition || skill.description}
+                          </p>
+                          {skillContent && skillContent.content.whenToUse.length > 0 && (
+                            <div className="mt-4 pt-4 border-t border-gray-100">
+                              <p className="text-xs font-semibold text-gray-500 mb-2">適用情境</p>
+                              <ul className="space-y-1.5">
+                                {skillContent.content.whenToUse.slice(0, 2).map((item, idx) => (
+                                  <li key={idx} className="flex gap-2 text-xs text-gray-600">
+                                    <CheckCircle2 className="h-3.5 w-3.5 text-gray-400 flex-shrink-0 mt-0.5" />
+                                    <span className="line-clamp-1">{item}</span>
+                                  </li>
+                                ))}
+                                {skillContent.content.whenToUse.length > 2 && (
+                                  <li className="text-xs text-gray-400 ml-5">
+                                    +{skillContent.content.whenToUse.length - 2} 更多...
+                                  </li>
+                                )}
+                              </ul>
+                            </div>
+                          )}
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
               );

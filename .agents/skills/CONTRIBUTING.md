@@ -10,6 +10,41 @@
 
 ---
 
+## 0. 技能架構總覽
+
+Good UX Skills 採用**設計思考五大流程**作為核心技能架構：
+
+### 核心技能（5 個）
+
+位於 `.agents/skills/` 根目錄，為主要安裝與使用的技能：
+
+1. **empathize** - 同理洞察（整合訪談與人物誌）
+2. **define** - 問題定義（整合資訊架構與 a11y 限制）
+3. **ideate** - 發想構思（整合線框與視覺風格，含 20 種 UI 風格參考）
+4. **prototype** - 原型製作
+5. **test** - 可用性驗證（整合可用性測試與 a11y 驗證）
+
+### References 參考資料（11 個）
+
+位於 `.agents/skills/references/`，包含：
+
+**詳細方法（9 個）**：
+- `user-interview`, `persona-creation`, `information-architecture`, `wireframing`, `ui-visual-design`, `usability-testing`, `accessibility-design`, `design-system`, `prototyping`
+
+**使用指引（2 個）**：
+- `SKILL_USAGE_GUIDE.md` - Skill 使用規則、避免錯亂、專案檢測、開發選項
+- `KEYWORDS_LIBRARY.md` - 五大技能的觸發關鍵字與衝突解決規則
+
+**References 管理原則**：
+- References 不再透過 CLI 安裝，僅供查閱與引用
+- 核心技能的 SKILL.md 在「參考資料 (References)」段落標示對應的 references 檔案
+- 新增核心技能內容時，優先整合至五大流程，避免建立新的 references
+- 保持 references 簡潔，避免過度複雜的文件
+- 核心技能的 References 段落需與 `references/` 目錄內容保持同步
+- 新增核心技能內容時，若涉及 references 引用，需同步更新引用說明
+
+---
+
 ## 1. 核心原則
 
 所有 skill 的內容維護都必須遵守以下順序：
@@ -112,7 +147,7 @@ skill-name/
 
 ### 例外
 
-- `ui-visual-design` 使用 `styleprompts.yaml` 作為資料檔
+- `ideate` 使用 `styleprompts.yaml` 作為 UI 風格資料檔（含 20 種視覺風格參考）
 - 但仍必須遵守：
   - 先讀 `SKILL.md`
   - 再讀 `TEMPLATE.md`
