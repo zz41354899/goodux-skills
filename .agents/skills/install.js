@@ -64,6 +64,36 @@ function copyRootFiles(targetDir, options) {
   });
 }
 
+function copyReferencesDirectory(targetDir) {
+  const sourceReferencesDir = path.join(__dirname, 'references');
+  const destReferencesDir = path.join(targetDir, 'references');
+
+  if (!fs.existsSync(sourceReferencesDir)) {
+    return;
+  }
+
+  ensureDirectory(destReferencesDir);
+
+  // 複製 references 目錄中的所有檔案和子目錄
+  const copyRecursive = (src, dest) => {
+    const entries = fs.readdirSync(src, { withFileTypes: true });
+    
+    entries.forEach((entry) => {
+      const srcPath = path.join(src, entry.name);
+      const destPath = path.join(dest, entry.name);
+      
+      if (entry.isDirectory()) {
+        ensureDirectory(destPath);
+        copyRecursive(srcPath, destPath);
+      } else {
+        fs.copyFileSync(srcPath, destPath);
+      }
+    });
+  };
+
+  copyRecursive(sourceReferencesDir, destReferencesDir);
+}
+
 // ---------------------------------------------------------------------------
 // 主安裝流程
 // ---------------------------------------------------------------------------
@@ -110,6 +140,7 @@ function install(rawOptions = {}) {
   }
 
   copyRootFiles(targetDir, options);
+  copyReferencesDirectory(targetDir);
 
   const summary = { installed: 0, updated: 0, skipped: 0, missing: 0 };
   const workflowSummary = { created: 0, updated: 0, skipped: 0 };
@@ -161,7 +192,7 @@ function install(rawOptions = {}) {
 
   // 人類可讀摘要
   log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-  log(`\n✨ ${options.dryRun ? '模擬完成' : '安裝完成'}!`);
+  log(`\n✨ 安裝完成!`);
   log(`   新安裝: ${summary.installed} 個技能`);
   if (summary.updated > 0) { log(`   覆蓋更新: ${summary.updated} 個技能`); }
   if (summary.skipped > 0) { log(`   跳過: ${summary.skipped} 個技能 (已存在)`); }
